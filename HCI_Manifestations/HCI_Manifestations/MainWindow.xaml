@@ -17,26 +17,61 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="_Manifestacija">
-                <MenuItem Header="_Dodaj manifestaciju" Click="Add_manifestation_Click"></MenuItem>
+                <MenuItem Header="_Dodaj manifestaciju" Click="Add_manifestation_Click" InputGestureText="Ctrl+M">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikazi manifestacije" Click="Show_manifestations_Click"></MenuItem>
+                <MenuItem Header="_Prikazi manifestacije" Click="Show_manifestations_Click" InputGestureText="Shift+M">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Tip manifestacije">
-                <MenuItem Header="_Dodaj tip manifestacije" Click="Add_manifestation_type_Click"></MenuItem>
+                <MenuItem Header="_Dodaj tip manifestacije" Click="Add_manifestation_type_Click" InputGestureText="Ctrl+T">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikazi tipove manifestacija" Click="Show_manifestation_types_Click"></MenuItem>
+                <MenuItem Header="_Prikazi tipove manifestacija" Click="Show_manifestation_types_Click" InputGestureText="Shift+T">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Tag">
-                <MenuItem Header="_Dodaj tag" Click="Add_tag_Click"></MenuItem>
+            <MenuItem Header="_Etikete">
+                <MenuItem Header="_Dodaj etikete" Click="Add_tag_Click" InputGestureText="Ctrl+E">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikazi tagove" Click="Show_tags_Click"></MenuItem>
+                <MenuItem Header="_Prikazi etikete" Click="Show_tags_Click" InputGestureText="Shift+E">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Pomoc" HorizontalAlignment="Right" InputGestureText="F1" Click="Show_help_Click">
+            <MenuItem Header="_Pomoc" HorizontalAlignment="Right" Click="Show_help_Click" InputGestureText="F1">
+                <MenuItem Header="_Dokumentacija" InputGestureText="Ctrl+D">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\document.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Demo mod" InputGestureText="Shift+D">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Icons\demo_play.png" Width="12" Height="12"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
+
         <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Image Source="Resources\Images\map_novi_sad.png" Width="640" Height="420"/>
         </Grid>
     </DockPanel>
-    
+
 </Window>

@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="AddManifestationDialog" Height="300" Width="300">
+        Title="AddManifestationDialog" Height="500" Width="500">
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="270" Margin="23,20,0,0" VerticalAlignment="Top" Width="442">
+            <Grid HorizontalAlignment="Left" Height="219" Margin="10,23,0,0" VerticalAlignment="Top" Width="134">
+                <Label x:Name="label" Content="Oznaku:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="114"/>
+                <Label x:Name="label_Copy" Content="Ime:" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="114"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="219" Margin="160,23,0,0" VerticalAlignment="Top" Width="154">
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="219" Margin="319,23,0,0" VerticalAlignment="Top" Width="98"/>
+        </Grid>
+
     </Grid>
 </Window>
