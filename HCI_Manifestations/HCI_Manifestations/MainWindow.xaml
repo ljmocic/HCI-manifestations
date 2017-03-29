@@ -5,9 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="243,129,0,0" VerticalAlignment="Top" Width="75"/>
-
-    </Grid>
+        Title="Menadzer manifestacija" Height="480" Width="640" Icon="Resources\Icons\favicon.ico">
+    <DockPanel>
+        <Menu DockPanel.Dock ="Top">
+            <Menu.ItemsPanel>
+                <!--Podkontrola koja određuje kako se item-i prikazuju.-->
+                <ItemsPanelTemplate>
+                    <!-- Specificiramo ne šta je u kontroli nego template koji je formira-->
+                    <DockPanel HorizontalAlignment="Stretch"></DockPanel>
+                    <!-- Prikazujemo preko Dock Panela koji preuzme sav prostor -->
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="_Manifestacija">
+                <MenuItem Header="_Dodaj manifestaciju" Click="Add_manifestation_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Prikazi manifestacije" Click="Show_manifestations_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Tip manifestacije">
+                <MenuItem Header="_Dodaj tip manifestacije" Click="Add_manifestation_type_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Prikazi tipove manifestacija" Click="Show_manifestation_types_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Tag">
+                <MenuItem Header="_Dodaj tag" Click="Add_tag_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Prikazi tagove" Click="Show_tags_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Pomoc" HorizontalAlignment="Right" InputGestureText="F1" Click="Show_help_Click">
+            </MenuItem>
+        </Menu>
+        <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Image Source="Resources\Images\map_novi_sad.png" Width="640" Height="420"/>
+        </Grid>
+    </DockPanel>
+    
 </Window>
