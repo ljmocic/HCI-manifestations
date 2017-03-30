@@ -1,5 +1,7 @@
-﻿using System;
+﻿using HCI_Manifestations.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +21,22 @@ namespace HCI_Manifestations.dialogs
     /// </summary>
     public partial class ShowTagsDialog : Window
     {
+        public ObservableCollection<Manifestation> manifestations
+        {
+            get;
+            set;
+        }
         public ShowTagsDialog()
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            this.DataContext = this;
+            manifestations = new ObservableCollection<Manifestation>();
+            manifestations.Add(new Manifestation { Ime = "Exit Festival", Lokacija = "Novi Sad", Id = "1" });
+            manifestations.Add(new Manifestation { Ime = "Sea Dance", Lokacija = "Budva", Id = "2" });
+            manifestations.Add(new Manifestation { Ime = "Sea Star", Lokacija = "Omag", Id = "3" });
+            manifestations.Add(new Manifestation { Ime = "Love Fest", Lokacija = "Vrnjacka Banja", Id = "4" });
+            manifestations.Add(new Manifestation { Ime = "Demo Fest", Lokacija = "Banja Luka", Id = "5" });
         }
     }
 }

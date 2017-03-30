@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="ShowManifestationsDialog" Height="300" Width="500">
+        Title="Prikaz manifestacija" Height="300" Width="500" Icon="\..\Resources\Icons\favicon.ico">
     <Grid>
-        <DataGrid x:Name="manifestationsGrid" ItemsSource="{Binding Path=manifestations}" IsReadOnly="True"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="manifestationsGrid" ItemsSource="{Binding Path=manifestations}" IsReadOnly="True" Grid.Column="0" Grid.RowSpan="7"/>
+        <Button Name="buttonAdd" Content="Dodaj" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="5"/>
+        <Button Name="buttonEdit" Content="Uredi" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+        <Button Name="buttonRemove" Content="Ukloni" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
+
     </Grid>
 </Window>
