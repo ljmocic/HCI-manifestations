@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="AddManifestationTypeDialog" Height="300" Width="300">
+        Title="Dodaj tip manifestacije" Height="300" Width="450" Icon="\..\Resources\Icons\favicon.ico">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
+            <TextBox Name="textBoxId" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
+            <TextBox Name="textBoxName" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
+            <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="3"/>
+
+            <Label Grid.Column="0" Grid.Row="3" Content="Ikonica:"/>
+            <Button Name="buttonBrowse" Grid.Column="1" Grid.Row ="3" Content="Pretrazi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="3" Height="23"/>
+        </Grid>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
+            <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5"/>
+            <Button Name="buttonSave" Content="Sacuvaj" Margin="10" Padding="20,5"/>
+        </StackPanel>
+
     </Grid>
 </Window>

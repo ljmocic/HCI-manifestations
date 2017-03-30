@@ -5,18 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="AddManifestationDialog" Height="500" Width="500">
+        Title="AddManifestationDialog" Height="550" Width="700" Icon="\..\Resources\Icons\favicon.ico">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="270" Margin="23,20,0,0" VerticalAlignment="Top" Width="442">
-            <Grid HorizontalAlignment="Left" Height="219" Margin="10,23,0,0" VerticalAlignment="Top" Width="134">
-                <Label x:Name="label" Content="Oznaku:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="114"/>
-                <Label x:Name="label_Copy" Content="Ime:" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="114"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="150" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
+            <TextBox Name="textBoxId" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
+            
+            <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
+            <TextBox Name="textBoxName" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" />
+            
+            <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
+            <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" />
+
+            <CheckBox Name="checkBoxHandicapable" Grid.Column="1" Grid.Row="3" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
+
+            <Label Grid.Column="0" Grid.Row="4" Content="Tip manifestacije:" />
+            <Grid Grid.Column="1" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="comboBoxTypes" VerticalAlignment="Center" Margin="3" />
+                <Button Name="buttonAddNewType" Grid.Column="1" Grid.Row="0" Content="Novi tip" Margin="2" Padding="20,0" />
             </Grid>
-            <Grid HorizontalAlignment="Left" Height="219" Margin="160,23,0,0" VerticalAlignment="Top" Width="154">
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
+
+            <Label Grid.Column="0" Grid.Row="5" Content="Datum odrzavanja:" />
+            <DatePicker Name="datePickerDate" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Margin="3" />
+
+            <ComboBox Name="comboBoxPrices" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin="3" />
+            <Label Grid.Column="0" Grid.Row="6" Content="Kategorija cena:" />
+
+            <Label Grid.Column="0" Grid.Row="7" Content="Dozvoljeno pusenje:" />
+            <Grid Grid.Column="1" Grid.Row="7" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <CheckBox Name="CheckBoxInside" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
+                <CheckBox Name="CheckBoxOutside" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
             </Grid>
-            <Grid HorizontalAlignment="Left" Height="219" Margin="319,23,0,0" VerticalAlignment="Top" Width="98"/>
+
+            <Label Grid.Column="0" Grid.Row="8" Content="Alkohol:" />
+            <ComboBox Name="comboBoxAlcohol" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3" />
+            
+            <Label Grid.Column="0" Grid.Row="9" Content="Ocekivana publika:" />
+            <TextBox Name="textBoxPublic" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3" />
+
+            <Label Grid.Column="0" Grid.Row="10" Content="Etikete:" />
+            <TextBox Name="textBoxTags" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3" />
+
+            <Label Grid.Column="0" Grid.Row="11" Content="Ikonica:" />
+            <Grid Grid.Column="1" Grid.Row="11">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="textBoxIconPath" VerticalContentAlignment="Center" Margin="3" />
+                <Button Name="loadIcon" Grid.Column="1" Grid.Row="0" Content="Pretrazi" Margin="2" Padding="20,0" />
+            </Grid>
+            
+            
         </Grid>
 
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
+            <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5" />
+            <Button Name="buttonSave" Content="Sacuvaj"  Margin="10" Padding="20,5" />
+        </StackPanel>
     </Grid>
 </Window>

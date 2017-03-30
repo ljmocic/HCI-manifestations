@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="ShowManifestationsDialog" Height="300" Width="300">
+        Title="ShowManifestationsDialog" Height="300" Width="500">
     <Grid>
-        
+        <DataGrid x:Name="manifestationsGrid" ItemsSource="{Binding Path=manifestations}" IsReadOnly="True"/>
     </Grid>
 </Window>

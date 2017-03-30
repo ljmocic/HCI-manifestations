@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="AddTagDialog" Height="300" Width="300">
+        Title="Dodaj etiketu" Height="300" Width="450" Icon="\..\Resources\Icons\favicon.ico">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
+            <TextBox Name="textBoxId" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Content="Boja:"/>
+            <ComboBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
+            <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3"/>
+
+        </Grid>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
+            <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5"></Button>
+            <Button Name="buttonSave" Content="Sacuvaj" Margin="10" Padding="20,5"></Button>
+        </StackPanel>
     </Grid>
 </Window>

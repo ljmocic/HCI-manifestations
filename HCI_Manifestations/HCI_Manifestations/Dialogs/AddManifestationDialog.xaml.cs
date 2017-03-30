@@ -24,5 +24,6 @@ namespace HCI_Manifestations.dialogs
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
+
     }
 }
