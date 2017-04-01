@@ -18,7 +18,7 @@
 
         <Grid Grid.Column="0" Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="150" />
+                <ColumnDefinition MaxWidth="150"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -46,59 +46,69 @@
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
             <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" />
 
-            <CheckBox Name="checkBoxHandicapable" Grid.Column="1" Grid.Row="3" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
+            <CheckBox Grid.Column="1" Grid.Row="3" Name="checkBoxHandicapable" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
 
-            <Label Grid.Column="0" Grid.Row="4" Content="Tip manifestacije:" />
-            <Grid Grid.Column="1" Grid.Row="4">
+            <Label Grid.Column="0" Grid.Row="4" Content="Datum odrzavanja:" />
+            <DatePicker Name="datePickerDate" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
+
+            <Label Grid.Column="0" Grid.Row="5" Content="Tip manifestacije:" />
+            <Grid Grid.Column="1" Grid.Row="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="comboBoxTypes" VerticalAlignment="Center" Margin="3" />
-                <Button Name="buttonAddNewType" Grid.Column="1" Grid.Row="0" Content="Novi tip" Margin="2" Padding="20,0" />
+                <ComboBox Name="comboBoxTypes" VerticalAlignment="Center" Margin="3" IsEditable="False" IsReadOnly="True" IsEnabled="False">
+                </ComboBox>
+                <Button Name="buttonAddNewType" Grid.Column="1" Grid.Row="0" Content="Novi tip" Margin="3" Padding="20,0" />
             </Grid>
 
-            <Label Grid.Column="0" Grid.Row="5" Content="Datum odrzavanja:" />
-            <DatePicker Name="datePickerDate" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Margin="3" />
+            <Label Grid.Column="0" Grid.Row="6" Content="Ikonica:" />
+            <Grid Grid.Column="1" Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="textBoxIconPath" VerticalContentAlignment="Center" Margin="3" IsEnabled="False"/>
+                <Button Name="loadIcon" Grid.Column="1" Grid.Row="0" Content="Pretrazi" Margin="2" Padding="20,0" />
+            </Grid>
 
-            <ComboBox Name="comboBoxPrices" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin="3" />
-            <Label Grid.Column="0" Grid.Row="6" Content="Kategorija cena:" />
 
             <Label Grid.Column="0" Grid.Row="7" Content="Dozvoljeno pusenje:" />
             <Grid Grid.Column="1" Grid.Row="7" Margin="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <CheckBox Name="CheckBoxInside" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
                 <CheckBox Name="CheckBoxOutside" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
             </Grid>
-
-            <Label Grid.Column="0" Grid.Row="8" Content="Alkohol:" />
-            <ComboBox Name="comboBoxAlcohol" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3" />
             
-            <Label Grid.Column="0" Grid.Row="9" Content="Ocekivana publika:" />
-            <TextBox Name="textBoxPublic" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3" />
+            <Label Grid.Column="0" Grid.Row="8" Content="Kategorija cena:" />
+            <ComboBox Name="comboBoxPrices" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
+                <ComboBoxItem>Besplatno</ComboBoxItem>
+                <ComboBoxItem>Niske cene</ComboBoxItem>
+                <ComboBoxItem>Srednje cene</ComboBoxItem>
+                <ComboBoxItem>Visoke cene</ComboBoxItem>
+            </ComboBox>
 
-            <Label Grid.Column="0" Grid.Row="10" Content="Etikete:" />
-            <TextBox Name="textBoxTags" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3" />
+            <Label Grid.Column="0" Grid.Row="9" Content="Alkohol:" />
+            <ComboBox Name="comboBoxAlcohol" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
+                <ComboBoxItem>Nema</ComboBoxItem>
+                <ComboBoxItem>Može se doneti</ComboBoxItem>
+                <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
+            </ComboBox>
 
-            <Label Grid.Column="0" Grid.Row="11" Content="Ikonica:" />
-            <Grid Grid.Column="1" Grid.Row="11">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="100" />
-                </Grid.ColumnDefinitions>
-                <TextBox Name="textBoxIconPath" VerticalContentAlignment="Center" Margin="3" />
-                <Button Name="loadIcon" Grid.Column="1" Grid.Row="0" Content="Pretrazi" Margin="2" Padding="20,0" />
-            </Grid>
-            
+            <Label Grid.Column="0" Grid.Row="10" Content="Ocekivana publika:" />
+            <TextBox Name="textBoxPublic" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3" />
+
+            <Label Grid.Column="0" Grid.Row="11" Content="Etikete:" />
+            <TextBox Name="textBoxTags" Grid.Column="1" Grid.Row="11" VerticalAlignment="Center" Margin="3" />
             
         </Grid>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5" />
-            <Button Name="buttonSave" Content="Sacuvaj"  Margin="10" Padding="20,5" />
+            <Button Name="buttonCancel" Content="Odustani" Margin="5" Padding="20,5" />
+            <Button Name="buttonSave" Content="Sacuvaj"  Margin="5" Padding="20,5" />
         </StackPanel>
     </Grid>
 </Window>

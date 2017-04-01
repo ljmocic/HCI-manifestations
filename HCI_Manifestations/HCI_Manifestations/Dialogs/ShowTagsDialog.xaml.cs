@@ -38,5 +38,11 @@ namespace HCI_Manifestations.dialogs
             manifestations.Add(new Manifestation { Ime = "Love Fest", Lokacija = "Vrnjacka Banja", Id = "4" });
             manifestations.Add(new Manifestation { Ime = "Demo Fest", Lokacija = "Banja Luka", Id = "5" });
         }
+
+        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            AddManifestationDialog addManifestation = new AddManifestationDialog();
+            addManifestation.Show();
+        }
     }
 }

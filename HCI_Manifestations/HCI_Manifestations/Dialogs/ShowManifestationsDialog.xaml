@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
         <DataGrid Name="manifestationsGrid" ItemsSource="{Binding Path=manifestations}" IsReadOnly="True" Grid.Column="0" Grid.RowSpan="7"/>
         <Button Name="buttonAdd" Content="Dodaj" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="5"/>
-        <Button Name="buttonEdit" Content="Uredi" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+        <Button Name="buttonEdit" Content="Uredi" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5" Click="buttonEdit_Click"/>
         <Button Name="buttonRemove" Content="Ukloni" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
 
     </Grid>
