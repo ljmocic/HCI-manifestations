@@ -23,7 +23,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikazi manifestacije" Click="Show_manifestations_Click" InputGestureText="Shift+M">
+                <MenuItem Header="_Prikaži manifestacije" Click="Show_manifestations_Click" InputGestureText="Shift+M">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
@@ -36,7 +36,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikazi tipove manifestacija" Click="Show_manifestation_types_Click" InputGestureText="Shift+T">
+                <MenuItem Header="_Prikaži tipove manifestacija" Click="Show_manifestation_types_Click" InputGestureText="Shift+T">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
@@ -49,13 +49,13 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikazi etikete" Click="Show_tags_Click" InputGestureText="Shift+E">
+                <MenuItem Header="_Prikaži etikete" Click="Show_tags_Click" InputGestureText="Shift+E">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Pomoc" HorizontalAlignment="Right" InputGestureText="F1">
+            <MenuItem Header="_Pomoć" HorizontalAlignment="Right" InputGestureText="F1">
                 <MenuItem Header="_Dokumentacija" Click="Show_help_Click" InputGestureText="Ctrl+D">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\document.png" Width="12" Height="12"/>
@@ -79,10 +79,10 @@
                 </StackPanel>
             </Button>
 
-            <Button Name="buttonViewManifestations"  ToolTip="Prikazi sve manifestacije ili odaberi za azuriranje" Margin="5" Padding="3" Click="Show_manifestations_Click">
+            <Button Name="buttonViewManifestations"  ToolTip="Prikaži sve manifestacije ili odaberi za ažuriranje" Margin="5" Padding="3" Click="Show_manifestations_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Prikazi manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    <TextBlock Text="Prikaži manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                 </StackPanel>
             </Button>
 
@@ -99,7 +99,7 @@
             <Button Name="buttonViewManifestationTypes"  ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3" Click="Show_manifestation_types_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Prikazi tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                 </StackPanel>
             </Button>
 
@@ -116,7 +116,7 @@
             <Button Name="buttonViewTags"  ToolTip="Prikazi sve etikete" Margin="5" Padding="3" Click="Show_tags_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Prikazi etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    <TextBlock Text="Prikaži etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                 </StackPanel>
             </Button>
 

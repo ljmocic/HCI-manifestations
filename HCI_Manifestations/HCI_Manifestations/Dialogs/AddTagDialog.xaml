@@ -36,7 +36,7 @@
 
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
             <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5"></Button>
-            <Button Name="buttonSave" Content="Sacuvaj" Margin="10" Padding="20,5"></Button>
+            <Button Name="buttonSave" Content="Sačuvaj" Margin="10" Padding="20,5"></Button>
         </StackPanel>
     </Grid>
 </Window>

@@ -22,7 +22,7 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
         <TextBox Grid.Column="0" Grid.Row="0" Margin="5"/>
-        <Button Name="buttonSearch" ToolTip="Pretrazi ili filtriraj etikete" Content="Pretrazi" Grid.Column="1" Grid.Row="0" Margin="5" />
+        <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj etikete" Content="Pretraži" Grid.Column="1" Grid.Row="0" Margin="5" />
         <DataGrid Name="manifestationsGrid" ToolTip="Tabelaran prikaz etiketa" ItemsSource="{Binding Path=manifestations}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6"/>
         <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
         <Button Name="buttonEdit" Content="Uredi" ToolTip="Uredi odabranu etiketu" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" Click="buttonEdit_Click"/>

@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene citljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3"/>
+            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3"/>
 
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
             <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3"/>
@@ -34,12 +34,12 @@
             <TextBox Name="textBoxDescription"  ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="3"/>
 
             <Label Grid.Column="0" Grid.Row="3" Content="Ikonica:"/>
-            <Button Name="buttonBrowse" Grid.Column="1" Grid.Row ="3" ToolTip="Odaberite karakteristicnu ikonicu tipa manifestacije sa vaseg racunara" Content="Pretrazi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="3" Height="23"/>
+            <Button Name="buttonBrowse" Grid.Column="1" Grid.Row ="3" ToolTip="Odaberite karakterističnu ikonicu tipa manifestacije sa vašeg racunara" Content="Pretraži" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="3" Height="23"/>
         </Grid>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
             <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5"/>
-            <Button Name="buttonSave" Content="Sacuvaj" Margin="10" Padding="20,5"/>
+            <Button Name="buttonSave" Content="Sačuvaj" Margin="10" Padding="20,5"/>
         </StackPanel>
 
     </Grid>
