@@ -21,10 +21,12 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
-        <DataGrid Name="manifestationsGrid" ItemsSource="{Binding Path=manifestations}" IsReadOnly="True" Grid.Column="0" Grid.RowSpan="7"/>
-        <Button Name="buttonAdd" Content="Dodaj" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="5"/>
-        <Button Name="buttonEdit" Content="Uredi" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5" Click="buttonEdit_Click"/>
-        <Button Name="buttonRemove" Content="Ukloni" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Column="0" Grid.Row="0" Margin="5"/>
+        <Button Name="buttonSearch" Content="Pretrazi" Grid.Column="1" Grid.Row="0" Margin="5" />
+        <DataGrid Name="manifestationsGrid" ItemsSource="{Binding Path=manifestations}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7"/>
+        <Button Name="buttonAdd" Content="Dodaj" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+        <Button Name="buttonEdit" Content="Uredi" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" Click="buttonEdit_Click"/>
+        <Button Name="buttonRemove" Content="Ukloni" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
 
     </Grid>
 </Window>
