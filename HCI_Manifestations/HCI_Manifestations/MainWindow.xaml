@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations"
         mc:Ignorable="d"
-        Title="Menadzer manifestacija" Height="640" Width="920" Icon="Resources\Icons\favicon.ico">
+        Title="Menadzer manifestacija" Height="640" Width="920" Icon="Resources\Icons\favicon.ico" ResizeMode="NoResize">
     <DockPanel>
         <Menu DockPanel.Dock ="Top">
             <Menu.ItemsPanel>

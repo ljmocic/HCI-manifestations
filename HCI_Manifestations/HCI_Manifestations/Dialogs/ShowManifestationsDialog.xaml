@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="Prikaz manifestacija" Height="300" Width="500" Icon="\..\Resources\Icons\favicon.ico">
+        Title="Prikaz manifestacija" Height="300" Width="500" Icon="\..\Resources\Icons\favicon.ico" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
