@@ -24,13 +24,13 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3"/>
+            <TextBox Name="textBoxId" ToolTip="Unos etikete manifestacija" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3"/>
 
             <Label Grid.Column="0" Grid.Row="1" Content="Boja:"/>
-            <ComboBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3"/>
+            <ComboBox Grid.Column="1" Grid.Row="1" ToolTip="Odabir boje etikete" VerticalContentAlignment="Center" Margin="3"/>
 
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3"/>
+            <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3"/>
 
         </Grid>
 

@@ -38,18 +38,18 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
-            <TextBox Name="textBoxId" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
+            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene citljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
             
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
-            <TextBox Name="textBoxName" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" />
+            <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" />
             
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
-            <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" />
+            <TextBox Name="textBoxDescription" ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" />
 
-            <CheckBox Grid.Column="1" Grid.Row="3" Name="checkBoxHandicapable" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
+            <CheckBox Grid.Column="1" Grid.Row="3" Name="checkBoxHandicapable" ToolTip="Oznacite da li je manifestacija prilagodjena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
 
             <Label Grid.Column="0" Grid.Row="4" Content="Datum odrzavanja:" />
-            <DatePicker Name="datePickerDate" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
+            <DatePicker Name="datePickerDate" ToolTip="Odaberite datum odrzavanja manifestacije" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
 
             <Label Grid.Column="0" Grid.Row="5" Content="Tip manifestacije:" />
             <Grid Grid.Column="1" Grid.Row="5">
@@ -57,9 +57,9 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="comboBoxTypes" VerticalAlignment="Center" Margin="3" IsEditable="False" IsReadOnly="True" IsEnabled="False">
+                <ComboBox Name="comboBoxTypes" VerticalAlignment="Center" ToolTip="Odaberite neki od postojecih tipova manifestacija" Margin="3" IsEditable="False" IsReadOnly="True" IsEnabled="False">
                 </ComboBox>
-                <Button Name="buttonAddNewType" Grid.Column="1" Grid.Row="0" Content="Novi tip" Margin="3" Padding="20,0" />
+                <Button Name="buttonAddNewType" ToolTip="Dodaj novu tip manifestacije" Grid.Column="1" Grid.Row="0" Content="Novi tip" Margin="3" Padding="20,0" />
             </Grid>
 
             <Label Grid.Column="0" Grid.Row="6" Content="Ikonica:" />
@@ -68,8 +68,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <TextBox Name="textBoxIconPath" VerticalContentAlignment="Center" Margin="3" IsEnabled="False"/>
-                <Button Name="loadIcon" Grid.Column="1" Grid.Row="0" Content="Pretrazi" Margin="2" Padding="20,0" />
+                <TextBox Name="textBoxIconPath" ToolTip="Lokacija ikonice na vasem racunaru" VerticalContentAlignment="Center" Margin="3" IsEnabled="False"/>
+                <Button Name="loadIcon" Grid.Column="1" ToolTip="Kliknite da biste dodali novu ikonicu koja oznacava manifestaciju" Grid.Row="0" Content="Pretrazi" Margin="2" Padding="20,0" />
             </Grid>
 
 
@@ -79,12 +79,12 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <CheckBox Name="CheckBoxInside" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
-                <CheckBox Name="CheckBoxOutside" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
+                <CheckBox Name="CheckBoxInside" ToolTip="Pusenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
+                <CheckBox Name="CheckBoxOutside" ToolTip="Pusenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
             </Grid>
             
             <Label Grid.Column="0" Grid.Row="8" Content="Kategorija cena:" />
-            <ComboBox Name="comboBoxPrices" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
+            <ComboBox Name="comboBoxPrices" ToolTip="Odaberite cenovni rang pica na manifestaciji" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
                 <ComboBoxItem>Besplatno</ComboBoxItem>
                 <ComboBoxItem>Niske cene</ComboBoxItem>
                 <ComboBoxItem>Srednje cene</ComboBoxItem>
@@ -99,10 +99,10 @@
             </ComboBox>
 
             <Label Grid.Column="0" Grid.Row="10" Content="Ocekivana publika:" />
-            <TextBox Name="textBoxPublic" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3" />
+            <TextBox Name="textBoxPublic" ToolTip="Opisite kakva publika se ocekuje na manifestaciji" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3" />
 
             <Label Grid.Column="0" Grid.Row="11" Content="Etikete:" />
-            <TextBox Name="textBoxTags" Grid.Column="1" Grid.Row="11" VerticalAlignment="Center" Margin="3" />
+            <TextBox Name="textBoxTags" ToolTip="Oznacite manifestaciju etiketama" Grid.Column="1" Grid.Row="11" VerticalAlignment="Center" Margin="3" />
             
         </Grid>
 
