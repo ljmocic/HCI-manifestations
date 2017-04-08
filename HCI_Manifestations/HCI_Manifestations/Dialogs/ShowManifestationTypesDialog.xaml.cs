@@ -32,11 +32,6 @@ namespace HCI_Manifestations.dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.DataContext = this;
             manifestations = new ObservableCollection<Manifestation>();
-            manifestations.Add(new Manifestation { Ime = "Exit Festival", Lokacija = "Novi Sad", Id = "1" });
-            manifestations.Add(new Manifestation { Ime = "Sea Dance", Lokacija = "Budva", Id = "2" });
-            manifestations.Add(new Manifestation { Ime = "Sea Star", Lokacija = "Omag", Id = "3" });
-            manifestations.Add(new Manifestation { Ime = "Love Fest", Lokacija = "Vrnjacka Banja", Id = "4" });
-            manifestations.Add(new Manifestation { Ime = "Demo Fest", Lokacija = "Banja Luka", Id = "5" });
         }
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)

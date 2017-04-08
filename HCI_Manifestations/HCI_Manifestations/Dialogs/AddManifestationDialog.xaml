@@ -38,7 +38,7 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
-            <TextBox Name="textBoxId" Text="{Binding Path=textBoxId, UpdateSourceTrigger=PropertyChanged}" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
+            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
             
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
             <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" />
@@ -79,8 +79,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <CheckBox Name="CheckBoxInside" ToolTip="Pušenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
-                <CheckBox Name="CheckBoxOutside" ToolTip="Pušenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
+                <RadioButton Name="RadioButtonInside" ToolTip="Pušenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
+                <RadioButton Name="RadioButtonOutside" ToolTip="Pušenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
             </Grid>
             
             <Label Grid.Column="0" Grid.Row="8" Content="Kategorija cena:" />
@@ -106,6 +106,7 @@
             
         </Grid>
 
+        <!--Bottom panel-->
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
             <Button Name="buttonCancel" Content="Odustani" Margin="5" Padding="20,5" />
             <Button Name="buttonSave" Content="Sačuvaj"  Margin="5" Padding="20,5" />

@@ -7,65 +7,29 @@ using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
-    public class Manifestation : INotifyPropertyChanged
+    public class Manifestation
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        private string _ime;
-        private string _lokacija;
-        private string _id;
-        public string Ime
-        {
-            get
-            {
-                return _ime;
-            }
-            set
-            {
-                if (value != _ime)
-                {
-                    _ime = value;
-                    OnPropertyChanged("Ime");
-                }
-            }
-        }
+        private string id { get; set; }
+        private string name { get; set; }
+        private string description { get; set; }
+        private DateTime date { get; set; }
+        private ManifestationType type { get; set; }
+        private string iconPath { get; set; }
+        private bool inside { get; set; }
+        private PriceEnum price { get; set; }
+        private AlcoholEnum alcohol { get; set; }
+        private string expectedPublic { get; set; }
+        private List<Tag> tags { get; set; }
 
-        public string Lokacija
-        {
-            get
-            {
-                return _lokacija;
-            }
-            set
-            {
-                if (value != _lokacija)
-                {
-                    _lokacija = value;
-                    OnPropertyChanged("Lokacija");
-                }
-            }
-        }
+    }
 
-        public string Id
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                if (value != _id)
-                {
-                    _id = value;
-                    OnPropertyChanged("Id");
-                }
-            }
-        }
+    enum PriceEnum
+    {
+        FREE, LOW_PRICES, MEDIUM_PRICES, HIGH_PRICES
+    }
+
+    enum AlcoholEnum
+    {
+        NOT_ALLOWED, CAN_BRING, CAN_BUY
     }
 }

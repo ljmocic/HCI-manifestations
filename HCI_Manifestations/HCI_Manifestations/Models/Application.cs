@@ -7,21 +7,19 @@ using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
-    class Application : INotifyPropertyChanged
+    class Application
     {
         private static Application instance = null;
 
-        private List<Manifestation> _manifestations;
-        private List<ManifestationType> _types;
-        private List<Tag> _tags;
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        private List<Manifestation> manifestations { get; set; }
+        private List<ManifestationType> types { get; set; }
+        private List<Tag> tags { get; set; }
 
         private Application()
         {
-            this._manifestations = new List<Manifestation>();
-            this._types = new List<ManifestationType>();
-            this._tags = new List<Tag>();
+            this.manifestations = new List<Manifestation>();
+            this.types = new List<ManifestationType>();
+            this.tags = new List<Tag>();
         }
 
         public static Application getInstance()
@@ -32,26 +30,6 @@ namespace HCI_Manifestations.Models
             }
             return instance;
         }
-
         
-        public List<Manifestation> manifestations
-        {
-            get
-            {
-                return _manifestations;
-            }
-            set
-            {
-                if (value != manifestations)
-                {
-                    manifestations = value;
-                }
-            }
-        }
-
-        private void OnPropertyChanged(string v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
