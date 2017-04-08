@@ -15,20 +15,38 @@ namespace HCI_Manifestations.Models
         private DateTime date { get; set; }
         private ManifestationType type { get; set; }
         private string iconPath { get; set; }
-        private bool inside { get; set; }
+        private bool smokingInside { get; set; }
+        private bool smokingOutside { get; set; }
         private PriceEnum price { get; set; }
         private AlcoholEnum alcohol { get; set; }
         private string expectedPublic { get; set; }
         private List<Tag> tags { get; set; }
 
+        public Manifestation(string id, string name, string description, DateTime date, ManifestationType type, string iconPath, 
+            bool smokingInside, bool smokingOutside, PriceEnum price, AlcoholEnum alcohol, string expectedPublic, List<Tag> tags)
+        {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+            this.date = date;
+            this.type = type;
+            this.iconPath = iconPath;
+            this.smokingInside = smokingInside;
+            this.smokingOutside = smokingOutside;
+            this.price = price;
+            this.alcohol = alcohol;
+            this.expectedPublic = expectedPublic;
+            this.tags = tags;
+        }
+
     }
 
-    enum PriceEnum
+    public enum PriceEnum
     {
         FREE, LOW_PRICES, MEDIUM_PRICES, HIGH_PRICES
     }
 
-    enum AlcoholEnum
+    public enum AlcoholEnum
     {
         NOT_ALLOWED, CAN_BRING, CAN_BUY
     }

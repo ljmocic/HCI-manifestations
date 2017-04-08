@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
-    class Tag
+    public class Tag
     {
         private string id { get; set; }
         private string color { get; set; }

@@ -130,7 +130,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\ApplicationCore.cs" />
     <Compile Include="Models\Manifestation.cs" />
     <Compile Include="Models\ManifestationType.cs" />
     <Compile Include="Models\Tag.cs" />

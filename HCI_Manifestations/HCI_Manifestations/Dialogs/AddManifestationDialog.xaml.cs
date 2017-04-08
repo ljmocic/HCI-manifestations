@@ -18,7 +18,7 @@ namespace HCI_Manifestations.dialogs
     /// <summary>
     /// Interaction logic for AddManifestationDialog.xaml
     /// </summary>
-    public partial class AddManifestationDialog : Window, INotifyPropertyChanged
+    public partial class AddManifestationDialog : Window
     {
 
         public AddManifestationDialog()
@@ -27,14 +27,6 @@ namespace HCI_Manifestations.dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
+        
     }
 }

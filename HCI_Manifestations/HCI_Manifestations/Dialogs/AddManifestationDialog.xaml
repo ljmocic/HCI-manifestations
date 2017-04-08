@@ -79,8 +79,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <RadioButton Name="RadioButtonInside" ToolTip="Pušenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
-                <RadioButton Name="RadioButtonOutside" ToolTip="Pušenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
+                <CheckBox Name="RadioButtonInside" ToolTip="Pušenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
+                <CheckBox Name="RadioButtonOutside" ToolTip="Pušenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
             </Grid>
             
             <Label Grid.Column="0" Grid.Row="8" Content="Kategorija cena:" />

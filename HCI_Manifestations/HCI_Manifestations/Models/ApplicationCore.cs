@@ -1,35 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
-    class Application
+    class ApplicationCore
     {
-        private static Application instance = null;
+        private static ApplicationCore instance = null;
 
         private List<Manifestation> manifestations { get; set; }
         private List<ManifestationType> types { get; set; }
         private List<Tag> tags { get; set; }
 
-        private Application()
+        private ApplicationCore()
         {
             this.manifestations = new List<Manifestation>();
             this.types = new List<ManifestationType>();
             this.tags = new List<Tag>();
         }
 
-        public static Application getInstance()
+        public static ApplicationCore getInstance()
         {
             if (instance == null)
             {
-                instance = new Application();
+                instance = new ApplicationCore();
             }
             return instance;
         }
-        
     }
 }

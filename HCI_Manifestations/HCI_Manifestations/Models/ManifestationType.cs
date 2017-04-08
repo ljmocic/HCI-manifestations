@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
-    class ManifestationType
+    public class ManifestationType
     {
-        private string id;
-        private string name;
-        private string description;
-        private string iconPath;
+        private string id { get; set; }
+        private string name { get; set; }
+        private string description { get; set; }
+        private string iconPath { get; set; }
 
         public ManifestationType(string id, string name, string description, string iconPath) {
             this.id = id;
