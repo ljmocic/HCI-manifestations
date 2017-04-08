@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
         Title="Dodavanje etikete" Height="300" Width="450" Icon="\..\Resources\Icons\favicon.ico" ResizeMode="NoResize">
     <Grid>
@@ -27,15 +28,9 @@
             <TextBox Name="textBoxId" ToolTip="Unos etikete manifestacija" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3"/>
 
             <Label Grid.Column="0" Grid.Row="1" Content="Boja:"/>
-            <ComboBox Grid.Column="1" Grid.Row="1" ToolTip="Odabir boje etikete" VerticalContentAlignment="Center" Margin="3" SelectedIndex="0">
-                <ComboBoxItem>Crvena</ComboBoxItem>
-                <ComboBoxItem>Crna</ComboBoxItem>
-                <ComboBoxItem>Plava</ComboBoxItem>
-                <ComboBoxItem>Žuta</ComboBoxItem>
-                <ComboBoxItem>Zelena</ComboBoxItem>
-                <ComboBoxItem>Ljubičasta</ComboBoxItem>
-                <ComboBoxItem>Braon</ComboBoxItem>
-            </ComboBox>
+            <wpfTool:ColorPicker Grid.Column="1" Grid.Row="1" ToolTip="Odabir boje etikete" VerticalContentAlignment="Center" Margin="3">
+
+            </wpfTool:ColorPicker>
 
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
             <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3"/>

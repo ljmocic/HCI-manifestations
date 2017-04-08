@@ -38,7 +38,7 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
+            <TextBox Name="textBoxId" Text="{Binding Path=textBoxId, UpdateSourceTrigger=PropertyChanged}" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
             
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
             <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" />
