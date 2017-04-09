@@ -67,6 +67,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Validation\ContentValidation.cs" />
+    <Compile Include="Validation\LengthValidation.cs" />
+    <Compile Include="Validation\ManifestIdValidation.cs" />
+    <Compile Include="Validation\TagIdValidation.cs" />
+    <Compile Include="Validation\TypeIdValidation.cs" />
     <Page Include="Dialogs\AddManifestation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,9 +192,7 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\demo_play.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Validation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
