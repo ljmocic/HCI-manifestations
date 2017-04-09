@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
-    public class ManifestationType : INotifyPropertyChanged
+    public class ManifestationTag : INotifyPropertyChanged
     {
         #region Attributes
         private string id;
@@ -24,59 +24,45 @@ namespace HCI_Manifestations.Models
             }
         }
 
-        private string name;
-        public string Name
+        private string color;
+        public string Color
         {
-            get { return name; }
+            get { return color; }
             set
             {
-                if (value != name)
+                if (value != color)
                 {
-                    name = value;
-                    OnPropertyChanged("Name");
+                    color = value;
+                    OnPropertyChanged("Color");
                 }
             }
         }
 
-        private string description;
-        public string Description
+        private string descripton;
+        public string Descripton
         {
-            get { return description; }
+            get { return descripton; }
             set
             {
-                if (value != description)
+                if (value != descripton)
                 {
-                    description = value;
-                    OnPropertyChanged("Description");
-                }
-            }
-        }
-
-        private string iconPath;
-        public string IconPath
-        {
-            get { return iconPath; }
-            set
-            {
-                if (value != iconPath)
-                {
-                    iconPath = value;
-                    OnPropertyChanged("IconPath");
+                    descripton = value;
+                    OnPropertyChanged("Descripton");
                 }
             }
         }
         #endregion
 
         #region Constructors
-        public ManifestationType()
+        public ManifestationTag()
         {
         }
 
-        public ManifestationType(string id, string name, string description, string iconPath) {
+        public ManifestationTag(string id, string color, string descripton)
+        {
             this.id = id;
-            this.name = name;
-            this.description = description;
-            this.iconPath = iconPath;
+            this.color = color;
+            this.descripton = descripton;
         }
         #endregion
 

@@ -30,13 +30,13 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="_Tip manifestacije">
-                <MenuItem Header="_Dodaj tip manifestacije" Click="Add_manifestation_type_Click" InputGestureText="Ctrl+T">
+                <MenuItem Header="_Dodaj tip manifestacije" Click="Add_type_Click" InputGestureText="Ctrl+T">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikaži tipove manifestacija" Click="Show_manifestation_types_Click" InputGestureText="Shift+T">
+                <MenuItem Header="_Prikaži tipove manifestacija" Click="Show_types_Click" InputGestureText="Shift+T">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
@@ -89,14 +89,14 @@
             <Separator></Separator>
 
             <!--2. grupa-->
-            <Button Name="buttonAddManifestationType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3" Click="Add_manifestation_type_Click">
+            <Button Name="buttonAddManifestationType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3" Click="Add_type_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                     <TextBlock Text="Novi tip" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                 </StackPanel>
             </Button>
 
-            <Button Name="buttonViewManifestationTypes"  ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3" Click="Show_manifestation_types_Click">
+            <Button Name="buttonViewManifestationTypes"  ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3" Click="Show_types_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                     <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>

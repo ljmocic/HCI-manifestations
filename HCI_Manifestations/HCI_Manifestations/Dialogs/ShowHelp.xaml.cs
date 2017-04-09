@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,18 +14,12 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.dialogs
 {
-    /// <summary>
-    /// Interaction logic for AddManifestationDialog.xaml
-    /// </summary>
-    public partial class AddManifestationDialog : Window
+    public partial class ShowHelp : Window
     {
-
-        public AddManifestationDialog()
+        public ShowHelp()
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
-
-        
     }
 }

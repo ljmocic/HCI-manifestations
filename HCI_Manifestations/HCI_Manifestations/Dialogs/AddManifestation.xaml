@@ -1,11 +1,11 @@
-﻿<Window x:Class="HCI_Manifestations.dialogs.AddManifestationDialog"
+﻿<Window x:Class="HCI_Manifestations.dialogs.AddManifestation"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="Dodavanje manifestacije" Height="550" Width="700" Icon="\..\Resources\Icons\favicon.ico" ResizeMode="NoResize">
+        Title="Dodavanje manifestacije" Height="550" Width="700" Icon="../Resources/Icons/favicon.ico" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -38,15 +38,16 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
-            
-            <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
-            <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" />
-            
-            <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
-            <TextBox Name="textBoxDescription" ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" />
+            <TextBox Name="textBoxId" Text="{Binding Path=Id, UpdateSourceTrigger=PropertyChanged}" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" />
 
-            <CheckBox Grid.Column="1" Grid.Row="3" Name="checkBoxHandicapable" ToolTip="Označite da li je manifestacija prilagođena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
+            <TextBox Name="textBoxName" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" />
+
+            <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
+            <TextBox Name="textBoxDescription" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" />
+
+            <CheckBox Grid.Column="1" Grid.Row="3" IsChecked="{Binding Path=Handicap, UpdateSourceTrigger=PropertyChanged}" Name="checkBoxHandicapable" ToolTip="Označite da li je manifestacija prilagođena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
 
             <Label Grid.Column="0" Grid.Row="4" Content="Datum održavanja:" />
             <DatePicker Name="datePickerDate" ToolTip="Odaberite datum održavanja manifestacije" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
@@ -109,7 +110,7 @@
         <!--Bottom panel-->
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
             <Button Name="buttonCancel" Content="Odustani" Margin="5" Padding="20,5" />
-            <Button Name="buttonSave" Content="Sačuvaj"  Margin="5" Padding="20,5" />
+            <Button Name="buttonSave" Content="Sačuvaj"  Click="buttonSave_Click" Margin="5" Padding="20,5"  />
         </StackPanel>
     </Grid>
 </Window>

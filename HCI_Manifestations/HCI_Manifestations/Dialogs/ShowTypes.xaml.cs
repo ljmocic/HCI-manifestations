@@ -16,28 +16,32 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.dialogs
 {
-    /// <summary>
-    /// Interaction logic for ShowManifestationsDialog.xaml
-    /// </summary>
-    public partial class ShowManifestationsDialog : Window
+    public partial class ShowTypes : Window
     {
-        public ObservableCollection<Manifestation> manifestations
+        #region Attributes
+        public ObservableCollection<ManifestationType> types
         {
             get;
             set;
         }
-        public ShowManifestationsDialog()
+        #endregion
+
+        #region Constructors
+        public ShowTypes()
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.DataContext = this;
-            manifestations = new ObservableCollection<Manifestation>();
+            types = Database.getInstance().types;
         }
+        #endregion
 
+        #region Event handlers
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddManifestationDialog addManifestation = new AddManifestationDialog();
-            addManifestation.Show();
+            AddType addType = new AddType();
+            addType.Show();
         }
+        #endregion
     }
 }

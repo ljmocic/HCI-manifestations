@@ -19,26 +19,33 @@ namespace HCI_Manifestations.dialogs
     /// <summary>
     /// Interaction logic for ShowTagsDialog.xaml
     /// </summary>
-    public partial class ShowTagsDialog : Window
+    public partial class ShowTags : Window
     {
-        public ObservableCollection<Manifestation> manifestations
+        #region Attributes
+        public ObservableCollection<ManifestationTag> tags
         {
             get;
             set;
         }
+        #endregion
 
-        public ShowTagsDialog()
+        #region Constructors
+        public ShowTags()
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            this.DataContext = this;
-            manifestations = new ObservableCollection<Manifestation>();
-        }
 
+            this.DataContext = this;
+            tags = Database.getInstance().tags;
+        }
+        #endregion
+
+        #region Event handlers
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddManifestationDialog addManifestation = new AddManifestationDialog();
-            addManifestation.Show();
+            AddTag addTag = new AddTag();
+            addTag.Show();
         }
+        #endregion
     }
 }

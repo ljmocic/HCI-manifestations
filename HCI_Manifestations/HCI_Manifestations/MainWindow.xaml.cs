@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -30,49 +27,49 @@ namespace HCI_Manifestations
         private void Add_manifestation_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Add_manifestation_Click");
-            AddManifestationDialog addManifestation = new AddManifestationDialog();
+            AddManifestation addManifestation = new AddManifestation();
             addManifestation.Show();
         }
 
         private void Show_manifestations_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Show_manifestations_Click");
-            ShowManifestationsDialog showManifestations = new ShowManifestationsDialog();
+            ShowManifestations showManifestations = new ShowManifestations();
             showManifestations.Show();
         }
 
-        private void Add_manifestation_type_Click(object sender, RoutedEventArgs e)
+        private void Add_type_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Add_manifestation_type_Click");
-            AddManifestationTypeDialog addManifestationType = new AddManifestationTypeDialog();
-            addManifestationType.Show();
+            Console.WriteLine("Add_type_Click");
+            AddType addType = new AddType();
+            addType.Show();
         }
 
-        private void Show_manifestation_types_Click(object sender, RoutedEventArgs e)
+        private void Show_types_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Show_manifestation_types_Click");
-            ShowManifestationTypesDialog addManifestationType = new ShowManifestationTypesDialog();
-            addManifestationType.Show();
+            Console.WriteLine("Show_types_Click");
+            ShowTypes showTypes = new ShowTypes();
+            showTypes.Show();
         }
 
         private void Add_tag_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Add_manifestation_type_Click");
-            AddTagDialog addTag = new AddTagDialog();
+            Console.WriteLine("Add_tag_Click");
+            AddTag addTag = new AddTag();
             addTag.Show();
         }
 
         private void Show_tags_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Show_manifestation_types_Click");
-            ShowTagsDialog showTagsDialog = new ShowTagsDialog();
-            showTagsDialog.Show();
+            Console.WriteLine("Show_tag_Click");
+            ShowTags showTags = new ShowTags();
+            showTags.Show();
         }
 
         private void Show_help_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Show_help_Click");
-            ShowHelpDialog showHelp = new ShowHelpDialog();
+            ShowHelp showHelp = new ShowHelp();
             showHelp.Show();
         }
     }
