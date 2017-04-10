@@ -1,4 +1,5 @@
 ﻿using HCI_Manifestations.dialogs;
+using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace HCI_Manifestations
         public MainWindow()
         {
             InitializeComponent();
+            Database.loadData();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 

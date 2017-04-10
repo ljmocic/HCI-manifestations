@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Config.cs" />
+    <Compile Include="Serialization\DeserializationService.cs" />
+    <Compile Include="Serialization\SerializationService.cs" />
     <Compile Include="Validation\ContentValidation.cs" />
     <Compile Include="Validation\LengthValidation.cs" />
     <Compile Include="Validation\ManifestIdValidation.cs" />

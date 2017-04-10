@@ -32,7 +32,7 @@ namespace HCI_Manifestations.dialogs
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.DataContext = this;
-            manifestations = Database.getInstance().manifestations;
+            manifestations = Database.getInstance().Manifestations;
         }
         #endregion
 

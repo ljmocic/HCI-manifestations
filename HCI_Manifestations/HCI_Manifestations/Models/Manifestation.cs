@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static HCI_Manifestations.Config;
 
 namespace HCI_Manifestations.Models
 {
+    [Serializable]
     public class Manifestation : INotifyPropertyChanged
     {
         #region Attributes
@@ -154,7 +156,9 @@ namespace HCI_Manifestations.Models
         }
         #endregion
 
+
         #region PropertyChangedNotifier
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -166,16 +170,4 @@ namespace HCI_Manifestations.Models
         #endregion
         
     }
-
-    #region Enums
-    public enum PriceEnum
-    {
-        FREE, LOW_PRICES, MEDIUM_PRICES, HIGH_PRICES
-    }
-
-    public enum AlcoholEnum
-    {
-        NOT_ALLOWED, CAN_BRING, CAN_BUY
-    }
-    #endregion
 }

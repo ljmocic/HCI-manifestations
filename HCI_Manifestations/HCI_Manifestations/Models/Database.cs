@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCI_Manifestations.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,12 +9,24 @@ using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
-    class Database : INotifyPropertyChanged
+    public class Database : INotifyPropertyChanged
     {
         #region Attributes
         private static Database instance = null;
 
-        public ObservableCollection<Manifestation> manifestations { get; set; }
+        private ObservableCollection<Manifestation> manifestations;
+        public ObservableCollection<Manifestation> Manifestations
+        {
+            get { return manifestations; }
+            set
+            {
+                if (value != manifestations)
+                {
+                    manifestations = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
         public ObservableCollection<ManifestationType> types { get; set; }
         public ObservableCollection<ManifestationTag> tags { get; set; }
         #endregion
@@ -37,24 +50,31 @@ namespace HCI_Manifestations.Models
         #endregion
 
         #region Adding content to the database
-        public static bool AddManifestation(Manifestation manifestation)
+        public static void AddManifestation(Manifestation manifestation)
         {
             getInstance().manifestations.Add(manifestation);
-            return true;
+            SerializationService.serializeManifestations(getInstance().manifestations);
         }
 
-        public static bool AddType(ManifestationType type)
+        public static void AddType(ManifestationType type)
         {
             getInstance().types.Add(type);
-            return true;
+            SerializationService.serializeTypes(getInstance().types);
         }
 
-        public static bool AddTag(ManifestationTag tag)
+        public static void AddTag(ManifestationTag tag)
         {
             getInstance().tags.Add(tag);
-            return true;
+            SerializationService.serializeTags(getInstance().tags);
         }
         #endregion
+
+        public static void loadData()
+        {
+            DeserializationService.deserializeManifestations();
+            DeserializationService.deserializeTypes();
+            DeserializationService.deserializeTags();
+        }
 
         #region PropertyChangedNotifier
         public event PropertyChangedEventHandler PropertyChanged;

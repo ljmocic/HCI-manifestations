@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace HCI_Manifestations.Models
 {
+    [Serializable]
     public class ManifestationTag : INotifyPropertyChanged
     {
         #region Attributes
@@ -67,6 +68,7 @@ namespace HCI_Manifestations.Models
         #endregion
 
         #region PropertyChangedNotifier
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {

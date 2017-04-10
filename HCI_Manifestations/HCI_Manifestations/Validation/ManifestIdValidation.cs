@@ -16,7 +16,7 @@ namespace HCI_Manifestations.Validation
             {
                 var text = value as string;
 
-                foreach (Manifestation manifestation in Database.getInstance().manifestations)
+                foreach (Manifestation manifestation in Database.getInstance().Manifestations)
                 {
                     if (manifestation.Id.Equals(text))
                     {

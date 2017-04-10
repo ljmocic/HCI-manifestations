@@ -13,6 +13,5 @@ namespace HCI_Manifestations
     /// </summary>
     public partial class App : Application
     {
-
     }
 }
