@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="Prikaz manifestacija" Height="300" Width="500" Icon="../Resources/Icons/favicon.ico" ResizeMode="NoResize">
+        Title="Prikaz manifestacija" Height="550" Width="700" Icon="../Resources/Icons/favicon.ico" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -21,12 +21,13 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
+        
         <TextBox Grid.Column="0" Grid.Row="0" Margin="5"/>
         <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Content="Pretraži" Grid.Column="1" Grid.Row="0" Margin="5" />
-        <DataGrid Name="manifestationsGrid" ToolTip="Tabelaran prikaz manifestacija" ItemsSource="{Binding Path=manifestations}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="manifestationsGrid_SelectionChanged"/>
-        <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novu manifestaciju" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
-        <Button Name="buttonEdit" Content="Uredi" ToolTip="Uredi odabranu manifestaciju" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" Click="buttonEdit_Click"/>
-        <Button Name="buttonRemove" Content="Ukloni" ToolTip="Ukloni odabranu manifestaciju" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
+        <DataGrid Name="manifestationsGrid" SelectedItem="{Binding Path=SelectedManifestation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=manifestations}" ToolTip="Tabelaran prikaz manifestacija" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="manifestationsGrid_SelectionChanged"/>
+        <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novu manifestaciju" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5" IsEnabled="False" Click="buttonAdd_Click"/>
+        <Button Name="buttonEdit" Content="Uredi" ToolTip="Uredi odabranu manifestaciju" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" IsEnabled="False" Click="buttonEdit_Click"/>
+        <Button Name="buttonDelete" Content="Ukloni" ToolTip="Ukloni odabranu manifestaciju" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5" IsEnabled="False" Click="buttonDelete_Click"/>
 
     </Grid>
 </Window>

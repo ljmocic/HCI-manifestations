@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
         mc:Ignorable="d"
-        Title="EditManifestation" Height="300" Width="300">
+        Title="EditManifestation" Height="550" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

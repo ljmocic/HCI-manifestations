@@ -32,7 +32,7 @@
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
-                            <validation:TagIdValidation ValidationStep="RawProposedValue" />
+                            <!--<validation:TagIdValidation ValidationStep="RawProposedValue" />-->
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

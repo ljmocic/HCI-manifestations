@@ -23,12 +23,36 @@ namespace HCI_Manifestations.Models
                 if (value != manifestations)
                 {
                     manifestations = value;
-                    OnPropertyChanged("Name");
+                    OnPropertyChanged("Manifestations");
                 }
             }
         }
-        public ObservableCollection<ManifestationType> types { get; set; }
-        public ObservableCollection<ManifestationTag> tags { get; set; }
+        public ObservableCollection<ManifestationType> types;
+        public ObservableCollection<ManifestationType> Types
+        {
+            get { return types; }
+            set
+            {
+                if (value != types)
+                {
+                    types = value;
+                    OnPropertyChanged("Types");
+                }
+            }
+        }
+        public ObservableCollection<ManifestationTag> tags;
+        public ObservableCollection<ManifestationTag> Tags
+        {
+            get { return tags; }
+            set
+            {
+                if (value != tags)
+                {
+                    tags = value;
+                    OnPropertyChanged("Tags");
+                }
+            }
+        }
         #endregion
 
         #region Singleton
@@ -49,7 +73,7 @@ namespace HCI_Manifestations.Models
         }
         #endregion
 
-        #region Adding content to the database
+        #region Working with database content
         public static void AddManifestation(Manifestation manifestation)
         {
             getInstance().manifestations.Add(manifestation);
@@ -66,6 +90,111 @@ namespace HCI_Manifestations.Models
         {
             getInstance().tags.Add(tag);
             SerializationService.serializeTags(getInstance().tags);
+        }
+
+        public static Manifestation GetManifestation(string id)
+        {
+            for (int i = 0; i < getInstance().Manifestations.Count; i++)
+            {
+                if (getInstance().Manifestations[i].Id.Equals(id))
+                {
+                    return getInstance().Manifestations[i];
+                }
+            }
+            return null;
+        }
+
+        public static ManifestationType GetType(string id)
+        {
+            for (int i = 0; i < getInstance().Types.Count; i++)
+            {
+                if (getInstance().Types[i].Id.Equals(id))
+                {
+                    return getInstance().Types[i];
+                }
+            }
+            return null;
+        }
+
+        public static ManifestationTag GetTag(string id)
+        {
+            for (int i = 0; i < getInstance().Tags.Count; i++)
+            {
+                if (getInstance().Tags[i].Id.Equals(id))
+                {
+                    return getInstance().Tags[i];
+                }
+            }
+            return null;
+        }
+
+        public static void UpdateManifestation(Manifestation manifestation)
+        {
+            for (int i = 0; i < getInstance().Manifestations.Count; i++)
+            {
+                if (manifestation.Id.Equals(getInstance().Manifestations[i].Id))
+                {
+                    getInstance().Manifestations[i] = manifestation;
+                }
+            }
+        }
+
+        public static void UpdateType(ManifestationType type)
+        {
+            for (int i = 0; i < getInstance().Types.Count; i++)
+            {
+                if (type.Id.Equals(getInstance().Types[i].Id))
+                {
+                    getInstance().Types[i] = type;
+                }
+            }
+        }
+
+        public static void UpdateTag(ManifestationTag tag)
+        {
+            for (int i = 0; i < getInstance().Tags.Count; i++)
+            {
+                if (tag.Id.Equals(getInstance().Tags[i].Id))
+                {
+                    getInstance().Tags[i] = tag;
+                }
+            }
+        }
+
+        public static void DeleteManifestation(Manifestation manifestation)
+        {
+            for (int i = 0; i < getInstance().Manifestations.Count; i++)
+            {
+                if (manifestation.Id.Equals(getInstance().Manifestations[i].Id))
+                {
+                    getInstance().Manifestations.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        public static void DeleteType(ManifestationType type)
+        {
+            for (int i = 0; i < getInstance().Types.Count; i++)
+            {
+                if (type.Id.Equals(getInstance().Types[i].Id))
+                {
+                    getInstance().Types.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        public static void DeleteTag(ManifestationTag tag)
+        {
+            for (int i = 0; i < getInstance().Tags.Count; i++)
+            {
+                if (tag.Id.Equals(getInstance().Tags[i].Id))
+                {
+                    getInstance().Tags.RemoveAt(i);
+                    break;
+                }
+            }
         }
         #endregion
 

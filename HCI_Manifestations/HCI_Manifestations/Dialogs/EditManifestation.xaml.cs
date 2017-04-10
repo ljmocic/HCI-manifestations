@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for EditManifestation.xaml
-    /// </summary>
     public partial class EditManifestation : Window
     {
         #region Attributes
@@ -35,7 +32,7 @@ namespace HCI_Manifestations.Dialogs
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            // manifestation = Database.GetManifestation(manifestationId);
+            manifestation = Database.GetManifestation(manifestationId);
             DataContext = manifestation;
         }
         #endregion
@@ -47,7 +44,7 @@ namespace HCI_Manifestations.Dialogs
             bool validated = true;
             if (validated)
             {
-                // Database.UpdateManifestation(manifestation);
+                Database.UpdateManifestation(manifestation);
                 Close();
             }
             else

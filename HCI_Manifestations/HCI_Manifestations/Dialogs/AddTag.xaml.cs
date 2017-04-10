@@ -44,7 +44,7 @@ namespace HCI_Manifestations.dialogs
             bool validated = true;
             if (validated)
             {
-                Database.AddTag(tag);
+                Database.AddTag(mTag);
                 Close();
             }
             else

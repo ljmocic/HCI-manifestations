@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCI_Manifestations.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,48 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for EditTag.xaml
-    /// </summary>
     public partial class EditTag : Window
     {
-        public EditTag()
+        #region Attributes
+        private ManifestationTag tag;
+        public ManifestationTag Tag
+        {
+            get { return tag; }
+            set { tag = value; }
+        }
+        #endregion
+
+        #region Constructors
+        public EditTag(string tagId)
         {
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
+            tag = Database.GetTag(tagId);
+            DataContext = tag;
         }
+        #endregion
+
+        #region Event handlers
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO validation later
+            bool validated = true;
+            if (validated)
+            {
+                Database.UpdateTag(tag);
+                Close();
+            }
+            else
+            {
+                // If data is not validated
+            }
+        }
+
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            tag.Color = ColorPicker.SelectedColor.ToString();
+        }
+        #endregion
     }
 }

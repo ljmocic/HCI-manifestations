@@ -1,4 +1,5 @@
-﻿using HCI_Manifestations.Models;
+﻿using HCI_Manifestations.Dialogs;
+using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,11 +20,8 @@ namespace HCI_Manifestations.dialogs
     public partial class ShowTypes : Window
     {
         #region Attributes
-        public ObservableCollection<ManifestationType> types
-        {
-            get;
-            set;
-        }
+        public ManifestationType SelectedType { get; set; }
+        public ObservableCollection<ManifestationType> types { get; set; }
         #endregion
 
         #region Constructors
@@ -31,16 +29,36 @@ namespace HCI_Manifestations.dialogs
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            this.DataContext = this;
+            SelectedType = null;
+            DataContext = this;
             types = Database.getInstance().types;
         }
         #endregion
 
         #region Event handlers
-        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
             AddType addType = new AddType();
             addType.Show();
+        }
+
+        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            EditType editType = new EditType(SelectedType.Id);
+            editType.Show();
+        }
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Database.DeleteType(SelectedType);
+        }
+
+        private void tagsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SelectedType != null)
+            {
+                buttonEdit.IsEnabled = true;
+            }
         }
         #endregion
     }

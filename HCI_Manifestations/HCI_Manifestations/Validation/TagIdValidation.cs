@@ -23,7 +23,6 @@ namespace HCI_Manifestations.Validation
                         return new ValidationResult(false, "Id already exists.");
                     }
                 }
-
                 return new ValidationResult(true, "");
             }
             catch

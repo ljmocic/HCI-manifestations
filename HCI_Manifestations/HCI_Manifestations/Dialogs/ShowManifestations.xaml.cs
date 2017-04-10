@@ -20,36 +20,49 @@ namespace HCI_Manifestations.dialogs
     public partial class ShowManifestations: Window
     {
         #region Attributes
-        public ObservableCollection<Manifestation> manifestations
-        {
-            get;
-            set;
-        }
-        public string id;
+        public Manifestation SelectedManifestation { get; set; }
+        public ObservableCollection<Manifestation> manifestations { get; set; }
         #endregion
 
         #region Constructor
         public ShowManifestations()
         {
             InitializeComponent();
+            SelectedManifestation = null;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            this.DataContext = this;
+            DataContext = this;
             manifestations = Database.getInstance().Manifestations;
         }
         #endregion
 
         #region Event handlers
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+            AddManifestation addManifestation = new AddManifestation();
+            addManifestation.Show();
+        }
+
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
 
-            //EditManifestation editManifestation = new EditManifestation(manifestation.Id);
-            //editManifestation.Show();
+            EditManifestation editManifestation = new EditManifestation(SelectedManifestation.Id);
+            editManifestation.Show();
         }
-        #endregion
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+            Database.DeleteManifestation(SelectedManifestation);
+        }
 
         private void manifestationsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (SelectedManifestation != null)
+            {
+                buttonEdit.IsEnabled = true;
+            }
         }
+        #endregion
     }
 }

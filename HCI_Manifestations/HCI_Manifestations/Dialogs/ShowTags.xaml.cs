@@ -1,4 +1,5 @@
-﻿using HCI_Manifestations.Models;
+﻿using HCI_Manifestations.Dialogs;
+using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,17 +17,11 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.dialogs
 {
-    /// <summary>
-    /// Interaction logic for ShowTagsDialog.xaml
-    /// </summary>
     public partial class ShowTags : Window
     {
         #region Attributes
-        public ObservableCollection<ManifestationTag> tags
-        {
-            get;
-            set;
-        }
+        public ManifestationTag SelectedTag { get; set; }
+        public ObservableCollection<ManifestationTag> tags { get; set; }
         #endregion
 
         #region Constructors
@@ -34,17 +29,36 @@ namespace HCI_Manifestations.dialogs
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-
-            this.DataContext = this;
+            SelectedTag = null;
+            DataContext = this;
             tags = Database.getInstance().tags;
         }
         #endregion
 
         #region Event handlers
-        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
             AddTag addTag = new AddTag();
             addTag.Show();
+        }
+
+        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            EditTag editTag = new EditTag(SelectedTag.Id);
+            editTag.Show();
+        }
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Database.DeleteTag(SelectedTag);
+        }
+
+        private void tagsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SelectedTag != null)
+            {
+                buttonEdit.IsEnabled = true;
+            }
         }
         #endregion
     }

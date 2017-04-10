@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="Prikaz tipova manifestacija" Height="300" Width="500" Icon="../Resources/Icons/favicon.ico" ResizeMode="NoResize">
+        Title="Prikaz tipova manifestacija" Height="550" Width="700" Icon="../Resources/Icons/favicon.ico" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
         <TextBox Grid.Column="0" Grid.Row="0" Margin="5"/>
         <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj tipove manifestacija" Content="Pretraži" Grid.Column="1" Grid.Row="0" Margin="5" />
-        <DataGrid Name="manifestationsGrid" ToolTip="Tabelaran prikaz tipova manifestacija" ItemsSource="{Binding Path=types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7"/>
+        <DataGrid Name="manifestationsGrid" ToolTip="Tabelaran prikaz tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7"/>
         <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
         <Button Name="buttonEdit" Content="Uredi" ToolTip="Uredi odabran tip manifestacije" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" Click="buttonEdit_Click"/>
         <Button Name="buttonRemove" Content="Ukloni" ToolTip="Ukloni odabran tip manifestacije" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
