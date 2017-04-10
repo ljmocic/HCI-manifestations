@@ -1,4 +1,5 @@
-﻿using HCI_Manifestations.Models;
+﻿using HCI_Manifestations.Dialogs;
+using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +25,7 @@ namespace HCI_Manifestations.dialogs
             get;
             set;
         }
+        public string id;
         #endregion
 
         #region Constructor
@@ -39,9 +41,15 @@ namespace HCI_Manifestations.dialogs
         #region Event handlers
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddManifestation addManifestation = new AddManifestation();
-            addManifestation.Show();
+
+            //EditManifestation editManifestation = new EditManifestation(manifestation.Id);
+            //editManifestation.Show();
         }
         #endregion
+
+        private void manifestationsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

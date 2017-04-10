@@ -68,6 +68,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Config.cs" />
+    <Compile Include="Dialogs\EditManifestation.xaml.cs">
+      <DependentUpon>EditManifestation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EditTag.xaml.cs">
+      <DependentUpon>EditTag.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EditType.xaml.cs">
+      <DependentUpon>EditType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Serialization\DeserializationService.cs" />
     <Compile Include="Serialization\SerializationService.cs" />
     <Compile Include="Validation\ContentValidation.cs" />
@@ -84,6 +93,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\AddTag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EditManifestation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EditTag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EditType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
