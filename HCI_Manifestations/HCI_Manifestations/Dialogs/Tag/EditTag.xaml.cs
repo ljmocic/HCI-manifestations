@@ -33,6 +33,7 @@ namespace HCI_Manifestations.Dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
             tag = Database.GetTag(tagId);
+            ColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(tag.Color);
             DataContext = tag;
         }
         #endregion

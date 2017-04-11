@@ -24,9 +24,8 @@
         <TextBox Grid.Column="0" Grid.Row="0" Margin="5"/>
         <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj tipove manifestacija" Content="Pretraži" Grid.Column="1" Grid.Row="0" Margin="5" />
         <DataGrid Name="manifestationsGrid" ToolTip="Tabelaran prikaz tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7"/>
-        <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
-        <Button Name="buttonEdit" Content="Uredi" ToolTip="Uredi odabran tip manifestacije" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" Click="buttonEdit_Click"/>
-        <Button Name="buttonRemove" Content="Ukloni" ToolTip="Ukloni odabran tip manifestacije" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
-
+        <Button Name="buttonAdd" Click="buttonAdd_Click" Content="Dodaj" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+        <Button Name="buttonEdit" Click="buttonEdit_Click" Content="Uredi" ToolTip="Uredi odabran tip manifestacije" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" />
+        <Button Name="buttonDelete" Click="buttonDelete_Click" Content="Ukloni" ToolTip="Ukloni odabran tip manifestacije" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
     </Grid>
 </Window>

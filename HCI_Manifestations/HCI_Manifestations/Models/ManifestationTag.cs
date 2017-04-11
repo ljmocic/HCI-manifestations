@@ -39,15 +39,15 @@ namespace HCI_Manifestations.Models
             }
         }
 
-        private string descripton;
-        public string Descripton
+        private string description;
+        public string Description
         {
-            get { return descripton; }
+            get { return description; }
             set
             {
-                if (value != descripton)
+                if (value != description)
                 {
-                    descripton = value;
+                    description = value;
                     OnPropertyChanged("Descripton");
                 }
             }
@@ -63,7 +63,7 @@ namespace HCI_Manifestations.Models
         {
             this.id = id;
             this.color = color;
-            this.descripton = descripton;
+            this.description = descripton;
         }
         #endregion
 

@@ -43,9 +43,9 @@
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <!--<validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
-                            <validation:ManifestationIdValidation ValidationStep="RawProposedValue" />-->
+                            <validation:ManifestationIdValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

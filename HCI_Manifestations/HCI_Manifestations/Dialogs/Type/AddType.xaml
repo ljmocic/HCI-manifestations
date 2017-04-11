@@ -30,9 +30,9 @@
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <!--<validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
-                            <validation:TypeIdValidation ValidationStep="RawProposedValue" />
+                            <validation:TypeIdValidation ValidationStep="RawProposedValue" />-->
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -62,11 +62,11 @@
 
             <Label Grid.Column="0" Grid.Row="3" Content="Ikonica:"/>
             <TextBox Name="textBoxIconPath" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" ToolTip="Lokacija vaše ikonice" Margin="3,3,83,37" />
-            <Button Name="buttonBrowse" Grid.Column="2" Grid.Row ="3" ToolTip="Odaberite karakterističnu ikonicu tipa manifestacije sa vašeg racunara" Content="Pretraži" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="3" Height="23"/>
+            <Button Name="buttonBrowse" Click="buttonBrowse_Click" Grid.Column="2" Grid.Row ="3" ToolTip="Odaberite karakterističnu ikonicu tipa manifestacije sa vašeg racunara" Content="Pretraži" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="3" Height="23"/>
         </Grid>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5"/>
+            <Button Name="buttonCancel" Click="buttonCancel_Click" Content="Odustani" Margin="10" Padding="20,5"/>
             <Button Name="buttonSave" Click="buttonSave_Click" Content="Sačuvaj" Margin="10" Padding="20,5"/>
         </StackPanel>
 

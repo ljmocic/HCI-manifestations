@@ -54,6 +54,12 @@ namespace HCI_Manifestations.dialogs
 
         }
 
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            // Warn user about closing window
+            Close();
+        }
+
         private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             tag.Color = ColorPicker.SelectedColor.ToString();
