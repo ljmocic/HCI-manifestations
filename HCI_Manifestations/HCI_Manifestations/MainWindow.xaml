@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations"
         mc:Ignorable="d"
-        Title="Menadzer manifestacija" Height="650" Width="1050" Icon="Resources\Icons\favicon.ico" ResizeMode="NoResize">
+        Title="Menadzer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="White" Color="#000000" Opacity="0.5" />
+    </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock ="Top">
             <Menu.ItemsPanel>
@@ -69,63 +73,64 @@
             </MenuItem>
         </Menu>
 
-        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Background="DarkGray" Width="200">
+        
+        <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Image Source="Resources\Images\sv2.png" Width="1050" Height="650"/>
+            <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200">
 
-            <!--1. grupa-->
-            <Button Name="buttonAddManifestation" ToolTip="Dodaj novu manifestaciju" Margin="5" Padding="3" Click="Add_manifestation_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Nova manifestacija" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-                </StackPanel>
-            </Button>
+                <!--1. grupa-->
+                <Button Name="buttonAddManifestation" Opacity="1" ToolTip="Dodaj novu manifestaciju" Margin="5" Padding="3" Click="Add_manifestation_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Nova manifestacija" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
 
-            <Button Name="buttonViewManifestations"  ToolTip="Prikaži sve manifestacije ili odaberi za ažuriranje" Margin="5" Padding="3" Click="Show_manifestations_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Prikaži manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-                </StackPanel>
-            </Button>
+                <Button Name="buttonViewManifestations"  ToolTip="Prikaži sve manifestacije ili odaberi za ažuriranje" Margin="5" Padding="3" Click="Show_manifestations_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Prikaži manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
 
-            <Separator></Separator>
+                <Separator></Separator>
 
-            <!--2. grupa-->
-            <Button Name="buttonAddManifestationType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3" Click="Add_type_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Novi tip" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-                </StackPanel>
-            </Button>
+                <!--2. grupa-->
+                <Button Name="buttonAddManifestationType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3" Click="Add_type_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Novi tip" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
 
-            <Button Name="buttonViewManifestationTypes"  ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3" Click="Show_types_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-                </StackPanel>
-            </Button>
+                <Button Name="buttonViewManifestationTypes"  ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3" Click="Show_types_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
 
-            <Separator></Separator>
+                <Separator></Separator>
 
-            <!--3. grupa-->
-            <Button Name="buttonAddTag" ToolTip="Dodaj novu etiketu"  Margin="5" Padding="3" Click="Add_tag_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Nova etiketa" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-                </StackPanel>
-            </Button>
+                <!--3. grupa-->
+                <Button Name="buttonAddTag" ToolTip="Dodaj novu etiketu"  Margin="5" Padding="3" Click="Add_tag_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Nova etiketa" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
 
-            <Button Name="buttonViewTags"  ToolTip="Prikazi sve etikete" Margin="5" Padding="3" Click="Show_tags_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                    <TextBlock Text="Prikaži etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-                </StackPanel>
-            </Button>
+                <Button Name="buttonViewTags"  ToolTip="Prikazi sve etikete" Margin="5" Padding="3" Click="Show_tags_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Prikaži etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
 
-            <Separator></Separator>
+                <Separator></Separator>
 
-        </StackPanel>
+            </StackPanel>
 
-        <Grid DockPanel.Dock="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Image Source="Resources\Images\silicon_valley.png" Width="1050" Height="650"/>
         </Grid>
         
     </DockPanel>

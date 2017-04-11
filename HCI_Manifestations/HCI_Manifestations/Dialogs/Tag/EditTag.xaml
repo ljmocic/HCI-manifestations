@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
         mc:Ignorable="d"
-        Title="EditTag" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico">
+        Title="EditTag" Height="350" Width="500" Icon="../../Resources/Icons/favicon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-
         <Grid Grid.Column="0" Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="100"></ColumnDefinition>
+                <ColumnDefinition MaxWidth="75"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition MaxWidth="150"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>
@@ -24,11 +25,16 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
+            <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
             <TextBox Name="textBoxId" IsEnabled="False" ToolTip="Unos etikete manifestacija" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
-                        <!-- TEMP REMOVAL OF VALIDATION, DO NOT FOGET SET BACK-->
+                        <Binding.ValidationRules>
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:ContentValidation ValidationStep="RawProposedValue" />
+                            <validation:TagIdValidation ValidationStep="RawProposedValue" />
+                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
                 <Validation.ErrorTemplate>
@@ -49,17 +55,44 @@
                 </Validation.ErrorTemplate>
             </TextBox>
 
+            <!--ColorPicker-->
             <Label Grid.Column="0" Grid.Row="1" Content="Boja:"/>
             <wpfTool:ColorPicker Name ="ColorPicker" SelectedColorChanged="ColorPicker_SelectedColorChanged" Grid.Column="1" Grid.Row="1" ToolTip="Odabir boje etikete" VerticalContentAlignment="Center" Margin="3"/>
 
+            <!--Desription-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3"/>
+            <TextBox Name="textBoxDescription" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" >
+                <TextBox.Text>
+                    <Binding Path="Description" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="150" />
+                            <validation:ContentValidation ValidationStep="RawProposedValue" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="2" x:Name="textBox"/>
+                            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
         </Grid>
 
+        <!--Save/Cancel-->
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" Content="Odustani" Margin="10" Padding="20,5"></Button>
-            <Button Name="buttonSave" Content="Sačuvaj" Click="buttonSave_Click" Margin="10" Padding="20,5"></Button>
+            <Button Name="buttonCancel" Click="buttonCancel_Click" Content="Odustani" Margin="10" Padding="20,5" />
+            <Button Name="buttonSave" Click="buttonSave_Click" Content="Sačuvaj" Margin="10" Padding="20,5" />
         </StackPanel>
     </Grid>
 </Window>

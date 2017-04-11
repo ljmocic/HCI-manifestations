@@ -8,12 +8,12 @@
         Title="Prikaz manifestacija" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -21,13 +21,13 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
-        
-        <TextBox Grid.Column="0" Grid.Row="0" Margin="5"/>
-        <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Content="Pretraži" Grid.Column="1" Grid.Row="0" Margin="5" />
+
+        <TextBox Grid.Column="0" Grid.Row="0" Margin="4"/>
+        <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Content="Pretraži" Grid.Column="1" Grid.Row="0" Margin="4"/>
         <DataGrid Name="manifestationsGrid" SelectedItem="{Binding Path=SelectedManifestation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=manifestations}" ToolTip="Tabelaran prikaz manifestacija" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="manifestationsGrid_SelectionChanged"/>
-        <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novu manifestaciju" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5" IsEnabled="True" Click="buttonAdd_Click"/>
-        <Button Name="buttonEdit" Content="Uredi" ToolTip="Uredi odabranu manifestaciju" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" IsEnabled="False" Click="buttonEdit_Click"/>
-        <Button Name="buttonDelete" Content="Ukloni" ToolTip="Ukloni odabranu manifestaciju" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5" IsEnabled="False" Click="buttonDelete_Click"/>
+        <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novu manifestaciju" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="1,10" IsEnabled="True" Click="buttonAdd_Click" Height="30"/>
+        <Button Name="buttonEdit" Content="Uredi" ToolTip="Uredi odabranu manifestaciju" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="1,10" IsEnabled="False" Click="buttonEdit_Click" Height="30"/>
+        <Button Name="buttonDelete" Content="Ukloni" ToolTip="Ukloni odabranu manifestaciju" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="1,10" IsEnabled="False" Click="buttonDelete_Click" Height="30"/>
 
     </Grid>
 </Window>

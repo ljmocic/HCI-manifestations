@@ -198,12 +198,14 @@ namespace HCI_Manifestations.Models
         }
         #endregion
 
+        #region Loading database
         public static void loadData()
         {
             DeserializationService.deserializeManifestations();
             DeserializationService.deserializeTypes();
             DeserializationService.deserializeTags();
         }
+        #endregion
 
         #region PropertyChangedNotifier
         public event PropertyChangedEventHandler PropertyChanged;
