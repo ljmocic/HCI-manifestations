@@ -68,13 +68,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Config.cs" />
-    <Compile Include="Dialogs\EditManifestation.xaml.cs">
+    <Compile Include="Dialogs\Manifestation\EditManifestation.xaml.cs">
       <DependentUpon>EditManifestation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\EditTag.xaml.cs">
+    <Compile Include="Dialogs\Tag\EditTag.xaml.cs">
       <DependentUpon>EditTag.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\EditType.xaml.cs">
+    <Compile Include="Dialogs\Type\EditType.xaml.cs">
       <DependentUpon>EditType.xaml</DependentUpon>
     </Compile>
     <Compile Include="Serialization\DeserializationService.cs" />
@@ -84,27 +84,27 @@
     <Compile Include="Validation\ManifestIdValidation.cs" />
     <Compile Include="Validation\TagIdValidation.cs" />
     <Compile Include="Validation\TypeIdValidation.cs" />
-    <Page Include="Dialogs\AddManifestation.xaml">
+    <Page Include="Dialogs\Manifestation\AddManifestation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\AddType.xaml">
+    <Page Include="Dialogs\Type\AddType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\AddTag.xaml">
+    <Page Include="Dialogs\Tag\AddTag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\EditManifestation.xaml">
+    <Page Include="Dialogs\Manifestation\EditManifestation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\EditTag.xaml">
+    <Page Include="Dialogs\Tag\EditTag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\EditType.xaml">
+    <Page Include="Dialogs\Type\EditType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,15 +112,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\ShowManifestations.xaml">
+    <Page Include="Dialogs\Manifestation\ShowManifestations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\ShowTypes.xaml">
+    <Page Include="Dialogs\Type\ShowTypes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\ShowTags.xaml">
+    <Page Include="Dialogs\Tag\ShowTags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,25 +132,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Dialogs\AddManifestation.xaml.cs">
+    <Compile Include="Dialogs\Manifestation\AddManifestation.xaml.cs">
       <DependentUpon>AddManifestation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\AddType.xaml.cs">
+    <Compile Include="Dialogs\Type\AddType.xaml.cs">
       <DependentUpon>AddType.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\AddTag.xaml.cs">
+    <Compile Include="Dialogs\Tag\AddTag.xaml.cs">
       <DependentUpon>AddTag.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\ShowHelp.xaml.cs">
       <DependentUpon>ShowHelp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ShowManifestations.xaml.cs">
+    <Compile Include="Dialogs\Manifestation\ShowManifestations.xaml.cs">
       <DependentUpon>ShowManifestations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ShowTypes.xaml.cs">
+    <Compile Include="Dialogs\Type\ShowTypes.xaml.cs">
       <DependentUpon>ShowTypes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ShowTags.xaml.cs">
+    <Compile Include="Dialogs\Tag\ShowTags.xaml.cs">
       <DependentUpon>ShowTags.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

@@ -36,7 +36,9 @@ namespace HCI_Manifestations.dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
             manifestation = new Manifestation();
+            comboBoxTypes.DataContext = Database.getInstance();
             DataContext = manifestation;
+            
         }
         #endregion
 
@@ -47,16 +49,32 @@ namespace HCI_Manifestations.dialogs
             bool validated = true;
             if (validated)
             {
+                manifestation.Type = Database.GetType(comboBoxTypes.Text);
                 Database.AddManifestation(manifestation);
                 Close();
             }
-            else
-            {
-                // If data is not validated
-            }
             
         }
-        #endregion
 
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO warn user about losing data
+            Close();
+        }
+
+        private void loadIcon_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.ShowDialog();
+            textBoxIconPath.Text = dialog.FileName;
+            // TODO add copying icon to resources and updating path to local resource
+        }
+
+        private void buttonAddNewType_Click(object sender, RoutedEventArgs e)
+        {
+            AddType addType = new AddType();
+            addType.Show();
+        }
+        #endregion
     }
 }

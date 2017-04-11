@@ -72,56 +72,112 @@ namespace HCI_Manifestations.Models
         public DateTime Date
         {
             get { return date; }
-            set { date = value; }
+            set
+            {
+                if (value != date)
+                {
+                    date = value;
+                    OnPropertyChanged("Date");
+                }
+            }
         }
 
         private ManifestationType type;
         public ManifestationType Type
         {
             get { return type; }
-            set { type = value; }
+            set
+            {
+                if (value != type)
+                {
+                    type = value;
+                    OnPropertyChanged("Type");
+                }
+            }
         }
 
         private string iconPath;
         public string IconPath
         {
             get { return iconPath; }
-            set { iconPath = value; }
+            set
+            {
+                if (value != iconPath)
+                {
+                    iconPath = value;
+                    OnPropertyChanged("IconPath");
+                }
+            }
         }
 
         private bool smokingInside;
         public bool SmokingInside
         {
             get { return smokingInside; }
-            set { smokingInside = value; }
+            set
+            {
+                if (value != smokingInside)
+                {
+                    smokingInside = value;
+                    OnPropertyChanged("SmokingInside");
+                }
+            }
         }
 
         private bool smokingOutside;
         public bool SmokingOutside
         {
             get { return smokingOutside; }
-            set { smokingOutside = value; }
+            set
+            {
+                if (value != smokingOutside)
+                {
+                    smokingOutside = value;
+                    OnPropertyChanged("SmokingOuside");
+                }
+            }
         }
 
-        private PriceEnum price;
-        public PriceEnum Price
+        private string price;
+        public string Price
         {
             get { return price; }
-            set { price = value; }
+            set
+            {
+                if (value != price)
+                {
+                    price = value;
+                    OnPropertyChanged("Price");
+                }
+            }
         }
 
-        private AlcoholEnum alcohol;
-        public AlcoholEnum Alcohol
+        private string alcohol;
+        public string Alcohol
         {
             get { return alcohol; }
-            set { alcohol = value; }
+            set
+            {
+                if (value != alcohol)
+                {
+                    alcohol = value;
+                    OnPropertyChanged("Alcohol");
+                }
+            }
         }
 
         private string expectedPublic;
         public string ExpectedPublic
         {
             get { return expectedPublic; }
-            set { expectedPublic = value; }
+            set
+            {
+                if (value != expectedPublic)
+                {
+                    expectedPublic = value;
+                    OnPropertyChanged("ExpectedPublic");
+                }
+            }
         }
 
         private List<ManifestationTag> tags;
@@ -139,7 +195,7 @@ namespace HCI_Manifestations.Models
         }
 
         public Manifestation(string id, string name, string description, DateTime date, ManifestationType type, string iconPath,
-            bool smokingInside, bool smokingOutside, PriceEnum price, AlcoholEnum alcohol, string expectedPublic, List<ManifestationTag> tags)
+            bool smokingInside, bool smokingOutside, string price, string alcohol, string expectedPublic, List<ManifestationTag> tags)
         {
             this.id = id;
             this.name = name;
@@ -155,8 +211,7 @@ namespace HCI_Manifestations.Models
             this.tags = tags;
         }
         #endregion
-
-
+        
         #region PropertyChangedNotifier
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
@@ -168,6 +223,5 @@ namespace HCI_Manifestations.Models
             }
         }
         #endregion
-        
     }
 }

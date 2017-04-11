@@ -13,17 +13,5 @@ namespace HCI_Manifestations
         public static readonly string TYPES_DATA = "types.bin";
         public static readonly string TAGS_DATA = "tags.bin";
         #endregion
-
-        #region Enums
-        public enum PriceEnum
-        {
-            FREE, LOW_PRICES, MEDIUM_PRICES, HIGH_PRICES
-        }
-
-        public enum AlcoholEnum
-        {
-            NOT_ALLOWED, CAN_BRING, CAN_BUY
-        }
-        #endregion
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         mc:Ignorable="d"
-        Title="Prikaz tipova manifestacija" Height="550" Width="700" Icon="../Resources/Icons/favicon.ico" ResizeMode="NoResize">
+        Title="Prikaz tipova manifestacija" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

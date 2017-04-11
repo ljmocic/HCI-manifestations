@@ -13,31 +13,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HCI_Manifestations.dialogs
+namespace HCI_Manifestations.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for AddTag.xaml
-    /// </summary>
-    public partial class AddType : Window
+    public partial class EditTag : Window
     {
-
         #region Attributes
-        private ManifestationType type;
-        public ManifestationType Type // Tag name Overshadows Tag from .NET library
+        private ManifestationTag tag;
+        public ManifestationTag Tag // TODO fix overshadowing
         {
-            get { return type; }
-            set { type = value; }
+            get { return tag; }
+            set { tag = value; }
         }
         #endregion
 
         #region Constructors
-        public AddType()
+        public EditTag(string tagId)
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            type = new ManifestationType();
-            DataContext = type;
+            tag = Database.GetTag(tagId);
+            DataContext = tag;
         }
         #endregion
 
@@ -48,14 +44,18 @@ namespace HCI_Manifestations.dialogs
             bool validated = true;
             if (validated)
             {
-                Database.AddType(type);
+                Database.UpdateTag(tag);
                 Close();
             }
             else
             {
                 // If data is not validated
             }
+        }
 
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            tag.Color = ColorPicker.SelectedColor.ToString();
         }
         #endregion
     }

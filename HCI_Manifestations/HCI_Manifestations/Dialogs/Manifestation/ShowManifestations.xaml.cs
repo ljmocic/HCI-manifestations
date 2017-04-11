@@ -38,21 +38,18 @@ namespace HCI_Manifestations.dialogs
         #region Event handlers
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-
             AddManifestation addManifestation = new AddManifestation();
             addManifestation.Show();
         }
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-
             EditManifestation editManifestation = new EditManifestation(SelectedManifestation.Id);
             editManifestation.Show();
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-
             Database.DeleteManifestation(SelectedManifestation);
         }
 
@@ -61,6 +58,7 @@ namespace HCI_Manifestations.dialogs
             if (SelectedManifestation != null)
             {
                 buttonEdit.IsEnabled = true;
+                buttonDelete.IsEnabled = true;
             }
         }
         #endregion
