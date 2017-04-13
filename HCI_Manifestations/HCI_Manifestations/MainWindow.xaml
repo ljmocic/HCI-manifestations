@@ -17,7 +17,7 @@
         <CommandBinding Command="commands:RoutedCommands.ShowManifestations" Executed="ShowManifestations_Executed"/>
         <CommandBinding Command="commands:RoutedCommands.AddType" Executed="AddType_Executed"/>
         <CommandBinding Command="commands:RoutedCommands.ShowTypes" Executed="ShowTypes_Executed"/>
-        <CommandBinding Command="commands:RoutedCommands.AddType" Executed="AddTag_Executed"/>
+        <CommandBinding Command="commands:RoutedCommands.AddTag" Executed="AddTag_Executed"/>
         <CommandBinding Command="commands:RoutedCommands.ShowTags" Executed="ShowTags_Executed"/>
     </Window.CommandBindings>
     
@@ -84,8 +84,48 @@
             </MenuItem>
         </Menu>
 
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Command="commands:RoutedCommands.AddManifestation">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Nova manifestacija" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="commands:RoutedCommands.ShowManifestations">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Prikaži manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="commands:RoutedCommands.AddType">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Novi tip" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="commands:RoutedCommands.ShowTypes">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="commands:RoutedCommands.AddTag">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Dodaj etiketu" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="commands:RoutedCommands.ShowTags">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Prikaži etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
         
-        <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Image Source="Resources\Images\sv2.png" Width="1050" Height="650"/>
             <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200">
 
