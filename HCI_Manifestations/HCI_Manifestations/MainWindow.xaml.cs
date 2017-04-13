@@ -26,53 +26,41 @@ namespace HCI_Manifestations
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
-        private void Add_manifestation_Click(object sender, RoutedEventArgs e)
+        private void AddManifestation_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("Add_manifestation_Click");
             AddManifestation addManifestation = new AddManifestation();
             addManifestation.Show();
         }
 
-        private void Show_manifestations_Click(object sender, RoutedEventArgs e)
+        private void ShowManifestations_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("Show_manifestations_Click");
             ShowManifestations showManifestations = new ShowManifestations();
             showManifestations.Show();
         }
 
-        private void Add_type_Click(object sender, RoutedEventArgs e)
+        private void AddType_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("Add_type_Click");
             AddType addType = new AddType();
             addType.Show();
         }
 
-        private void Show_types_Click(object sender, RoutedEventArgs e)
+        private void ShowTypes_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("Show_types_Click");
             ShowTypes showTypes = new ShowTypes();
             showTypes.Show();
         }
 
-        private void Add_tag_Click(object sender, RoutedEventArgs e)
+        private void AddTag_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("Add_tag_Click");
             AddTag addTag = new AddTag();
             addTag.Show();
         }
 
-        private void Show_tags_Click(object sender, RoutedEventArgs e)
+        private void ShowTags_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("Show_tag_Click");
             ShowTags showTags = new ShowTags();
             showTags.Show();
         }
 
-        private void Show_help_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Show_help_Click");
-            ShowHelp showHelp = new ShowHelp();
-            showHelp.Show();
-        }
     }
 }
