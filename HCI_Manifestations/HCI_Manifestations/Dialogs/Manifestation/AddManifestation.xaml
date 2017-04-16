@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
         mc:Ignorable="d"
-        Title="Dodavanje manifestacije" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" ResizeMode="NoResize">
+        Title="Dodavanje manifestacije" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" 
+        ResizeMode="NoResize"
+        Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

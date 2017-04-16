@@ -1,6 +1,8 @@
 ﻿using HCI_Manifestations.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +40,14 @@ namespace HCI_Manifestations.Dialogs
         #endregion
 
         #region Event handlers
+        private void buttonBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
+            dialog.ShowDialog();
+            textBoxIconPath.Text = dialog.FileName;
+        }
+
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             // TODO validation later
@@ -52,18 +62,35 @@ namespace HCI_Manifestations.Dialogs
                 // If data is not validated
             }
         }
-
-        private void buttonBrowse_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.ShowDialog();
-            textBoxIconPath.Text = dialog.FileName;
-        }
-
+        
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (!Fields_Empty())
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
         #endregion
+
+        private bool Fields_Empty()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(textBoxName.Text) && string.IsNullOrWhiteSpace(textBoxDescription.Text) && string.IsNullOrWhiteSpace(textBoxIconPath.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

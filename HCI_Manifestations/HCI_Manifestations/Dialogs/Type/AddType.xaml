@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
         mc:Ignorable="d"
-        Title="Dodavanje tipa manifestacije" Height="350" Width="550" Icon="../../Resources/Icons/favicon.ico" ResizeMode="NoResize">
+        Title="Dodavanje tipa manifestacije" Height="350" Width="550" Icon="../../Resources/Icons/favicon.ico" 
+        ResizeMode="NoResize"
+        Closing="Window_Closing">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -91,7 +94,7 @@
                 <TextBox.Text>
                     <Binding Path="IconPath" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="150" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>

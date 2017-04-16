@@ -1,6 +1,7 @@
 ﻿using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,11 @@ namespace HCI_Manifestations.dialogs
         #endregion
 
         #region Event handlers
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            tag.Color = ColorPicker.SelectedColor.ToString();
+        }
+
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             // TODO validation later
@@ -49,21 +55,40 @@ namespace HCI_Manifestations.dialogs
             }
             else
             {
-                // If data is not validated
+                // If data is not valid
             }
 
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
-            // Warn user about closing window
             Close();
         }
 
-        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            tag.Color = ColorPicker.SelectedColor.ToString();
+            if (!Fields_Empty())
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
         #endregion
+
+        private bool Fields_Empty()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(mTag.Color) && string.IsNullOrWhiteSpace(textBoxDescription.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

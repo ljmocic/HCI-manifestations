@@ -65,10 +65,19 @@ namespace HCI_Manifestations.Commands
             typeof(RoutedCommand),
             new InputGestureCollection()
             {
-                new KeyGesture(Key.T, ModifierKeys.Alt)
+                new KeyGesture(Key.E, ModifierKeys.Alt)
             }
             );
 
+        public static readonly RoutedUICommand ExitWindow = new RoutedUICommand(
+            "Exit Window",
+            "ExitWindow",
+            typeof(RoutedCommand),
+            new InputGestureCollection()
+            {
+                new KeyGesture(Key.F4, ModifierKeys.Alt)
+            }
+            );
 
     }
 }

@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:HCI_Manifestations"
         xmlns:commands="clr-namespace:HCI_Manifestations.Commands"
         mc:Ignorable="d"
-        Title="Menadzer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" ResizeMode="NoResize">
+        Title="Menadzer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" 
+        ResizeMode="NoResize"
+        Closing="Window_Closing">
 
     <Window.Resources>
         <SolidColorBrush x:Key="White" Color="#000000" Opacity="0.5" />
@@ -94,7 +96,7 @@
                 </Button>
                 <Button Command="commands:RoutedCommands.ShowManifestations">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
@@ -106,7 +108,7 @@
                 </Button>
                 <Button Command="commands:RoutedCommands.ShowTypes">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
@@ -118,7 +120,7 @@
                 </Button>
                 <Button Command="commands:RoutedCommands.ShowTags">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>

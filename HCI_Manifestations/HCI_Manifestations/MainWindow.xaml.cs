@@ -62,5 +62,14 @@ namespace HCI_Manifestations
             showTags.Show();
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda zatvaranja aplikacije", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+
+            }
+        }
     }
 }

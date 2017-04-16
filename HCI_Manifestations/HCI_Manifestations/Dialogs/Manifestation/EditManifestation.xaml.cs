@@ -1,7 +1,9 @@
 ﻿using HCI_Manifestations.dialogs;
 using HCI_Manifestations.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,35 +39,14 @@ namespace HCI_Manifestations.Dialogs
             DataContext = manifestation;
         }
         #endregion
-
+        
         #region Event handlers
-        private void buttonSave_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO validation later
-            bool validated = true;
-            if (validated)
-            {
-                Database.UpdateManifestation(manifestation);
-                Close();
-            }
-            else
-            {
-                // If data is not validated
-            }
-        }
-
-        private void buttonCancel_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO warn user about losing data
-            Close();
-        }
-
         private void loadIcon_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
             dialog.ShowDialog();
             textBoxIconPath.Text = dialog.FileName;
-            // TODO add copying icon to resources and updating path to local resource
         }
 
         private void buttonAddNewType_Click(object sender, RoutedEventArgs e)
@@ -73,6 +54,58 @@ namespace HCI_Manifestations.Dialogs
             AddType addType = new AddType();
             addType.Show();
         }
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO validation later
+            bool validated = true;
+            if (validated)
+            {
+                manifestation.Type = Database.GetType(comboBoxTypes.Text);
+
+                // Set the default type icon
+                if (textBoxIconPath.Text == null)
+                {
+                    manifestation.IconPath = manifestation.Type.IconPath;
+                }
+
+                Database.UpdateManifestation(manifestation);
+                Close();
+            }
+
+        }
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (!Fields_Empty())
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
         #endregion
+
+        private bool Fields_Empty()
+        {
+            if ((string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(textBoxDescription.Text) && string.IsNullOrWhiteSpace(textBoxIconPath.Text) && string.IsNullOrWhiteSpace(textBoxName.Text) && string.IsNullOrWhiteSpace(textBoxPublic.Text)
+                && string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) && string.IsNullOrWhiteSpace(comboBoxPrices.Text) && string.IsNullOrWhiteSpace(comboBoxTypes.Text)
+                ) || (checkBoxHandicapable.IsChecked == true || RadioButtonInside.IsChecked == true || RadioButtonOutside.IsChecked == true))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
