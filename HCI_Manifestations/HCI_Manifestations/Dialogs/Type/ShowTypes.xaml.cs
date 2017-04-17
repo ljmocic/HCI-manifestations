@@ -53,13 +53,15 @@ namespace HCI_Manifestations.dialogs
             Database.DeleteType(SelectedType);
         }
 
-        private void tagsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void typesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SelectedType != null)
             {
                 buttonEdit.IsEnabled = true;
+                buttonDelete.IsEnabled = true;
             }
         }
         #endregion
+        
     }
 }

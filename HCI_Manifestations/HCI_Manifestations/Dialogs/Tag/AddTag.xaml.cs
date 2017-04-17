@@ -19,6 +19,7 @@ namespace HCI_Manifestations.dialogs
     public partial class AddTag : Window
     {
         #region Attributes
+        bool saved;
         private ManifestationTag tag;
         public ManifestationTag mTag // Tag name Overshadows Tag from .NET library
         {
@@ -35,6 +36,7 @@ namespace HCI_Manifestations.dialogs
 
             tag = new ManifestationTag();
             DataContext = tag;
+            saved = false;
         }
         #endregion
 
@@ -51,6 +53,7 @@ namespace HCI_Manifestations.dialogs
             if (validated)
             {
                 Database.AddTag(mTag);
+                saved = true;
                 Close();
             }
             else
@@ -67,9 +70,9 @@ namespace HCI_Manifestations.dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty())
+            if (!Fields_Empty() && !saved)
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
                 {
                     e.Cancel = true;

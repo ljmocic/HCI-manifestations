@@ -179,12 +179,19 @@ namespace HCI_Manifestations.Models
                 }
             }
         }
-
+        
         private List<ManifestationTag> tags;
         public List<ManifestationTag> Tags
         {
             get { return tags; }
-            set { tags = value; }
+            set
+            {
+                if (value != tags)
+                {
+                    tags = value;
+                    OnPropertyChanged("Tags");
+                }
+            }
         }
         #endregion
 
@@ -210,8 +217,25 @@ namespace HCI_Manifestations.Models
             this.expectedPublic = expectedPublic;
             this.tags = tags;
         }
+
+        public Manifestation(Manifestation manifestation)
+        {
+            id = manifestation.id;
+            name = manifestation.name;
+            description = manifestation.description;
+            date = manifestation.date;
+            handicap = manifestation.handicap;
+            type = new ManifestationType(manifestation.type);
+            iconPath = manifestation.iconPath;
+            smokingInside = manifestation.smokingInside;
+            smokingOutside = manifestation.smokingOutside;
+            price = manifestation.price;
+            alcohol = manifestation.alcohol;
+            expectedPublic = manifestation.expectedPublic;
+            tags = new List<ManifestationTag>(manifestation.tags);
+        }
         #endregion
-        
+
         #region PropertyChangedNotifier
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;

@@ -156,7 +156,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="buttonViewManifestationTypes" Command="commands:RoutedCommands.ShowManifestations" ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3">
+                <Button Name="buttonViewManifestationTypes" Command="commands:RoutedCommands.ShowTypes" ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>

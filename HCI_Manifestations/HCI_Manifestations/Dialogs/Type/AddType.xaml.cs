@@ -21,8 +21,9 @@ namespace HCI_Manifestations.dialogs
     {
 
         #region Attributes
+        bool saved;
         private ManifestationType type;
-        public ManifestationType Type // Tag name Overshadows Tag from .NET library
+        public ManifestationType Type
         {
             get { return type; }
             set { type = value; }
@@ -37,6 +38,7 @@ namespace HCI_Manifestations.dialogs
 
             type = new ManifestationType();
             DataContext = type;
+            saved = false;
         }
         #endregion
 
@@ -56,6 +58,7 @@ namespace HCI_Manifestations.dialogs
             if (validated)
             {
                 Database.AddType(type);
+                saved = true;
                 Close();
             }
             else
@@ -71,9 +74,9 @@ namespace HCI_Manifestations.dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty())
+            if (!Fields_Empty() && !saved)
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
                 {
                     e.Cancel = true;

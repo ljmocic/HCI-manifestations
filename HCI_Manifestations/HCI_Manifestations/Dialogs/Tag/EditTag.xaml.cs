@@ -33,7 +33,7 @@ namespace HCI_Manifestations.Dialogs
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            tag = Database.GetTag(tagId);
+            tag = new ManifestationTag(Database.GetTag(tagId));
             ColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(tag.Color);
             DataContext = tag;
         }
@@ -68,9 +68,9 @@ namespace HCI_Manifestations.Dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty())
+            if (!Fields_Empty() && dataModified())
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
                 {
                     e.Cancel = true;
@@ -103,5 +103,17 @@ namespace HCI_Manifestations.Dialogs
             }
         }
 
+        private bool dataModified()
+        {
+            var compareTag = Database.GetTag(tag.Id);
+            if (tag.Description.Equals(compareTag.Description) && tag.Color.Equals(compareTag.Color))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

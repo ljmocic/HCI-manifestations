@@ -34,7 +34,7 @@ namespace HCI_Manifestations.Dialogs
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            type = Database.GetType(typeId);
+            type = new ManifestationType(Database.GetType(typeId));
             DataContext = type;
         }
         #endregion
@@ -70,9 +70,9 @@ namespace HCI_Manifestations.Dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty())
+            if (!Fields_Empty() && dataModified())
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
                 {
                     e.Cancel = true;
@@ -90,6 +90,19 @@ namespace HCI_Manifestations.Dialogs
             else
             {
                 return false;
+            }
+        }
+
+        private bool dataModified()
+        {
+            var compareType = Database.GetType(type.Id);
+            if (Type.Description.Equals(compareType.Description) && Type.IconPath.Equals(compareType.IconPath) && Type.Name.Equals(compareType.Name))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

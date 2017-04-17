@@ -4,11 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
         mc:Ignorable="d"
         Title="Dodavanje manifestacije" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" 
         ResizeMode="NoResize"
         Closing="Window_Closing">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -127,7 +129,7 @@
             </TextBox>
 
             <!--Handicap-->
-            <CheckBox Grid.Column="1" Grid.Row="3" IsChecked="{Binding Path=Handicap, UpdateSourceTrigger=PropertyChanged}" Name="checkBoxHandicapable" ToolTip="Označite da li je manifestacija prilagođena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
+            <CheckBox Grid.Column="1" Grid.Row="3" IsChecked="{Binding Path=Handicap, UpdateSourceTrigger=PropertyChanged}" Name="checkBoxHandicap" ToolTip="Označite da li je manifestacija prilagođena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
 
             <!--Date-->
             <Label Grid.Column="0" Grid.Row="4" Content="Datum održavanja:" />
@@ -140,8 +142,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="comboBoxTypes" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" VerticalAlignment="Center" ToolTip="Odaberite neki od postojećih tipova manifestacija" Margin="3" IsReadOnly="True" IsEnabled="True">
-                </ComboBox>
+                <ComboBox Name="comboBoxTypes" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="comboBoxTypes_SelectionChanged" DisplayMemberPath="Id" VerticalAlignment="Center" ToolTip="Odaberite neki od postojećih tipova manifestacija" Margin="3" IsReadOnly="True" IsEnabled="True"/>
                 <Button Name="buttonAddNewType" Click="buttonAddNewType_Click" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="0" Content="Novi tip" Margin="3" Padding="20,0" />
             </Grid>
 
@@ -163,8 +164,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <CheckBox Name="RadioButtonInside" IsChecked="{Binding Path=SmokingInside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Pušenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
-                <CheckBox Name="RadioButtonOutside" IsChecked="{Binding Path=SmokingOutside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Pušenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
+                <CheckBox Name="checkBoxInside" IsChecked="{Binding Path=SmokingInside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Pušenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
+                <CheckBox Name="checkBoxOutside" IsChecked="{Binding Path=SmokingOutside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Pušenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
             </Grid>
 
             <!--Prices-->
@@ -214,33 +215,18 @@
 
             <!--Tags-->
             <Label Grid.Column="0" Grid.Row="11" Content="Etikete:" />
-            <TextBox Name="textBoxTags" ToolTip="Označite manifestaciju etiketama" Grid.Column="1" Grid.Row="11" VerticalAlignment="Center" Margin="3" >
-                <!--TODO-->
-                <!--<TextBox.Text>
-                    <Binding Path="Tags" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="150" />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>-->
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="11" x:Name="textBoxTags"/>
-                            <TextBlock Grid.Column="1" Grid.Row="11" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
-
+            <Grid Grid.Column="1" Grid.Row="11">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <wpfTool:CheckComboBox Name="comboBoxTags"
+                                   ItemsSource="{Binding Tags}"
+                                   DisplayMemberPath="Id"
+                                   ValueMemberPath="{Binding Path=Id}"
+                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" />
+                <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Content="Nova etiketa" Margin="3" Padding="20,0" />
+            </Grid>
         </Grid>
 
         <!--Save/Cancel panel-->

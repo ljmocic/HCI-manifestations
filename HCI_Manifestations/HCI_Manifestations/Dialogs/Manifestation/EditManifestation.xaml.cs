@@ -3,6 +3,7 @@ using HCI_Manifestations.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace HCI_Manifestations.Dialogs
 {
@@ -27,6 +29,7 @@ namespace HCI_Manifestations.Dialogs
             get { return manifestation; }
             set { manifestation = value; }
         }
+        
         #endregion
 
         #region Constructors
@@ -35,8 +38,35 @@ namespace HCI_Manifestations.Dialogs
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            manifestation = Database.GetManifestation(manifestationId);
+            Manifestation = new Manifestation(Database.GetManifestation(manifestationId));
             DataContext = manifestation;
+            comboBoxTypes.DataContext = Database.getInstance();
+            comboBoxTags.DataContext = Database.getInstance();
+
+            var selectedItems = new List<ManifestationTag>();
+
+            foreach (var tag in Manifestation.Tags)
+            {
+                foreach (var tagDatabase in Database.getInstance().Tags)
+                {
+                    if (tag.Id.Equals(tagDatabase.Id))
+                    {
+                        selectedItems.Add(tagDatabase);
+                    }
+                }
+            }
+
+            comboBoxTags.SelectedItemsOverride = selectedItems;
+
+            foreach (var typeDatabase in Database.getInstance().Types)
+            {
+                if (Manifestation.Type.Id.Equals(typeDatabase.Id))
+                {
+                    comboBoxTypes.SelectedItem = typeDatabase;
+                }
+            }
+
+            
         }
         #endregion
         
@@ -82,9 +112,9 @@ namespace HCI_Manifestations.Dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty())
+            if (!Fields_Empty() && dataModified())
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
                 {
                     e.Cancel = true;
@@ -95,9 +125,17 @@ namespace HCI_Manifestations.Dialogs
 
         private bool Fields_Empty()
         {
-            if ((string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(textBoxDescription.Text) && string.IsNullOrWhiteSpace(textBoxIconPath.Text) && string.IsNullOrWhiteSpace(textBoxName.Text) && string.IsNullOrWhiteSpace(textBoxPublic.Text)
-                && string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) && string.IsNullOrWhiteSpace(comboBoxPrices.Text) && string.IsNullOrWhiteSpace(comboBoxTypes.Text)
-                ) || (checkBoxHandicapable.IsChecked == true || RadioButtonInside.IsChecked == true || RadioButtonOutside.IsChecked == true))
+            if (string.IsNullOrWhiteSpace(textBoxId.Text) &&
+                string.IsNullOrWhiteSpace(textBoxDescription.Text) && 
+                string.IsNullOrWhiteSpace(textBoxIconPath.Text) && 
+                string.IsNullOrWhiteSpace(textBoxName.Text) && 
+                string.IsNullOrWhiteSpace(textBoxPublic.Text) &&
+                string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) &&
+                string.IsNullOrWhiteSpace(comboBoxPrices.Text) && 
+                string.IsNullOrWhiteSpace(comboBoxTypes.Text) &&
+                checkBoxHandicap.IsChecked == false &&
+                checkBoxInside.IsChecked == false &&
+                checkBoxOutside.IsChecked == false)
             {
                 return true;
             }
@@ -107,5 +145,53 @@ namespace HCI_Manifestations.Dialogs
             }
         }
 
+        private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
+        {
+            AddTag addTag = new AddTag();
+            addTag.Show();
+        }
+
+        private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
+        {
+            var selectedTags = comboBoxTags.SelectedItems;
+            Manifestation.Tags.Clear();
+
+            foreach (var selectedTag in selectedTags)
+            {
+                Manifestation.Tags.Add(new ManifestationTag((ManifestationTag)selectedTag));
+            }
+        }
+
+        private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
+        }
+
+        private bool dataModified()
+        {
+            var compareManifestation = Database.GetManifestation(Manifestation.Id);
+            if (Manifestation.Name.Equals(compareManifestation.Name) &&
+                Manifestation.Description.Equals(compareManifestation.Description) &&
+                Manifestation.Date.Equals(compareManifestation.Date) &&
+                Manifestation.Alcohol.Equals(compareManifestation.Alcohol) &&
+                Manifestation.ExpectedPublic.Equals(compareManifestation.ExpectedPublic) &&
+                Manifestation.Handicap == compareManifestation.Handicap &&
+                Manifestation.SmokingInside == compareManifestation.SmokingInside &&
+                Manifestation.SmokingOutside == compareManifestation.SmokingOutside &&
+                /*
+                Manifestation.Tags.Equals(compareManifestation.Tags) &&
+                Manifestation.Type.Id.Equals(compareManifestation.Type.Id) &&
+                */
+                Manifestation.Price.Equals(compareManifestation.Price)
+                )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        
     }
 }

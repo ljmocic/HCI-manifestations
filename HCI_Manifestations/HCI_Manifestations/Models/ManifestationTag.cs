@@ -48,7 +48,7 @@ namespace HCI_Manifestations.Models
                 if (value != description)
                 {
                     description = value;
-                    OnPropertyChanged("Descripton");
+                    OnPropertyChanged("Description");
                 }
             }
         }
@@ -59,11 +59,18 @@ namespace HCI_Manifestations.Models
         {
         }
 
-        public ManifestationTag(string id, string color, string descripton)
+        public ManifestationTag(string id, string color, string description)
         {
             this.id = id;
             this.color = color;
-            this.description = descripton;
+            this.description = description;
+        }
+
+        public ManifestationTag(ManifestationTag manifestationTag)
+        {
+            id = manifestationTag.Id;
+            color = manifestationTag.Color;
+            description = manifestationTag.Description;
         }
         #endregion
 

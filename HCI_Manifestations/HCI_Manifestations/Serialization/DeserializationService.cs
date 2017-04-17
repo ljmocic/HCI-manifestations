@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace HCI_Manifestations.Serialization
 {
@@ -24,6 +25,7 @@ namespace HCI_Manifestations.Serialization
                     stream = File.Open(Config.MANIFESTATIONS_DATA, FileMode.Open);
                     var data = (ObservableCollection<Manifestation>) formatter.Deserialize(stream);
                     Database.getInstance().Manifestations = data;
+                    
                 }
                 catch
                 {

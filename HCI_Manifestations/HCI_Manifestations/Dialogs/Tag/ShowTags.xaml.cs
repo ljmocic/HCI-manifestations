@@ -44,8 +44,11 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-            EditTag editTag = new EditTag(SelectedTag.Id);
-            editTag.Show();
+            if (SelectedTag != null)
+            {
+                EditTag editTag = new EditTag(SelectedTag.Id);
+                editTag.Show();
+            }
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
@@ -58,6 +61,7 @@ namespace HCI_Manifestations.dialogs
             if (SelectedTag != null)
             {
                 buttonEdit.IsEnabled = true;
+                buttonDelete.IsEnabled = true;
             }
         }
         #endregion

@@ -22,6 +22,7 @@ namespace HCI_Manifestations.dialogs
     {
 
         #region Attributes
+        bool saved;
         private Manifestation manifestation;
         public Manifestation Manifestation
         {
@@ -38,8 +39,11 @@ namespace HCI_Manifestations.dialogs
 
             manifestation = new Manifestation();
             comboBoxTypes.DataContext = Database.getInstance();
+            comboBoxTags.DataContext = Database.getInstance();
+
             DataContext = manifestation;
-            
+
+            saved = false;
         }
         #endregion
 
@@ -73,6 +77,7 @@ namespace HCI_Manifestations.dialogs
                 }
 
                 Database.AddManifestation(manifestation);
+                saved = true;
                 Close();
             }
 
@@ -85,9 +90,9 @@ namespace HCI_Manifestations.dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty())
+            if (!Fields_Empty() && !saved)
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći ? ", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
                 {
                     e.Cancel = true;
@@ -98,9 +103,17 @@ namespace HCI_Manifestations.dialogs
 
         private bool Fields_Empty()
         {
-            if ((string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(textBoxDescription.Text) && string.IsNullOrWhiteSpace(textBoxIconPath.Text) && string.IsNullOrWhiteSpace(textBoxName.Text) && string.IsNullOrWhiteSpace(textBoxPublic.Text)
-                && string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) && string.IsNullOrWhiteSpace(comboBoxPrices.Text) && string.IsNullOrWhiteSpace(comboBoxTypes.Text)
-                ) || (checkBoxHandicapable.IsChecked == true || RadioButtonInside.IsChecked == true || RadioButtonOutside.IsChecked == true))
+            if (string.IsNullOrWhiteSpace(textBoxId.Text) &&
+                string.IsNullOrWhiteSpace(textBoxDescription.Text) &&
+                string.IsNullOrWhiteSpace(textBoxIconPath.Text) &&
+                string.IsNullOrWhiteSpace(textBoxName.Text) &&
+                string.IsNullOrWhiteSpace(textBoxPublic.Text) &&
+                string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) &&
+                string.IsNullOrWhiteSpace(comboBoxPrices.Text) &&
+                string.IsNullOrWhiteSpace(comboBoxTypes.Text) &&
+                checkBoxHandicap.IsChecked == false &&
+                checkBoxInside.IsChecked == false &&
+                checkBoxOutside.IsChecked == false)
             {
                 return true;
             }
@@ -110,5 +123,26 @@ namespace HCI_Manifestations.dialogs
             }
         }
 
+        private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
+        {
+            AddTag addTag = new AddTag();
+            addTag.Show();
+        }
+
+        private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
+        {
+            var selectedTags = comboBoxTags.SelectedItems;
+            Manifestation.Tags.Clear();
+
+            foreach (var selectedTag in selectedTags)
+            {
+                Manifestation.Tags.Add(new ManifestationTag((ManifestationTag)selectedTag));
+            }
+        }
+        
+        private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
+        }
     }
 }

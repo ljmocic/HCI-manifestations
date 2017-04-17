@@ -201,9 +201,9 @@ namespace HCI_Manifestations.Models
         #region Loading database
         public static void loadData()
         {
-            DeserializationService.deserializeManifestations();
-            DeserializationService.deserializeTypes();
             DeserializationService.deserializeTags();
+            DeserializationService.deserializeTypes();
+            DeserializationService.deserializeManifestations();
         }
         #endregion
 

@@ -44,8 +44,11 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-            EditManifestation editManifestation = new EditManifestation(SelectedManifestation.Id);
-            editManifestation.Show();
+            if (SelectedManifestation != null)
+            {
+                EditManifestation editManifestation = new EditManifestation(SelectedManifestation.Id);
+                editManifestation.Show();
+            }
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)

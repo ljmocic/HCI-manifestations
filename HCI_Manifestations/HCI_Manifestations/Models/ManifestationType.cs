@@ -79,6 +79,14 @@ namespace HCI_Manifestations.Models
             this.description = description;
             this.iconPath = iconPath;
         }
+
+        public ManifestationType(ManifestationType type)
+        {
+            id = type.Id;
+            name = type.Name;
+            description = type.Description;
+            iconPath = type.IconPath;
+        }
         #endregion
 
         #region PropertyChangedNotifier
