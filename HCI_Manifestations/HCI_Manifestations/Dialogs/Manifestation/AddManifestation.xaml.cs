@@ -144,5 +144,6 @@ namespace HCI_Manifestations.dialogs
         {
             Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
         }
+
     }
 }
