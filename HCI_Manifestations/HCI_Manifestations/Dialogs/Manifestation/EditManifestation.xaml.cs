@@ -121,6 +121,28 @@ namespace HCI_Manifestations.Dialogs
                 }
             }
         }
+
+        private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
+        {
+            AddTag addTag = new AddTag();
+            addTag.Show();
+        }
+
+        private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
+        {
+            var selectedTags = comboBoxTags.SelectedItems;
+            Manifestation.Tags.Clear();
+
+            foreach (var selectedTag in selectedTags)
+            {
+                Manifestation.Tags.Add(new ManifestationTag((ManifestationTag)selectedTag));
+            }
+        }
+
+        private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
+        }
         #endregion
 
         private bool Fields_Empty()
@@ -143,28 +165,6 @@ namespace HCI_Manifestations.Dialogs
             {
                 return false;
             }
-        }
-
-        private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
-        {
-            AddTag addTag = new AddTag();
-            addTag.Show();
-        }
-
-        private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
-        {
-            var selectedTags = comboBoxTags.SelectedItems;
-            Manifestation.Tags.Clear();
-
-            foreach (var selectedTag in selectedTags)
-            {
-                Manifestation.Tags.Add(new ManifestationTag((ManifestationTag)selectedTag));
-            }
-        }
-
-        private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
         }
 
         private bool dataModified()

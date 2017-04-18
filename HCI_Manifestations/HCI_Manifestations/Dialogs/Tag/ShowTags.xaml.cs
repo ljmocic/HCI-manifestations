@@ -53,7 +53,6 @@ namespace HCI_Manifestations.dialogs
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region Event handlers
@@ -85,15 +84,6 @@ namespace HCI_Manifestations.dialogs
                 buttonDelete.IsEnabled = true;
             }
         }
-        #endregion
-
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -121,5 +111,18 @@ namespace HCI_Manifestations.dialogs
             }
             textBoxId.Text = "";
         }
+        #endregion
+
+        #region PropertyChangedHandler
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
+
     }
 }

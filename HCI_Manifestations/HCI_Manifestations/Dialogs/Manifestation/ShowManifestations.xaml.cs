@@ -86,7 +86,22 @@ namespace HCI_Manifestations.dialogs
                 buttonDelete.IsEnabled = true;
             }
         }
-        #endregion
+        
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+            Manifestations = new ObservableCollection<Manifestation>();
+            foreach (var man in Database.getInstance().Manifestations)
+            {
+                Manifestations.Add(new Manifestation(man));
+            }
+
+            comboBoxAlcohol.SelectedIndex = 3;
+            comboBoxPrice.SelectedIndex = 4;
+            comboBoxType.SelectedValue = null;
+            checkBoxHandicap.IsChecked = false;
+            checkBoxSmokingInside.IsChecked = false;
+            checkBoxSmokingOutside.IsChecked = false;
+        }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -131,7 +146,9 @@ namespace HCI_Manifestations.dialogs
 
             Manifestations = result;
         }
+        #endregion
 
+        #region Filters
         private ObservableCollection<Manifestation> filterHandicap(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
@@ -251,7 +268,9 @@ namespace HCI_Manifestations.dialogs
             }
             return replace;
         }
+        #endregion
 
+        #region PropertyChangedNotifier
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -259,21 +278,7 @@ namespace HCI_Manifestations.dialogs
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+        #endregion
 
-        private void buttonClear_Click(object sender, RoutedEventArgs e)
-        {
-            Manifestations = new ObservableCollection<Manifestation>();
-            foreach (var man in Database.getInstance().Manifestations)
-            {
-                Manifestations.Add(new Manifestation(man));
-            }
-
-            comboBoxAlcohol.SelectedIndex = 3;
-            comboBoxPrice.SelectedIndex = 4;
-            comboBoxType.SelectedValue = null;
-            checkBoxHandicap.IsChecked = false;
-            checkBoxSmokingInside.IsChecked = false;
-            checkBoxSmokingOutside.IsChecked = false;
-        }
     }
 }

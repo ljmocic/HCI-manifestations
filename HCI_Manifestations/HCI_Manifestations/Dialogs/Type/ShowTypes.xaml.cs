@@ -46,8 +46,6 @@ namespace HCI_Manifestations.dialogs
             DataContext = this;
             types = Database.getInstance().types;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region Event handlers
@@ -76,7 +74,6 @@ namespace HCI_Manifestations.dialogs
                 buttonDelete.IsEnabled = true;
             }
         }
-        #endregion
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -104,7 +101,10 @@ namespace HCI_Manifestations.dialogs
             }
             textBoxId.Text = "";
         }
+        #endregion
 
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -112,5 +112,6 @@ namespace HCI_Manifestations.dialogs
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+        #endregion
     }
 }

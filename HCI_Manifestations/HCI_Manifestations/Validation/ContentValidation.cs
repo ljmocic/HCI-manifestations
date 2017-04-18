@@ -15,7 +15,7 @@ namespace HCI_Manifestations.Validation
         {
             try
             {
-
+                // TODO Content validation
                 return new ValidationResult(true, "");
             }
             catch

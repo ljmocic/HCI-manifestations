@@ -29,7 +29,7 @@ namespace HCI_Manifestations.Serialization
                 }
                 catch
                 {
-                    // Add exceptions later
+                    // TODO Add exceptions later
                 }
                 finally
                 {
@@ -54,7 +54,7 @@ namespace HCI_Manifestations.Serialization
                 }
                 catch
                 {
-                    // Add exceptions later
+                    // TODO Add exceptions later
                 }
                 finally
                 {
@@ -79,7 +79,7 @@ namespace HCI_Manifestations.Serialization
                 }
                 catch
                 {
-                    // Add exceptions later
+                    // TODO Add exceptions later
                 }
                 finally
                 {
