@@ -44,6 +44,8 @@ namespace HCI_Manifestations.dialogs
             SelectedManifestation = null;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             DataContext = this;
+            
+            comboBoxType.DataContext = Database.getInstance();
 
             manifestations = new ObservableCollection<Manifestation>();
             foreach (var man in Database.getInstance().Manifestations)
@@ -89,37 +91,54 @@ namespace HCI_Manifestations.dialogs
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
             var result = new ObservableCollection<Manifestation>();
-                        
-            if (checkBoxHandicap.IsChecked == true) {
-                result = filterHandicap(manifestations);
+            result = Database.getInstance().Manifestations;
+            if (checkBoxHandicap.IsChecked == true)
+            {
+                result = filterHandicap(result, true);
             }
             if (checkBoxSmokingInside.IsChecked == true)
             {
-                result = filterSmokingInside(result);
+                result = filterSmokingInside(result, true);
             }
             if (checkBoxSmokingOutside.IsChecked == true)
             {
-                result = filterSmokingOutside(result);
+                result = filterSmokingOutside(result, true);
+            }
+            if (checkBoxSmokingOutside.IsChecked == true)
+            {
+                result = filterSmokingOutside(result, true);
             }
             if (!searchInputId.Text.Equals(""))
             {
-                result = filterId(result);
+                result = filterId(result, true);
             }
             if (!searchInputName.Text.Equals(""))
             {
-                result = filterName(result);
+                result = filterName(result, true);
+            }
+            if (!comboBoxAlcohol.Text.Equals("Sve"))
+            {
+                result = filterAlcohol(result);
+            }
+            if (!comboBoxPrice.Text.Equals("Sve"))
+            {
+                result = filterPrice(result);
+            }
+            if (!string.IsNullOrEmpty(comboBoxType.Text))
+            {
+                result = filterType(result);
             }
 
             Manifestations = result;
         }
 
-        private ObservableCollection<Manifestation> filterHandicap(ObservableCollection<Manifestation> manifestations)
+        private ObservableCollection<Manifestation> filterHandicap(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
 
             foreach (var data in manifestations)
             {
-                if (data.Handicap == true)
+                if (data.Handicap == value)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -127,13 +146,13 @@ namespace HCI_Manifestations.dialogs
             return replace;
         }
 
-        private ObservableCollection<Manifestation> filterSmokingInside(ObservableCollection<Manifestation> manifestations)
+        private ObservableCollection<Manifestation> filterSmokingInside(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
 
             foreach (var data in manifestations)
             {
-                if (data.SmokingInside == true)
+                if (data.SmokingInside == value)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -141,13 +160,13 @@ namespace HCI_Manifestations.dialogs
             return replace;
         }
 
-        private ObservableCollection<Manifestation> filterSmokingOutside(ObservableCollection<Manifestation> manifestations)
+        private ObservableCollection<Manifestation> filterSmokingOutside(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
 
             foreach (var data in manifestations)
             {
-                if (data.SmokingOutside == true)
+                if (data.SmokingOutside == value)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -155,13 +174,17 @@ namespace HCI_Manifestations.dialogs
             return replace;
         }
 
-        private ObservableCollection<Manifestation> filterId(ObservableCollection<Manifestation> manifestations)
+        private ObservableCollection<Manifestation> filterId(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
 
             foreach (var data in manifestations)
             {
-                if (searchInputId.Text.Contains(data.Id))
+                if (searchInputId.Text.Contains(data.Id) && value == true)
+                {
+                    replace.Add(new Manifestation(data));
+                }
+                if (!searchInputId.Text.Contains(data.Id) && value == false)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -169,13 +192,59 @@ namespace HCI_Manifestations.dialogs
             return replace;
         }
 
-        private ObservableCollection<Manifestation> filterName(ObservableCollection<Manifestation> manifestations)
+        private ObservableCollection<Manifestation> filterName(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
 
             foreach (var data in manifestations)
             {
-                if (searchInputName.Text.Contains(data.Id))
+                if (searchInputName.Text.Contains(data.Id) && value == true)
+                {
+                    replace.Add(new Manifestation(data));
+                }
+                else if (!searchInputName.Text.Contains(data.Id) && value == false)
+                {
+                    replace.Add(new Manifestation(data));
+                }
+            }
+            return replace;
+        }
+
+        private ObservableCollection<Manifestation> filterAlcohol(ObservableCollection<Manifestation> manifestations)
+        {
+            var replace = new ObservableCollection<Manifestation>();
+
+            foreach (var data in manifestations)
+            {
+                if (data.Alcohol.Equals(comboBoxAlcohol.Text))
+                {
+                    replace.Add(new Manifestation(data));
+                }
+            }
+            return replace;
+        }
+
+        private ObservableCollection<Manifestation> filterPrice(ObservableCollection<Manifestation> manifestations)
+        {
+            var replace = new ObservableCollection<Manifestation>();
+
+            foreach (var data in manifestations)
+            {
+                if (data.Price.Equals(comboBoxPrice.Text))
+                {
+                    replace.Add(new Manifestation(data));
+                }
+            }
+            return replace;
+        }
+
+        private ObservableCollection<Manifestation> filterType(ObservableCollection<Manifestation> manifestations)
+        {
+            var replace = new ObservableCollection<Manifestation>();
+
+            foreach (var data in manifestations)
+            {
+                if (data.Type.Id.Equals(comboBoxType.Text))
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -189,6 +258,22 @@ namespace HCI_Manifestations.dialogs
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+            Manifestations = new ObservableCollection<Manifestation>();
+            foreach (var man in Database.getInstance().Manifestations)
+            {
+                Manifestations.Add(new Manifestation(man));
+            }
+
+            comboBoxAlcohol.SelectedIndex = 3;
+            comboBoxPrice.SelectedIndex = 4;
+            comboBoxType.SelectedValue = null;
+            checkBoxHandicap.IsChecked = false;
+            checkBoxSmokingInside.IsChecked = false;
+            checkBoxSmokingOutside.IsChecked = false;
         }
     }
 }

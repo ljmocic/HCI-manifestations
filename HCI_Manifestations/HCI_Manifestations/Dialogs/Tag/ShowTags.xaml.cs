@@ -3,6 +3,7 @@ using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,23 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.dialogs
 {
-    public partial class ShowTags : Window
+    public partial class ShowTags : Window, INotifyPropertyChanged
     {
         #region Attributes
         public ManifestationTag SelectedTag { get; set; }
-        public ObservableCollection<ManifestationTag> tags { get; set; }
+        private ObservableCollection<ManifestationTag> tags;
+        public ObservableCollection<ManifestationTag> Tags
+        {
+            get { return tags; }
+            set
+            {
+                if (value != tags)
+                {
+                    tags = value;
+                    OnPropertyChanged("Tags");
+                }
+            }
+        }
         #endregion
 
         #region Constructors
@@ -32,7 +45,15 @@ namespace HCI_Manifestations.dialogs
             SelectedTag = null;
             DataContext = this;
             tags = Database.getInstance().tags;
+
+            Tags = new ObservableCollection<ManifestationTag>();
+            foreach (var tag in Database.getInstance().Tags)
+            {
+                Tags.Add(new ManifestationTag(tag));
+            }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region Event handlers
@@ -65,5 +86,40 @@ namespace HCI_Manifestations.dialogs
             }
         }
         #endregion
+
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBoxId.Text))
+            {
+                var replace = new ObservableCollection<ManifestationTag>();
+
+                foreach (var data in Database.getInstance().Tags)
+                {
+                    if (data.Id.Contains(textBoxId.Text))
+                    {
+                        replace.Add(new ManifestationTag(data));
+                    }
+                }
+                Tags = replace;
+            }
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+            Tags = new ObservableCollection<ManifestationTag>();
+            foreach (var tag in Database.getInstance().Tags)
+            {
+                Tags.Add(new ManifestationTag(tag));
+            }
+            textBoxId.Text = "";
+        }
     }
 }

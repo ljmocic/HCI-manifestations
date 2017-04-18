@@ -21,12 +21,14 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
-        
-        <TextBox Grid.Column="0" Grid.Row="0" Margin="4"/>
-        <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj tipove manifestacija" Content="Pretraži" Grid.Column="1" Grid.Row="0" Margin="5" />
-        <DataGrid Name="typesGrid" ToolTip="Tabelaran prikaz tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged"/>
+
+        <TextBox Name="textBoxId" Grid.Column="0" Grid.Row="0" Margin="75,4,119,4"/>
+        <Button Name="buttonSearch" Click="buttonSearch_Click" ToolTip="Pretraži ili filtriraj tipove manifestacija" Content="Pretraži" Grid.Row="0" Margin="494,5,10,5" />
+        <DataGrid Name="typesGrid" ToolTip="Tabelaran prikaz tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged"/>
         <Button Name="buttonAdd" Click="buttonAdd_Click" Content="Dodaj" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="1,10"/>
         <Button Name="buttonEdit" Click="buttonEdit_Click" IsEnabled="False" Content="Uredi" ToolTip="Uredi odabran tip manifestacije" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="1,10" />
         <Button Name="buttonDelete" Click="buttonDelete_Click" IsEnabled="False" Content="Ukloni" ToolTip="Ukloni odabran tip manifestacije" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="1,10"/>
+        <Label x:Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,-0.7"/>
+        <Button x:Name="buttonClear" Click="buttonClear_Click" Content="Poništi" ToolTip="Poništi pretragu" Grid.Column="1" VerticalAlignment="Center" Margin="0,5,2,5"/>
     </Grid>
 </Window>
