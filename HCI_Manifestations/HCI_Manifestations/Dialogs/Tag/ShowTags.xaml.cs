@@ -44,13 +44,7 @@ namespace HCI_Manifestations.dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             SelectedTag = null;
             DataContext = this;
-            tags = Database.getInstance().tags;
-
-            Tags = new ObservableCollection<ManifestationTag>();
-            foreach (var tag in Database.getInstance().Tags)
-            {
-                Tags.Add(new ManifestationTag(tag));
-            }
+            Tags = Database.getInstance().tags;
         }
 
         #endregion
@@ -104,11 +98,7 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-            Tags = new ObservableCollection<ManifestationTag>();
-            foreach (var tag in Database.getInstance().Tags)
-            {
-                Tags.Add(new ManifestationTag(tag));
-            }
+            Tags = Database.getInstance().Tags;
             textBoxId.Text = "";
         }
         #endregion

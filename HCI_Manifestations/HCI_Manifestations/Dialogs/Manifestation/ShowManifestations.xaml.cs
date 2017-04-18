@@ -47,11 +47,7 @@ namespace HCI_Manifestations.dialogs
             
             comboBoxType.DataContext = Database.getInstance();
 
-            manifestations = new ObservableCollection<Manifestation>();
-            foreach (var man in Database.getInstance().Manifestations)
-            {
-                Manifestations.Add(new Manifestation(man));
-            }
+            Manifestations = Database.getInstance().Manifestations;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -89,11 +85,7 @@ namespace HCI_Manifestations.dialogs
         
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-            Manifestations = new ObservableCollection<Manifestation>();
-            foreach (var man in Database.getInstance().Manifestations)
-            {
-                Manifestations.Add(new Manifestation(man));
-            }
+            Manifestations = Database.getInstance().Manifestations;
 
             comboBoxAlcohol.SelectedIndex = 3;
             comboBoxPrice.SelectedIndex = 4;

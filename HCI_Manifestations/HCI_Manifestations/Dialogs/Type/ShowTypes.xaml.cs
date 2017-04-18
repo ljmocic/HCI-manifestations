@@ -44,7 +44,7 @@ namespace HCI_Manifestations.dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             SelectedType = null;
             DataContext = this;
-            types = Database.getInstance().types;
+            Types = Database.getInstance().Types;
         }
         #endregion
 
