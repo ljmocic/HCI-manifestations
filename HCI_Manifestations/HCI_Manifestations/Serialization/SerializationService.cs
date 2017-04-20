@@ -25,7 +25,7 @@ namespace HCI_Manifestations.Serialization
             }
             catch
             {
-                // TODO Add exceptions later
+                throw new DirectoryNotFoundException();
             }
             finally
             {
@@ -46,7 +46,7 @@ namespace HCI_Manifestations.Serialization
             }
             catch
             {
-                // TODO Add exceptions later
+                throw new DirectoryNotFoundException();
             }
             finally
             {
@@ -67,7 +67,7 @@ namespace HCI_Manifestations.Serialization
             }
             catch
             {
-                // TODO Add exceptions later
+                throw new DirectoryNotFoundException();
             }
             finally
             {

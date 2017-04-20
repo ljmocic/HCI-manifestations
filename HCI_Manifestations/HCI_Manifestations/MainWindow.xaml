@@ -131,7 +131,7 @@
             <Image Source="Resources\Images\sv2.png" Width="1050" Height="650"/>
             <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200">
 
-                <!--1. grupa-->
+                <!--Manifestacije-->
                 <Button Name="buttonAddManifestation" Command="commands:RoutedCommands.AddManifestation" Opacity="1" ToolTip="Dodaj novu manifestaciju" Margin="5" Padding="3" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -148,7 +148,7 @@
 
                 <Separator></Separator>
 
-                <!--2. grupa-->
+                <!--Tip manifestacije-->
                 <Button Name="buttonAddManifestationType" Command="commands:RoutedCommands.AddType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -165,7 +165,7 @@
 
                 <Separator></Separator>
 
-                <!--3. grupa-->
+                <!--Etikete manifestacija-->
                 <Button Name="buttonAddTag" Command="commands:RoutedCommands.AddTag" ToolTip="Dodaj novu etiketu"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>

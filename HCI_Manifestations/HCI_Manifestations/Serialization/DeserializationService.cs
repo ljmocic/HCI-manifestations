@@ -29,7 +29,7 @@ namespace HCI_Manifestations.Serialization
                 }
                 catch
                 {
-                    // TODO Add exceptions later
+                    throw new FileNotFoundException();
                 }
                 finally
                 {
@@ -54,7 +54,7 @@ namespace HCI_Manifestations.Serialization
                 }
                 catch
                 {
-                    // TODO Add exceptions later
+                    throw new FileNotFoundException();
                 }
                 finally
                 {
@@ -79,7 +79,7 @@ namespace HCI_Manifestations.Serialization
                 }
                 catch
                 {
-                    // TODO Add exceptions later
+                    throw new FileNotFoundException();
                 }
                 finally
                 {
