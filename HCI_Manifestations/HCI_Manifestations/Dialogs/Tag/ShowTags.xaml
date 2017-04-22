@@ -22,14 +22,14 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Name="textBoxId" Grid.Column="0" Grid.Row="0" Margin="77,4,107,4"/>
-        <Button Name="buttonSearch" Click="buttonSearch_Click" ToolTip="Pretraži ili filtriraj etikete" Content="Pretraži" Grid.Row="0" Margin="492,4,10,4" />
-        <DataGrid Name="tagsGrid" ToolTip="Tabelaran prikaz etiketa" SelectedItem="{Binding Path=SelectedTag, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Tags}" Margin="1,10" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="tagsGrid_SelectionChanged"/>
-        <Button Name="buttonAdd" Content="Dodaj" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="1,10" Click="buttonAdd_Click"/>
-        <Button Name="buttonEdit" Content="Uredi" IsEnabled="False" ToolTip="Uredi odabranu etiketu" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="1,10" Click="buttonEdit_Click"/>
-        <Button Name="buttonDelete" Content="Ukloni" IsEnabled="False" ToolTip="Ukloni odabranu etiketu" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="1,10" Click="buttonDelete_Click"/>
+        <TextBox Name="textBoxId" ToolTip="Unos jedinstvene oznake etikete za pretragu"  Grid.Column="0" Grid.Row="0" Margin="77,4,107,4"/>
+        <Button Name="buttonSearch" ToolTip="Pokretanje pretrage" Click="buttonSearch_Click" Content="Pretraži" Grid.Row="0" Margin="492,4,10,4" />
+        <DataGrid Name="tagsGrid" ToolTip="Prikaz svih etiketa ili rezultata pretrage etiketa" SelectedItem="{Binding Path=SelectedTag, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Tags}" Margin="1,10" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="tagsGrid_SelectionChanged"/>
+        <Button Name="buttonAdd" ToolTip="Dodaj novu etiketu" Content="Dodaj" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="1,10" Click="buttonAdd_Click"/>
+        <Button Name="buttonEdit" ToolTip="Uredi odabranu etiketu" Content="Uredi" IsEnabled="False" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="1,10" Click="buttonEdit_Click"/>
+        <Button Name="buttonDelete" ToolTip="Ukloni odabranu etiketu" Content="Ukloni" IsEnabled="False" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="1,10" Click="buttonDelete_Click"/>
         <Label x:Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonClear" Content="Poništi" Click="buttonClear_Click" ToolTip="Poništi pretragu" Grid.Column="1" VerticalAlignment="Center" Margin="0,4,2,6" RenderTransformOrigin="0.531,-1.95"/>
+        <Button x:Name="buttonClear" ToolTip="Poništi pretragu" Content="Poništi" Click="buttonClear_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,4,2,6" RenderTransformOrigin="0.531,-1.95"/>
 
     </Grid>
 </Window>

@@ -60,7 +60,7 @@
 
             <!--ColorPicker-->
             <Label Grid.Column="0" Grid.Row="1" Content="Boja:"/>
-            <wpfTool:ColorPicker Name ="ColorPicker" SelectedColorChanged="ColorPicker_SelectedColorChanged" Grid.Column="1" Grid.Row="1" ToolTip="Odabir boje etikete" VerticalContentAlignment="Center" Margin="3"/>
+            <wpfTool:ColorPicker Name ="ColorPicker" ToolTip="Odabir boje etikete" SelectedColorChanged="ColorPicker_SelectedColorChanged" Grid.Column="1" Grid.Row="1" ToolTip="Odabir boje etikete" VerticalContentAlignment="Center" Margin="3"/>
 
             <!--Desription-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
@@ -94,8 +94,8 @@
 
         <!--Save/Cancel-->
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" Click="buttonCancel_Click" Content="Odustani" Margin="10" Padding="20,5" />
-            <Button Name="buttonSave" Click="buttonSave_Click" Content="Sačuvaj" Margin="10" Padding="20,5" />
+            <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka" Click="buttonCancel_Click" Content="Odustani" Margin="10" Padding="20,5" />
+            <Button Name="buttonSave" ToolTip="Čuvanje unetih podataka" Click="buttonSave_Click" Content="Sačuvaj" Margin="10" Padding="20,5" />
         </StackPanel>
     </Grid>
 </Window>

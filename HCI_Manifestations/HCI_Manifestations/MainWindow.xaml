@@ -33,46 +33,46 @@
                     <!-- Prikazujemo preko Dock Panela koji preuzme sav prostor -->
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="_Manifestacija">
-                <MenuItem Header="_Dodaj manifestaciju" Command="commands:RoutedCommands.AddManifestation" InputGestureText="Ctrl+M">
+            <MenuItem Header="_Manifestacija" ToolTip="Prikaz svih opcija za uređivanje manifestacija">
+                <MenuItem Header="_Dodaj manifestaciju" ToolTip="Dodavanje novu manifestacije" Command="commands:RoutedCommands.AddManifestation" InputGestureText="Ctrl+M">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikaži manifestacije" Command="commands:RoutedCommands.ShowManifestations" InputGestureText="Alt+M">
+                <MenuItem Header="_Prikaži manifestacije" ToolTip="Prikaz svih manifestacija" Command="commands:RoutedCommands.ShowManifestations" InputGestureText="Alt+M">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Tip manifestacije">
-                <MenuItem Header="_Dodaj tip manifestacije" Command="commands:RoutedCommands.AddType" InputGestureText="Ctrl+T">
+            <MenuItem Header="_Tip manifestacije" ToolTip="Prikaz svih opcija za uređivanje tipova manifestacija">
+                <MenuItem Header="_Dodaj tip manifestacije" ToolTip="Dodavanje novog tipa manifestacije" Command="commands:RoutedCommands.AddType" InputGestureText="Ctrl+T">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikaži tipove manifestacija" Command="commands:RoutedCommands.ShowTypes" InputGestureText="Alt+T">
+                <MenuItem Header="_Prikaži tipove manifestacija" ToolTip="Prikaz svih tipova manifestacija" Command="commands:RoutedCommands.ShowTypes" InputGestureText="Alt+T">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Etikete">
-                <MenuItem Header="_Dodaj etiketu" Command="commands:RoutedCommands.AddTag" InputGestureText="Ctrl+E">
+            <MenuItem Header="_Etikete" ToolTip="Prikaz svih opcija za uređivanje etiketa">
+                <MenuItem Header="_Dodaj etiketu" ToolTip="Dodavanje nove etikete" Command="commands:RoutedCommands.AddTag" InputGestureText="Ctrl+E">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="_Prikaži etikete" Command="commands:RoutedCommands.ShowTags" InputGestureText="Alt+E">
+                <MenuItem Header="_Prikaži etikete" ToolTip="Prikaz svih etiketa" Command="commands:RoutedCommands.ShowTags" InputGestureText="Alt+E">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\show_table.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Pomoć" HorizontalAlignment="Right" InputGestureText="F1">
+            <MenuItem Header="_Pomoć" ToolTip="Prikaz pomoćne dokumentacije" HorizontalAlignment="Right"  InputGestureText="F1">
                 <MenuItem Header="_Dokumentacija" InputGestureText="Ctrl+D">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\document.png" Width="12" Height="12"/>
@@ -88,37 +88,37 @@
 
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
-                <Button Command="commands:RoutedCommands.AddManifestation">
+                <Button ToolTip="Dodavanje novu manifestacije" Command="commands:RoutedCommands.AddManifestation">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Nova manifestacija" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
-                <Button Command="commands:RoutedCommands.ShowManifestations">
+                <Button ToolTip="Prikaz svih manifestacija" Command="commands:RoutedCommands.ShowManifestations">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
-                <Button Command="commands:RoutedCommands.AddType">
+                <Button ToolTip="Dodavanje novog tipa manifestacije" Command="commands:RoutedCommands.AddType">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Novi tip" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
-                <Button Command="commands:RoutedCommands.ShowTypes">
+                <Button ToolTip="Prikaz svih tipova manifestacija" Command="commands:RoutedCommands.ShowTypes">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
-                <Button Command="commands:RoutedCommands.AddTag">
+                <Button ToolTip="Dodavanje nove etikete" Command="commands:RoutedCommands.AddTag">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Dodaj etiketu" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
-                <Button Command="commands:RoutedCommands.ShowTags">
+                <Button ToolTip="Prikaz svih etiketa" Command="commands:RoutedCommands.ShowTags">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -132,14 +132,14 @@
             <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200">
 
                 <!--Manifestacije-->
-                <Button Name="buttonAddManifestation" Command="commands:RoutedCommands.AddManifestation" Opacity="1" ToolTip="Dodaj novu manifestaciju" Margin="5" Padding="3" >
+                <Button Name="buttonAddManifestation" Command="commands:RoutedCommands.AddManifestation" Opacity="1" ToolTip="Dodavanje nove manifestacije" Margin="5" Padding="3" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Nova manifestacija" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="buttonViewManifestations" Command="commands:RoutedCommands.ShowManifestations" ToolTip="Prikaži sve manifestacije ili odaberi za ažuriranje" Margin="5" Padding="3">
+                <Button Name="buttonViewManifestations" Command="commands:RoutedCommands.ShowManifestations" ToolTip="Prikaz svih manifestacija" Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži manifestacije" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -156,7 +156,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button Name="buttonViewManifestationTypes" Command="commands:RoutedCommands.ShowTypes" ToolTip="Prikazi sve tipove manifestacija" Margin="5" Padding="3">
+                <Button Name="buttonViewManifestationTypes" Command="commands:RoutedCommands.ShowTypes" ToolTip="Prikaz svih tipova manifestacija" Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži tipove" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -166,14 +166,14 @@
                 <Separator></Separator>
 
                 <!--Etikete manifestacija-->
-                <Button Name="buttonAddTag" Command="commands:RoutedCommands.AddTag" ToolTip="Dodaj novu etiketu"  Margin="5" Padding="3">
+                <Button Name="buttonAddTag" Command="commands:RoutedCommands.AddTag" ToolTip="Dodavanje nove etikete"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Nova etiketa" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="buttonViewTags" Command="commands:RoutedCommands.ShowTags" ToolTip="Prikazi sve etikete" Margin="5" Padding="3">
+                <Button Name="buttonViewTags" Command="commands:RoutedCommands.ShowTags" ToolTip="Prikaz svih etiketa" Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\show_table.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Prikaži etikete" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>

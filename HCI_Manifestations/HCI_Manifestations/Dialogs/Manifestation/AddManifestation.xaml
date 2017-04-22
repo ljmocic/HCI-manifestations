@@ -231,8 +231,8 @@
 
         <!--Save/Cancel panel-->
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" Content="Odustani" Click="buttonCancel_Click" Margin="5" Padding="20,5" />
-            <Button Name="buttonSave" Content="Sačuvaj"  Click="buttonSave_Click" Margin="5" Padding="20,5"  />
+            <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka" Content="Odustani" Click="buttonCancel_Click" Margin="5" Padding="20,5" />
+            <Button Name="buttonSave" ToolTip="Čuvanje unetih podataka" Content="Sačuvaj"  Click="buttonSave_Click" Margin="5" Padding="20,5"  />
         </StackPanel>
     </Grid>
 </Window>
