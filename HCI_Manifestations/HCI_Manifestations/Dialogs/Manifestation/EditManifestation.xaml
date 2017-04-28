@@ -225,7 +225,7 @@
                                    DisplayMemberPath="Id"
                                    ValueMemberPath="{Binding Path=Id}"
                                    ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" />
-                <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Content="Nova etiketa" Margin="3" Padding="20,0" />
+                <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Content="Dodaj" Margin="3" Padding="20,0" />
             </Grid>
         </Grid>
 

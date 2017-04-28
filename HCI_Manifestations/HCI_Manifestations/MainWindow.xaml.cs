@@ -71,5 +71,21 @@ namespace HCI_Manifestations
 
             }
         }
+
+        // TODO Drag and drop
+        private void Canvas_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void Canvas_Drop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

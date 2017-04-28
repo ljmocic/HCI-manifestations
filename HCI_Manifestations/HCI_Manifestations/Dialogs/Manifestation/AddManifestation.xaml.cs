@@ -23,12 +23,14 @@ namespace HCI_Manifestations.dialogs
 
         #region Attributes
         bool saved;
+        bool hasError;
         private Manifestation manifestation;
         public Manifestation Manifestation
         {
             get { return manifestation; }
             set { manifestation = value; }
         }
+        
         #endregion
 
         #region Constructors
@@ -44,6 +46,8 @@ namespace HCI_Manifestations.dialogs
             DataContext = manifestation;
 
             saved = false;
+            hasError = false;
+            
         }
         #endregion
 
@@ -65,8 +69,7 @@ namespace HCI_Manifestations.dialogs
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             // TODO validation later
-            bool validated = true;
-            if (validated)
+            if (!hasError)
             {
                 manifestation.Type = Database.GetType(comboBoxTypes.Text);
 
@@ -145,5 +148,14 @@ namespace HCI_Manifestations.dialogs
             }
         }
 
+        private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                hasError = true;
+            else
+                hasError = false;
+
+            buttonSave.IsEnabled = !hasError;
+        }
     }
 }

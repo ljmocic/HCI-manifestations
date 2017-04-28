@@ -31,9 +31,9 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" Validation.Error="textBoxId_Error" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />

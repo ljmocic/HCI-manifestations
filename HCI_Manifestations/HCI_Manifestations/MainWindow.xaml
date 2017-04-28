@@ -128,7 +128,11 @@
         </ToolBarTray>
         
         <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Image Source="Resources\Images\sv2.png" Width="1050" Height="650"/>
+            <Canvas Width="1050" Height="650" AllowDrop="True" MouseMove="Canvas_MouseMove" DragEnter="Canvas_DragEnter" Drop="Canvas_Drop">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Resources\Images\sv2.png" AlignmentX="Left" AlignmentY="Top" Stretch="None"/>
+                </Canvas.Background>
+            </Canvas>
             <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200">
 
                 <!--Manifestacije-->

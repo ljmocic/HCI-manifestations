@@ -20,6 +20,7 @@ namespace HCI_Manifestations.dialogs
     {
         #region Attributes
         bool saved;
+        bool hasError;
         private ManifestationTag tag;
         public ManifestationTag mTag // Tag name Overshadows Tag from .NET library
         {
@@ -37,6 +38,7 @@ namespace HCI_Manifestations.dialogs
             tag = new ManifestationTag();
             DataContext = tag;
             saved = false;
+            hasError = false;
         }
         #endregion
 
@@ -91,6 +93,16 @@ namespace HCI_Manifestations.dialogs
             {
                 return false;
             }
+        }
+
+        private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                hasError = true;
+            else
+                hasError = false;
+
+            buttonSave.IsEnabled = !hasError;
         }
 
     }

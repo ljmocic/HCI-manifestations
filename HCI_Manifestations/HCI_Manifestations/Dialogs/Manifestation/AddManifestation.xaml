@@ -43,9 +43,9 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" Validation.Error="textBoxId_Error" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -225,7 +225,7 @@
                                    DisplayMemberPath="Id"
                                    ValueMemberPath="{Binding Path=Id}"
                                    ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" />
-                <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Content="Nova etiketa" Margin="3" Padding="20,0" />
+                <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Content="Dodaj" Margin="3" Padding="20,0" />
             </Grid>
         </Grid>
 
