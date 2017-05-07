@@ -95,6 +95,8 @@ namespace HCI_Manifestations.Dialogs
 
         private bool dataModified()
         {
+            // TODO
+            /*
             var compareType = Database.GetType(type.Id);
             if (Type.Description.Equals(compareType.Description) && Type.IconPath.Equals(compareType.IconPath) && Type.Name.Equals(compareType.Name))
             {
@@ -104,6 +106,8 @@ namespace HCI_Manifestations.Dialogs
             {
                 return true;
             }
+            */
+            return false;
         }
     }
 }

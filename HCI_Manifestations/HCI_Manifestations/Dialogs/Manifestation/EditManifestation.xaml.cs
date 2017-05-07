@@ -60,9 +60,12 @@ namespace HCI_Manifestations.Dialogs
 
             foreach (var typeDatabase in Database.getInstance().Types)
             {
-                if (Manifestation.Type.Id.Equals(typeDatabase.Id))
+                if (Manifestation.Type.Id != null)
                 {
-                    comboBoxTypes.SelectedItem = typeDatabase;
+                    if (Manifestation.Type.Id.Equals(typeDatabase.Id))
+                    {
+                        comboBoxTypes.SelectedItem = typeDatabase;
+                    }
                 }
             }
 
@@ -170,6 +173,7 @@ namespace HCI_Manifestations.Dialogs
         private bool dataModified()
         {
             var compareManifestation = Database.GetManifestation(Manifestation.Id);
+            /*
             if (Manifestation.Name.Equals(compareManifestation.Name) &&
                 Manifestation.Description.Equals(compareManifestation.Description) &&
                 Manifestation.Date.Equals(compareManifestation.Date) &&
@@ -178,10 +182,10 @@ namespace HCI_Manifestations.Dialogs
                 Manifestation.Handicap == compareManifestation.Handicap &&
                 Manifestation.SmokingInside == compareManifestation.SmokingInside &&
                 Manifestation.SmokingOutside == compareManifestation.SmokingOutside &&
-                /*
+                -- TODO
                 Manifestation.Tags.Equals(compareManifestation.Tags) &&
                 Manifestation.Type.Id.Equals(compareManifestation.Type.Id) &&
-                */
+                -- 
                 Manifestation.Price.Equals(compareManifestation.Price)
                 )
             {
@@ -191,6 +195,8 @@ namespace HCI_Manifestations.Dialogs
             {
                 return true;
             }
+            */
+            return false;
         }
         
     }

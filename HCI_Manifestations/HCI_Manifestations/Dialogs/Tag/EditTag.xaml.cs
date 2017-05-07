@@ -34,7 +34,8 @@ namespace HCI_Manifestations.Dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
             tag = new ManifestationTag(Database.GetTag(tagId));
-            ColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(tag.Color);
+            if(tag.Color != null)
+                ColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(tag.Color);
             DataContext = tag;
         }
         #endregion
@@ -81,7 +82,7 @@ namespace HCI_Manifestations.Dialogs
 
         private void AreYouSureCheck()
         {
-            if (Fields_Empty())
+            if (!Fields_Empty() && dataModified())
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.Yes)
@@ -105,6 +106,7 @@ namespace HCI_Manifestations.Dialogs
 
         private bool dataModified()
         {
+            /*
             var compareTag = Database.GetTag(tag.Id);
             if (tag.Description.Equals(compareTag.Description) && tag.Color.Equals(compareTag.Color))
             {
@@ -114,6 +116,8 @@ namespace HCI_Manifestations.Dialogs
             {
                 return true;
             }
+            */
+            return false;
         }
     }
 }

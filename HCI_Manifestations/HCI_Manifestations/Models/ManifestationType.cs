@@ -82,10 +82,13 @@ namespace HCI_Manifestations.Models
 
         public ManifestationType(ManifestationType type)
         {
-            id = type.Id;
-            name = type.Name;
-            description = type.Description;
-            iconPath = type.IconPath;
+            if (type != null)
+            {
+                id = type.Id;
+                name = type.Name;
+                description = type.Description;
+                iconPath = type.IconPath;
+            }
         }
         #endregion
 

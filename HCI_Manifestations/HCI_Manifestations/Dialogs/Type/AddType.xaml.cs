@@ -110,5 +110,12 @@ namespace HCI_Manifestations.dialogs
             buttonSave.IsEnabled = !hasError;
         }
 
+        private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBoxId.Text.Length > 0)
+                buttonSave.IsEnabled = true;
+            else
+                buttonSave.IsEnabled = false;
+        }
     }
 }
