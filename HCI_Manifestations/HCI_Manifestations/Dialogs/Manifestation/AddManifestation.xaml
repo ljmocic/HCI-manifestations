@@ -75,7 +75,7 @@
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
             <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -104,7 +104,7 @@
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
             <TextBox Name="textBoxDescription" ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Description" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="300" />
                         </Binding.ValidationRules>
@@ -189,7 +189,7 @@
             <Label Grid.Column="0" Grid.Row="10" Content="Očekivana publika:" />
             <TextBox Name="textBoxPublic" ToolTip="Opisite kakva publika se očekuje na manifestaciji" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="ExpectedPublic" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="ExpectedPublic" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="150" />
                         </Binding.ValidationRules>

@@ -87,6 +87,8 @@ namespace HCI_Manifestations.dialogs
         {
             Manifestations = Database.getInstance().Manifestations;
 
+            searchInputId.Text = "";
+            searchInputName.Text = "";
             comboBoxAlcohol.SelectedIndex = 3;
             comboBoxPrice.SelectedIndex = 4;
             comboBoxType.SelectedValue = null;
@@ -189,11 +191,11 @@ namespace HCI_Manifestations.dialogs
 
             foreach (var data in manifestations)
             {
-                if (searchInputId.Text.Contains(data.Id) && value == true)
+                if (data.Id.Contains(searchInputId.Text) && value == true)
                 {
                     replace.Add(new Manifestation(data));
                 }
-                if (!searchInputId.Text.Contains(data.Id) && value == false)
+                if (!data.Id.Contains(searchInputId.Text) && value == false)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -207,11 +209,11 @@ namespace HCI_Manifestations.dialogs
 
             foreach (var data in manifestations)
             {
-                if (searchInputName.Text.Contains(data.Id) && value == true)
+                if (data.Name.Contains(searchInputName.Text) && value == true)
                 {
                     replace.Add(new Manifestation(data));
                 }
-                else if (!searchInputName.Text.Contains(data.Id) && value == false)
+                else if (!data.Name.Contains(searchInputName.Text) && value == false)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -272,5 +274,12 @@ namespace HCI_Manifestations.dialogs
         }
         #endregion
 
+        private void searchInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                buttonSearch_Click(null, null);
+            }
+        }
     }
 }

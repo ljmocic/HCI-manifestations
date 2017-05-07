@@ -114,5 +114,12 @@ namespace HCI_Manifestations.dialogs
         }
         #endregion
 
+        private void textBoxId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                buttonSearch_Click(null, null);
+            }
+        }
     }
 }

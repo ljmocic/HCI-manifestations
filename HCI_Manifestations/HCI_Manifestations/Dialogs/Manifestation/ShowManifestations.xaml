@@ -22,7 +22,7 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Name="searchInputName" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,412,4"/>
+        <TextBox Name="searchInputName" KeyDown="searchInput_KeyDown" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="232,4,213,4"/>
         <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Grid.Column="1" Grid.Row="0" Click="buttonSearch_Click" Margin="0,4,2,46" Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -59,7 +59,7 @@
         <CheckBox x:Name="checkBoxHandicap" ToolTip="Uključuje filter pretrage manifestacija sa podrškom za hendikepiranje osobe" Content="Hendikep" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxSmokingInside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja unutra" Content="Pušenje unutra" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxSmokingOutside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja napolju" Content="Pušenje napolju" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="searchInputId" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="232,4,226,4"/>
+        <TextBox x:Name="searchInputId" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,425,4"/>
         <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="417,11,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
         <Label x:Name="searchInputLabelId" Content="Id:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top"/>
         <Label x:Name="searchInputLabelName" Content="Ime:" HorizontalAlignment="Left" Margin="195,2,0,0" VerticalAlignment="Top"/>

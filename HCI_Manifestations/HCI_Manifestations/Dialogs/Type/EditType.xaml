@@ -33,7 +33,7 @@
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
             <TextBox Name="textBoxId" IsEnabled="False" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Id" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -63,7 +63,7 @@
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
             <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -90,39 +90,14 @@
 
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="2" Content="Ikonica:"/>
-            <TextBox Name="textBoxIconPath" IsEnabled="False" Grid.Column="1" Grid.Row="2" ToolTip="Lokacija vaše ikonice" Margin="3" >
-                <TextBox.Text>
-                    <Binding Path="IconPath" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="150" />
-                            <validation:ContentValidation ValidationStep="RawProposedValue" />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="3" x:Name="textBoxDescription"/>
-                            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
+            <TextBox Name="textBoxIconPath" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Grid.Column="1" Grid.Row="2" ToolTip="Lokacija vaše ikonice" Margin="3" />
             <Button Name="buttonBrowse" Click="buttonBrowse_Click" Grid.Column="2" Grid.Row ="2" ToolTip="Odaberite karakterističnu ikonicu tipa manifestacije sa vašeg racunara" Content="Pretraži" Margin="3"/>
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="3" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
+            <TextBox Name="textBoxDescription" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
                 <TextBox.Text>
-                    <Binding Path="Description" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />

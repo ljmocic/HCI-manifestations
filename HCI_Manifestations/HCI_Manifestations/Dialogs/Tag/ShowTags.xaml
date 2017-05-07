@@ -22,11 +22,17 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Name="textBoxId" ToolTip="Unos jedinstvene oznake etikete za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
+        <TextBox Name="textBoxId" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake etikete za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
         <DataGrid Name="tagsGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih etiketa ili rezultata pretrage etiketa" SelectedItem="{Binding Path=SelectedTag, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Tags}" Margin="-3,10,5,10" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="tagsGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka etikete" MinWidth="100" Width="*" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Boja etikete"  MinWidth="100" Width="*" Binding="{Binding Color}"/>
+                <DataGridTemplateColumn Header="Boja etikete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Background="{Binding Path=Color}" MinWidth="30" Margin="5"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Opis etikete"   MinWidth="100" Width="*" Binding="{Binding Description}"/>
             </DataGrid.Columns>
         </DataGrid>

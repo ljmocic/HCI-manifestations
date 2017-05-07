@@ -51,6 +51,7 @@ namespace HCI_Manifestations.dialogs
             dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
             dialog.ShowDialog();
             textBoxIconPath.Text = dialog.FileName;
+            Type.IconPath = dialog.FileName;
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)

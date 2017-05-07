@@ -22,7 +22,7 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Name="textBoxId" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
+        <TextBox Name="textBoxId" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
         <DataGrid Name="typesGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih tipova manifestacija ili rezultata pretrage tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka etikete" MinWidth="100" Width="*" Binding="{Binding Id}"/>

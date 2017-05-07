@@ -63,7 +63,7 @@
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
             <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -92,7 +92,7 @@
             <Label Grid.Column="0" Grid.Row="2" Content="Ikonica:"/>
             <TextBox Name="textBoxIconPath" ToolTip="Prikaz lokacije ikonice na vašem računaru" IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="IconPath" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="IconPath" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="150" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -120,11 +120,11 @@
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="3" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
+            <TextBox Name="textBoxDescription" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
                 <TextBox.Text>
-                    <Binding Path="Description" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>

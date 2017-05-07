@@ -57,8 +57,10 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-            EditType editType = new EditType(SelectedType.Id);
-            editType.Show();
+            if (SelectedType != null) {
+                EditType editType = new EditType(SelectedType.Id);
+                editType.Show();
+            }
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
@@ -113,5 +115,13 @@ namespace HCI_Manifestations.dialogs
             }
         }
         #endregion
+
+        private void textBoxId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                buttonSearch_Click(null, null);
+            }
+        }
     }
 }

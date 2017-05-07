@@ -74,22 +74,37 @@ namespace HCI_Manifestations.Models
         #endregion
 
         #region Working with database content
+        public static void SaveManifestations()
+        {
+            SerializationService.serializeManifestations(getInstance().manifestations);
+        }
+
+        public static void SaveTypes()
+        {
+            SerializationService.serializeTypes(getInstance().types);
+        }
+
+        public static void SaveTags()
+        {
+            SerializationService.serializeTags(getInstance().tags);
+        }
+        
         public static void AddManifestation(Manifestation manifestation)
         {
             getInstance().manifestations.Add(manifestation);
-            SerializationService.serializeManifestations(getInstance().manifestations);
+            SaveManifestations();
         }
 
         public static void AddType(ManifestationType type)
         {
             getInstance().types.Add(type);
-            SerializationService.serializeTypes(getInstance().types);
+            SaveTypes();
         }
 
         public static void AddTag(ManifestationTag tag)
         {
             getInstance().tags.Add(tag);
-            SerializationService.serializeTags(getInstance().tags);
+            SaveTags();
         }
 
         public static Manifestation GetManifestation(string id)
@@ -135,6 +150,8 @@ namespace HCI_Manifestations.Models
                 if (manifestation.Id.Equals(getInstance().Manifestations[i].Id))
                 {
                     getInstance().Manifestations[i] = manifestation;
+                    SaveManifestations();
+                    break;
                 }
             }
         }
@@ -146,6 +163,8 @@ namespace HCI_Manifestations.Models
                 if (type.Id.Equals(getInstance().Types[i].Id))
                 {
                     getInstance().Types[i] = type;
+                    SaveTypes();
+                    break;
                 }
             }
         }
@@ -157,6 +176,8 @@ namespace HCI_Manifestations.Models
                 if (tag.Id.Equals(getInstance().Tags[i].Id))
                 {
                     getInstance().Tags[i] = tag;
+                    SaveTags();
+                    break;
                 }
             }
         }
@@ -168,6 +189,7 @@ namespace HCI_Manifestations.Models
                 if (manifestation.Id.Equals(getInstance().Manifestations[i].Id))
                 {
                     getInstance().Manifestations.RemoveAt(i);
+                    SaveManifestations();
                     break;
                 }
             }
@@ -180,6 +202,7 @@ namespace HCI_Manifestations.Models
                 if (type.Id.Equals(getInstance().Types[i].Id))
                 {
                     getInstance().Types.RemoveAt(i);
+                    SaveTypes();
                     break;
                 }
             }
@@ -192,6 +215,7 @@ namespace HCI_Manifestations.Models
                 if (tag.Id.Equals(getInstance().Tags[i].Id))
                 {
                     getInstance().Tags.RemoveAt(i);
+                    SaveTags();
                     break;
                 }
             }
