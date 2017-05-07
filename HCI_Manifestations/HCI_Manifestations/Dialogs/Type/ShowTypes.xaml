@@ -22,13 +22,44 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Name="textBoxId" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="75,4,119,4"/>
-        <Button Name="buttonSearch" ToolTip="Pretraga tipova manifestacije" Click="buttonSearch_Click" Content="Pretraži" Grid.Row="0" Margin="494,5,10,5" />
-        <DataGrid Name="typesGrid" ToolTip="Prikaz svih tipova manifestacija ili rezultata pretrage tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged"/>
-        <Button Name="buttonAdd" ToolTip="Dodavanje novog tipa manifestacije" Click="buttonAdd_Click" Content="Dodaj" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="1,10"/>
-        <Button Name="buttonEdit" ToolTip="Uredi odabran tip manifestacije"  Click="buttonEdit_Click" IsEnabled="False" Content="Uredi" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="1,10" />
-        <Button Name="buttonDelete" ToolTip="Ukloni odabran tip manifestacije" Click="buttonDelete_Click" IsEnabled="False" Content="Ukloni" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="1,10"/>
-        <Label x:Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,-0.7"/>
-        <Button x:Name="buttonClear" ToolTip="Poništi pretragu" Click="buttonClear_Click" Content="Poništi"  Grid.Column="1" VerticalAlignment="Center" Margin="0,5,2,5"/>
+        <TextBox Name="textBoxId" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
+        <DataGrid Name="typesGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih tipova manifestacija ili rezultata pretrage tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Oznaka etikete" MinWidth="100" Width="*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Ime etikete"  MinWidth="100" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Opis etikete"   MinWidth="100" Width="*" Binding="{Binding Description}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="buttonAdd" ToolTip="Dodaj novu tip manifestacije" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="True" Click="buttonAdd_Click" Height="30">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Dodaj" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+        <Button Name="buttonEdit" ToolTip="Uredi odabran tip manifestacije" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="False" Click="buttonEdit_Click" Height="30">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\edit.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Uredi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+        <Button Name="buttonDelete" ToolTip="Ukloni odabrani tip manifestacije" Grid.Row="3" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="False" Click="buttonDelete_Click" Height="30" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\delete.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Ukloni" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button><Label Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,-0.7"/>
+        <Button Name="buttonSearch" ToolTip="Pretraga tipova manifestacije" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,2,0"  Height="30">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+
+        <Button Name="buttonClear" ToolTip="Poništi pretragu" Click="buttonClear_Click" VerticalAlignment="Center" Margin="486,0,10,0"  Height="30">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>
