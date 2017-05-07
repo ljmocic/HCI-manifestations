@@ -1,2 +1,2 @@
-# RNI-HCI-Manifestations
+# RNI-HCI-manifestations
 Human Computer Interaction project
