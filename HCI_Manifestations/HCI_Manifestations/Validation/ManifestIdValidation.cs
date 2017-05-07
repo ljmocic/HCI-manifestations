@@ -20,7 +20,7 @@ namespace HCI_Manifestations.Validation
                 {
                     if (manifestation.Id.Equals(text))
                     {
-                        return new ValidationResult(false, "Id already exists.");
+                        return new ValidationResult(false, "Id mora biti jedinstven");
                     }
                 }
 
@@ -28,7 +28,7 @@ namespace HCI_Manifestations.Validation
             }
             catch
             {
-                return new ValidationResult(false, "Unknown error occured.");
+                return new ValidationResult(false, "Desila se neočekivana greška.");
             }
         }
     }

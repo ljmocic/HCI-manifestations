@@ -20,7 +20,7 @@ namespace HCI_Manifestations.Validation
             }
             catch
             {
-                return new ValidationResult(false, "Unknown error occured.");
+                return new ValidationResult(false, "Desila se neočekivana greška.");
             }
         }
     }
