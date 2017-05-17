@@ -115,7 +115,7 @@ namespace HCI_Manifestations.Dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty() && dataModified())
+            if (!Fields_Empty() && Data_Modified())
             {
                 MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
