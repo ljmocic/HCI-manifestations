@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Dodavanje manifestacije" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" 
         ResizeMode="NoResize"
@@ -133,7 +134,7 @@
 
             <!--Date-->
             <Label Grid.Column="0" Grid.Row="4" Content="Datum održavanja:" />
-            <DatePicker Name="datePickerDate" SelectedDate="{Binding Path=Date, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite datum održavanja manifestacije" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
+            <DatePicker Name="datePicker" SelectedDate="{Binding Path=Date, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite datum održavanja manifestacije" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
 
             <!--Type-->
             <Label Grid.Column="0" Grid.Row="5" Content="Tip manifestacije:" />

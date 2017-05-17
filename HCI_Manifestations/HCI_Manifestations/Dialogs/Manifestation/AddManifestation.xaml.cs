@@ -39,11 +39,12 @@ namespace HCI_Manifestations.dialogs
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            manifestation = new Manifestation();
+            Manifestation = new Manifestation();
+            Manifestation.Date = DateTime.Now.Date;
             comboBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();
 
-            DataContext = manifestation;
+            DataContext = Manifestation;
 
             saved = false;
             hasError = false;
