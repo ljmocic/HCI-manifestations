@@ -70,7 +70,7 @@ namespace HCI_Manifestations.Dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty() && dataModified())
+            if (!Fields_Empty() && Data_Modified())
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
@@ -79,7 +79,6 @@ namespace HCI_Manifestations.Dialogs
                 }
             }
         }
-        #endregion
 
         private bool Fields_Empty()
         {
@@ -93,7 +92,7 @@ namespace HCI_Manifestations.Dialogs
             }
         }
 
-        private bool dataModified()
+        private bool Data_Modified()
         {
             // TODO
             /*
@@ -109,5 +108,6 @@ namespace HCI_Manifestations.Dialogs
             */
             return false;
         }
+        #endregion
     }
 }

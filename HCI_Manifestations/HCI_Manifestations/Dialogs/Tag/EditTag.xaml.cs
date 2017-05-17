@@ -69,7 +69,7 @@ namespace HCI_Manifestations.Dialogs
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (!Fields_Empty() && dataModified())
+            if (!Fields_Empty() && Data_Modified())
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.No)
@@ -78,11 +78,10 @@ namespace HCI_Manifestations.Dialogs
                 }
             }
         }
-        #endregion
-
+        
         private void AreYouSureCheck()
         {
-            if (!Fields_Empty() && dataModified())
+            if (!Fields_Empty() && Data_Modified())
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.Yes)
@@ -104,7 +103,7 @@ namespace HCI_Manifestations.Dialogs
             }
         }
 
-        private bool dataModified()
+        private bool Data_Modified()
         {
             /*
             var compareTag = Database.GetTag(tag.Id);
@@ -119,5 +118,6 @@ namespace HCI_Manifestations.Dialogs
             */
             return false;
         }
+        #endregion
     }
 }

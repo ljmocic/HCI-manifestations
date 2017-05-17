@@ -60,10 +60,10 @@
         <CheckBox x:Name="checkBoxSmokingInside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja unutra" Content="Pušenje unutra" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxSmokingOutside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja napolju" Content="Pušenje napolju" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <TextBox x:Name="searchInputId" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,425,4"/>
-        <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="417,11,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
+        <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="430,14,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
         <Label x:Name="searchInputLabelId" Content="Id:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top"/>
         <Label x:Name="searchInputLabelName" Content="Ime:" HorizontalAlignment="Left" Margin="195,2,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="3" HorizontalAlignment="Left" Margin="248,8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="3" HorizontalAlignment="Left" Margin="248,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
             <ComboBoxItem>Nema</ComboBoxItem>
             <ComboBoxItem>Može se doneti</ComboBoxItem>
             <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
@@ -76,7 +76,7 @@
             <ComboBoxItem>Visoke cene</ComboBoxItem>
             <ComboBoxItem>Sve</ComboBoxItem>
         </ComboBox>
-        <Label x:Name="labelAlcohol" Content="Alkohol:" HorizontalAlignment="Left" Margin="188,6,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="labelAlcohol" Content="Alkohol:" HorizontalAlignment="Left" Margin="190,12,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="labelPrice" Content="Cena:" HorizontalAlignment="Left" Margin="195,46,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Button x:Name="buttonClear" ToolTip="Poništi pretragu" Margin="486,4,10,46" VerticalAlignment="Center" IsEnabled="True" Click="buttonClear_Click" Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
@@ -85,7 +85,7 @@
             </StackPanel>
         </Button>
 
-        <Label x:Name="labelType" Content="Tip:" HorizontalAlignment="Left" Margin="383,9,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label x:Name="labelType" Content="Tip:" HorizontalAlignment="Left" Margin="396,12,0,0" VerticalAlignment="Top" Grid.Row="1"/>
 
     </Grid>
 </Window>

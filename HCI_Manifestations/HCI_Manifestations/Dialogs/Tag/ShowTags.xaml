@@ -53,14 +53,15 @@
                 <Image Source="..\..\Resources\Icons\delete.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Ukloni" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
-        </Button><Label x:Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
-        <Button Name="buttonSearch" ToolTip="Pretraga etiketa" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,2,0"  Height="30">
+        </Button>
+        <Label x:Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
+        <Button Name="buttonSearch" ToolTip="Pretraga etiketa" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,2,2,48"  Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
-        <Button Name="buttonClear" ToolTip="Poništi pretragu" Click="buttonClear_Click" VerticalAlignment="Center" Margin="486,0,10,0"  Height="30">
+        <Button Name="buttonClear" ToolTip="Poništi pretragu" Click="buttonClear_Click" VerticalAlignment="Center" Margin="486,2,10,48"  Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>

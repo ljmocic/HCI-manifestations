@@ -39,7 +39,7 @@ namespace HCI_Manifestations.Dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
             Manifestation = new Manifestation(Database.GetManifestation(manifestationId));
-            DataContext = manifestation;
+            DataContext = Manifestation;
             comboBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();
 
@@ -146,8 +146,7 @@ namespace HCI_Manifestations.Dialogs
         {
             Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
         }
-        #endregion
-
+        
         private bool Fields_Empty()
         {
             if (string.IsNullOrWhiteSpace(textBoxId.Text) &&
@@ -170,7 +169,7 @@ namespace HCI_Manifestations.Dialogs
             }
         }
 
-        private bool dataModified()
+        private bool Data_Modified()
         {
             var compareManifestation = Database.GetManifestation(Manifestation.Id);
             /*
@@ -198,6 +197,6 @@ namespace HCI_Manifestations.Dialogs
             */
             return false;
         }
-        
+        #endregion
     }
 }

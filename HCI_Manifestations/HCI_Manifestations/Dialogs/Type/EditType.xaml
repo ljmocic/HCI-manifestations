@@ -99,7 +99,7 @@
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>

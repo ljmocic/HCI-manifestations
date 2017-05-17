@@ -143,6 +143,7 @@
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
                 <ComboBox Name="comboBoxTypes" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="comboBoxTypes_SelectionChanged" DisplayMemberPath="Id" VerticalAlignment="Center" ToolTip="Odaberite neki od postojećih tipova manifestacija" Margin="3" IsReadOnly="True" IsEnabled="True"/>
+                
                 <Button Name="buttonAddNewType" Click="buttonAddNewType_Click" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="0" Content="Novi tip" Margin="3" Padding="20,0" />
             </Grid>
 
@@ -170,7 +171,7 @@
 
             <!--Prices-->
             <Label Grid.Column="0" Grid.Row="8" Content="Kategorija cena:" />
-            <ComboBox Name="comboBoxPrices" Text="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite cenovni rang pića na manifestaciji" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
+            <ComboBox Name="comboBoxPrices" SelectedIndex="0" Text="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite cenovni rang pića na manifestaciji" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3">
                 <ComboBoxItem>Besplatno</ComboBoxItem>
                 <ComboBoxItem>Niske cene</ComboBoxItem>
                 <ComboBoxItem>Srednje cene</ComboBoxItem>
@@ -179,7 +180,7 @@
 
             <!--Alcohol-->
             <Label Grid.Column="0" Grid.Row="9" Content="Alkohol:" />
-            <ComboBox Name="comboBoxAlcohol"  Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
+            <ComboBox Name="comboBoxAlcohol" SelectedIndex="0" Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3">
                 <ComboBoxItem>Nema</ComboBoxItem>
                 <ComboBoxItem>Može se doneti</ComboBoxItem>
                 <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
