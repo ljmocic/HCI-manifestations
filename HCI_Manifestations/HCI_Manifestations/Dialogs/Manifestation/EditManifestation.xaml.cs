@@ -40,7 +40,8 @@ namespace HCI_Manifestations.Dialogs
 
             Manifestation = new Manifestation(Database.GetManifestation(manifestationId));
             DataContext = Manifestation;
-            comboBoxTypes.DataContext = Database.getInstance();
+            //comboBoxTypes.DataContext = Database.getInstance();
+            autoCompleteBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();
 
             var selectedItems = new List<ManifestationTag>();
@@ -64,7 +65,7 @@ namespace HCI_Manifestations.Dialogs
                 {
                     if (Manifestation.Type.Id.Equals(typeDatabase.Id))
                     {
-                        comboBoxTypes.SelectedItem = typeDatabase;
+                        autoCompleteBoxTypes.Text = typeDatabase.Id;
                     }
                 }
             }
@@ -94,7 +95,7 @@ namespace HCI_Manifestations.Dialogs
             bool validated = true;
             if (validated)
             {
-                manifestation.Type = Database.GetType(comboBoxTypes.Text);
+                manifestation.Type = Database.GetType(autoCompleteBoxTypes.Text);
 
                 // Set the default type icon
                 if (textBoxIconPath.Text == null)
@@ -144,7 +145,7 @@ namespace HCI_Manifestations.Dialogs
 
         private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
+            Manifestation.Type = new ManifestationType((ManifestationType)autoCompleteBoxTypes.SelectedItem);
         }
         
         private bool Fields_Empty()
@@ -156,7 +157,7 @@ namespace HCI_Manifestations.Dialogs
                 string.IsNullOrWhiteSpace(textBoxPublic.Text) &&
                 string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) &&
                 string.IsNullOrWhiteSpace(comboBoxPrices.Text) && 
-                string.IsNullOrWhiteSpace(comboBoxTypes.Text) &&
+                string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text) &&
                 checkBoxHandicap.IsChecked == false &&
                 checkBoxInside.IsChecked == false &&
                 checkBoxOutside.IsChecked == false)

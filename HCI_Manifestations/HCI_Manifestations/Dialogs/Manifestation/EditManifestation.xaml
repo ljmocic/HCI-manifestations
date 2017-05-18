@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         mc:Ignorable="d"
         Title="EditManifestation" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico"
         ResizeMode="NoResize"
@@ -142,7 +143,13 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="comboBoxTypes" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="comboBoxTypes_SelectionChanged" DisplayMemberPath="Id" VerticalAlignment="Center" ToolTip="Odaberite neki od postojećih tipova manifestacija" Margin="3" IsEnabled="True"/>
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="4,3,2,3" >
+                    <toolkit:AutoCompleteBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Id}"></TextBlock>
+                        </DataTemplate>
+                    </toolkit:AutoCompleteBox.ItemTemplate>
+                </toolkit:AutoCompleteBox>
                 <Button Name="buttonAddNewType" Click="buttonAddNewType_Click" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="0" Margin="3" Padding="20,0" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>

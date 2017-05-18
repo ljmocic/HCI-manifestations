@@ -42,7 +42,8 @@ namespace HCI_Manifestations.dialogs
             Manifestation = new Manifestation();
             Manifestation.Date = DateTime.Now.Date;
 
-            comboBoxTypes.DataContext = Database.getInstance();
+            //comboBoxTypes.DataContext = Database.getInstance();
+            autoCompleteBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();
 
             DataContext = Manifestation;
@@ -73,7 +74,7 @@ namespace HCI_Manifestations.dialogs
             // TODO validation later
             if (!hasError)
             {
-                manifestation.Type = Database.GetType(comboBoxTypes.Text);
+                manifestation.Type = Database.GetType(autoCompleteBoxTypes.Text);
 
                 // Set the default type icon
                 if (textBoxIconPath.Text == null)
@@ -124,7 +125,7 @@ namespace HCI_Manifestations.dialogs
 
         private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
+            Manifestation.Type = new ManifestationType((ManifestationType)autoCompleteBoxTypes.SelectedItem);
         }
 
         private bool Fields_Empty()
@@ -136,7 +137,7 @@ namespace HCI_Manifestations.dialogs
                 string.IsNullOrWhiteSpace(textBoxPublic.Text) &&
                 string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) &&
                 string.IsNullOrWhiteSpace(comboBoxPrices.Text) &&
-                string.IsNullOrWhiteSpace(comboBoxTypes.Text) &&
+                string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text) &&
                 checkBoxHandicap.IsChecked == false &&
                 checkBoxInside.IsChecked == false &&
                 checkBoxOutside.IsChecked == false)
