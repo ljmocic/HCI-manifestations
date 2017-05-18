@@ -146,7 +146,7 @@
                 </Grid.ColumnDefinitions>
                 <!--<ComboBox Name="comboBoxTypes" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="comboBoxTypes_SelectionChanged" DisplayMemberPath="Id" VerticalAlignment="Center" ToolTip="Odaberite neki od postojećih tipova manifestacija" Margin="3" IsReadOnly="True" IsEnabled="True"/>-->
 
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxName_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"></TextBlock>

@@ -143,7 +143,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="4,3,2,3" >
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxName_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="4,3,2,3" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"></TextBlock>

@@ -40,7 +40,7 @@ namespace HCI_Manifestations.Dialogs
 
             Manifestation = new Manifestation(Database.GetManifestation(manifestationId));
             DataContext = Manifestation;
-            //comboBoxTypes.DataContext = Database.getInstance();
+
             autoCompleteBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();
 
@@ -85,8 +85,16 @@ namespace HCI_Manifestations.Dialogs
 
         private void buttonAddNewType_Click(object sender, RoutedEventArgs e)
         {
-            AddType addType = new AddType();
-            addType.Show();
+            if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+            {
+                AddType addType = new AddType(autoCompleteBoxTypes.Text);
+                addType.ShowDialog();
+            }
+            else
+            {
+                AddType addType = new AddType();
+                addType.ShowDialog();
+            }
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -128,8 +136,16 @@ namespace HCI_Manifestations.Dialogs
 
         private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
         {
-            AddTag addTag = new AddTag();
-            addTag.Show();
+            if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+            {
+                AddType addType = new AddType(autoCompleteBoxTypes.Text);
+                addType.Show();
+            }
+            else
+            {
+                AddType addType = new AddType();
+                addType.Show();
+            }
         }
 
         private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
@@ -199,5 +215,16 @@ namespace HCI_Manifestations.Dialogs
             return false;
         }
         #endregion
+
+        private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+                {
+                    buttonAddNewType_Click(null, null);
+                }
+            }
+        }
     }
 }

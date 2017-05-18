@@ -41,8 +41,7 @@ namespace HCI_Manifestations.dialogs
 
             Manifestation = new Manifestation();
             Manifestation.Date = DateTime.Now.Date;
-
-            //comboBoxTypes.DataContext = Database.getInstance();
+            
             autoCompleteBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();
 
@@ -65,8 +64,16 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonAddNewType_Click(object sender, RoutedEventArgs e)
         {
-            AddType addType = new AddType();
-            addType.Show();
+            if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+            {
+                AddType addType = new AddType(autoCompleteBoxTypes.Text);
+                addType.ShowDialog();
+            }
+            else
+            {
+                AddType addType = new AddType();
+                addType.ShowDialog();
+            }
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -168,5 +175,16 @@ namespace HCI_Manifestations.dialogs
                 buttonSave.IsEnabled = false;
         }
         #endregion
+
+        private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+                {
+                    buttonAddNewType_Click(null, null);
+                }
+            }
+        }
     }
 }

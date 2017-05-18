@@ -42,6 +42,18 @@ namespace HCI_Manifestations.dialogs
             saved = false;
             hasError = false;
         }
+
+        public AddType(string id)
+        {
+            InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
+            type = new ManifestationType();
+            type.Id = id;
+            DataContext = type;
+            saved = false;
+            hasError = false;
+        }
         #endregion
 
         #region Event handlers
