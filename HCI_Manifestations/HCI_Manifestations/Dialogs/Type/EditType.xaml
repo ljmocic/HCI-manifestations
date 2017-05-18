@@ -9,7 +9,7 @@
         Title="EditType" Height="350" Width="550" Icon="../../Resources/Icons/favicon.ico"
         ResizeMode="NoResize"
         Closing="Window_Closing">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -90,8 +90,13 @@
 
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="2" Content="Ikonica:"/>
-            <TextBox Name="textBoxIconPath" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Grid.Column="1" Grid.Row="2" ToolTip="Lokacija vaše ikonice" Margin="3" />
-            <Button Name="buttonBrowse" Click="buttonBrowse_Click" Grid.Column="2" Grid.Row ="2" ToolTip="Odaberite karakterističnu ikonicu tipa manifestacije sa vašeg racunara" Content="Pretraži" Margin="3"/>
+            <TextBox Name="textBoxIconPath" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Grid.Column="1" Grid.Row="2" ToolTip="Lokacija vaše ikonice" Margin="3,3,37,3" />
+            <Button Name="buttonBrowse" Click="buttonBrowse_Click" Grid.Column="1" Grid.Row ="2" ToolTip="Odaberite karakterističnu ikonicu tipa manifestacije sa vašeg racunara" Margin="262,3,3,3" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+                </StackPanel>
+            </Button>
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="3" Content="Opis:"/>

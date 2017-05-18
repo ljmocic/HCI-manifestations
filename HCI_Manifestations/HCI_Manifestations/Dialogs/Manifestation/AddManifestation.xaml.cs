@@ -41,6 +41,7 @@ namespace HCI_Manifestations.dialogs
 
             Manifestation = new Manifestation();
             Manifestation.Date = DateTime.Now.Date;
+
             comboBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();
 
@@ -125,7 +126,6 @@ namespace HCI_Manifestations.dialogs
         {
             Manifestation.Type = new ManifestationType((ManifestationType)comboBoxTypes.SelectedItem);
         }
-        #endregion
 
         private bool Fields_Empty()
         {
@@ -166,5 +166,6 @@ namespace HCI_Manifestations.dialogs
             else
                 buttonSave.IsEnabled = false;
         }
+        #endregion
     }
 }
