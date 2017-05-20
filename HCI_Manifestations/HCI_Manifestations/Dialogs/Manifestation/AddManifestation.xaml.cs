@@ -233,6 +233,10 @@ namespace HCI_Manifestations.dialogs
                 string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
                 HelpProvider.ShowHelp(str, this);
             }
+            else
+            {
+                HelpProvider.ShowHelp(GetType().Name, this);
+            }
         }
     }
 }

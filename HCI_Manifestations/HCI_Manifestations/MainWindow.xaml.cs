@@ -93,9 +93,18 @@ namespace HCI_Manifestations
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            HelpProvider.ShowHelp("index", this);
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+            else
+            {
+                HelpProvider.ShowHelp(GetType().Name, this);
+            }
         }
         #endregion
 

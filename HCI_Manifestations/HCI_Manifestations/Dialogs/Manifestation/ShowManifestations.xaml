@@ -29,6 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <!--Main search-->
+        <TextBox Name="searchInputId" help:HelpProvider.HelpKey="manifestationIdSearch" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,425,4"/>
         <TextBox Name="searchInputName" help:HelpProvider.HelpKey="manifestationNameSearch" KeyDown="searchInput_KeyDown" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="232,4,213,4"/>
         <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Grid.Column="1" Grid.Row="0" Click="buttonSearch_Click" Margin="0,4,2,46" Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
@@ -36,7 +37,7 @@
                 <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
-        <Button x:Name="buttonClear" ToolTip="Poništi pretragu" Margin="486,4,10,46" VerticalAlignment="Center" IsEnabled="True" Click="buttonClear_Click" Height="30" Grid.RowSpan="2">
+        <Button Name="buttonClear" ToolTip="Poništi pretragu" Margin="486,4,10,46" VerticalAlignment="Center" IsEnabled="True" Click="buttonClear_Click" Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -47,7 +48,6 @@
         <CheckBox x:Name="checkBoxHandicap" ToolTip="Uključuje filter pretrage manifestacija sa podrškom za hendikepiranje osobe" Content="Hendikep" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxSmokingInside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja unutra" Content="Pušenje unutra" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxSmokingOutside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja napolju" Content="Pušenje napolju" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="searchInputId" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,425,4"/>
         <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="430,14,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
         <Label x:Name="searchInputLabelId" Content="Id:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top"/>
         <Label x:Name="searchInputLabelName" Content="Ime:" HorizontalAlignment="Left" Margin="195,2,0,0" VerticalAlignment="Top"/>

@@ -10,7 +10,6 @@
         Title="Menadžer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" 
         ResizeMode="NoResize"
         help:HelpProvider.HelpKey="home"
-        KeyDown="Window_KeyDown"
         Closing="Window_Closing">
 
     <Window.Resources>
@@ -24,6 +23,7 @@
         <CommandBinding Command="commands:RoutedCommands.ShowTypes" Executed="ShowTypes_Executed"/>
         <CommandBinding Command="commands:RoutedCommands.AddTag" Executed="AddTag_Executed"/>
         <CommandBinding Command="commands:RoutedCommands.ShowTags" Executed="ShowTags_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
     </Window.CommandBindings>
     
     <DockPanel>
