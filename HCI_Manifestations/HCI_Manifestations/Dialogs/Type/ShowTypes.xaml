@@ -28,7 +28,23 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Name="textBoxId" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
+        <!--Search-->
+        <TextBox Name="textBoxId" help:HelpProvider.HelpKey="typeIdSearch" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
+        <Label Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,-0.7"/>
+        <Button Name="buttonSearch" ToolTip="Pretraga tipova manifestacije" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,2,2,48"  Height="30" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+        <Button Name="buttonClear" ToolTip="Poništi pretragu" Click="buttonClear_Click" VerticalAlignment="Center" Margin="486,2,10,48"  Height="30" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+
+        <!--Data-->
         <DataGrid Name="typesGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih tipova manifestacija ili rezultata pretrage tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka etikete" MinWidth="100" Width="*" Binding="{Binding Id}"/>
@@ -36,6 +52,8 @@
                 <DataGridTextColumn Header="Opis etikete"   MinWidth="100" Width="*" Binding="{Binding Description}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <!--Data manipulation-->
         <Button Name="buttonAdd" ToolTip="Dodaj novu tip manifestacije" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="True" Click="buttonAdd_Click" Height="30">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -54,19 +72,6 @@
                 <TextBlock Text="Ukloni" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
-        <Label Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,-0.7"/>
-        <Button Name="buttonSearch" ToolTip="Pretraga tipova manifestacije" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,2,2,48"  Height="30" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-            </StackPanel>
-        </Button>
 
-        <Button Name="buttonClear" ToolTip="Poništi pretragu" Click="buttonClear_Click" VerticalAlignment="Center" Margin="486,2,10,48"  Height="30" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-            </StackPanel>
-        </Button>
     </Grid>
 </Window>

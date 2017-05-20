@@ -289,6 +289,15 @@
     <Content Include="Resources\Documentation\manifestationName.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Documentation\tagIdSearch.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Documentation\typeIdSearch.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Documentation\manifestationNameSearch.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Documentation\manifestationPublic.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -20,7 +20,8 @@ namespace HCI_Manifestations.Dialogs
         public ShowHelp(string key, Window originator)
         {
             InitializeComponent();
-            
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
             string path = string.Format("{0}/Resources/Documentation/{1}.html", Directory.GetCurrentDirectory(), key);
 
             if (!File.Exists(path))

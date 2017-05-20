@@ -7,7 +7,7 @@
         xmlns:help="clr-namespace:HCI_Manifestations.Help"
         xmlns:commands="clr-namespace:HCI_Manifestations.Commands"
         mc:Ignorable="d"
-        Title="Menadzer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" 
+        Title="Menadžer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" 
         ResizeMode="NoResize"
         help:HelpProvider.HelpKey="home"
         KeyDown="Window_KeyDown"
