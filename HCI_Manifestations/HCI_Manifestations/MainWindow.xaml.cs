@@ -27,6 +27,7 @@ namespace HCI_Manifestations
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
+        #region Commands
         private void AddManifestation_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             AddManifestation addManifestation = new AddManifestation();
@@ -62,18 +63,9 @@ namespace HCI_Manifestations
             ShowTags showTags = new ShowTags();
             showTags.Show();
         }
+        #endregion
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda zatvaranja aplikacije", MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-
-            }
-        }
-
-        // TODO Drag and drop
+        #region Drag and Drop
         private void Canvas_DragEnter(object sender, DragEventArgs e)
         {
 
@@ -88,14 +80,16 @@ namespace HCI_Manifestations
         {
 
         }
+        #endregion
 
-        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        #region Events
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
-            if (focusedControl is DependencyObject)
+            MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda zatvaranja aplikacije", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.No)
             {
-                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp(str, this);
+                e.Cancel = true;
+
             }
         }
 
@@ -103,5 +97,7 @@ namespace HCI_Manifestations
         {
             HelpProvider.ShowHelp("index", this);
         }
+        #endregion
+
     }
 }

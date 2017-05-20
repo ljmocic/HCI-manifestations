@@ -1,4 +1,5 @@
 ﻿using HCI_Manifestations.dialogs;
+using HCI_Manifestations.Help;
 using HCI_Manifestations.Models;
 using Microsoft.Win32;
 using System;
@@ -269,5 +270,22 @@ namespace HCI_Manifestations.Dialogs
         }
         #endregion
 
+        private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBoxId.Text.Length > 0)
+                buttonSave.IsEnabled = true;
+            else
+                buttonSave.IsEnabled = false;
+        }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
     }
 }

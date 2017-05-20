@@ -1,4 +1,5 @@
-﻿using HCI_Manifestations.Models;
+﻿using HCI_Manifestations.Help;
+using HCI_Manifestations.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -128,6 +129,16 @@ namespace HCI_Manifestations.dialogs
                 buttonSave.IsEnabled = true;
             else
                 buttonSave.IsEnabled = false;
+        }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
         }
     }
 }

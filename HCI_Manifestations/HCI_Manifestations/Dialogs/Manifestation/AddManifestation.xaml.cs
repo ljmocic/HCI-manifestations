@@ -225,7 +225,7 @@ namespace HCI_Manifestations.dialogs
 
         #endregion
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             IInputElement focusedControl = FocusManager.GetFocusedElement(this);
             if (focusedControl is DependencyObject)

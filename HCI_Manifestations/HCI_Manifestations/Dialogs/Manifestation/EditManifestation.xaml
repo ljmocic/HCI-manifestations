@@ -6,11 +6,16 @@
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:help="clr-namespace:HCI_Manifestations.Help"
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         mc:Ignorable="d"
         Title="EditManifestation" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico"
         ResizeMode="NoResize"
         Closing="Window_Closing">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
+    </Window.CommandBindings>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,6 +26,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
+        
         <Grid Grid.Column="0" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MaxWidth="150"/>
@@ -44,9 +50,9 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" help:HelpProvider.HelpKey="manifestationId" Validation.Error="textBoxId_Error" TextChanged="textBoxId_TextChanged" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Id" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -74,7 +80,7 @@
 
             <!--Name-->
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
-            <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxName" help:HelpProvider.HelpKey="manifestationName" Validation.Error="textBoxName_Error" ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
@@ -103,11 +109,11 @@
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
-            <TextBox Name="textBoxDescription" ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" >
+            <TextBox Name="textBoxDescription" help:HelpProvider.HelpKey="manifestationDescription" Validation.Error="textBoxDescription_Error" ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="300" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -134,7 +140,7 @@
 
             <!--Date-->
             <Label Grid.Column="0" Grid.Row="4" Content="Datum održavanja:" />
-            <DatePicker Name="datePickerDate" SelectedDate="{Binding Path=Date, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite datum održavanja manifestacije" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
+            <DatePicker Name="datePicker" SelectedDate="{Binding Path=Date, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite datum održavanja manifestacije" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="3" />
 
             <!--Type-->
             <Label Grid.Column="0" Grid.Row="5" Content="Tip manifestacije:" />
@@ -143,14 +149,16 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxName_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="4,3,2,3" >
+                <!--<ComboBox Name="comboBoxTypes" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="comboBoxTypes_SelectionChanged" DisplayMemberPath="Id" VerticalAlignment="Center" ToolTip="Odaberite neki od postojećih tipova manifestacija" Margin="3" IsReadOnly="True" IsEnabled="True"/>-->
+
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxName_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"></TextBlock>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-                <Button Name="buttonAddNewType" Click="buttonAddNewType_Click" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="0" Margin="3" Padding="20,0" >
+                <Button Name="buttonAddNewType" Click="buttonAddNewType_Click" ToolTip="Dodaj novi tip manifestacije" Grid.Column="1" Grid.Row="0" Margin="3" Padding="10,0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Dodaj" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -187,7 +195,7 @@
 
             <!--Prices-->
             <Label Grid.Column="0" Grid.Row="8" Content="Kategorija cena:" />
-            <ComboBox Name="comboBoxPrices" Text="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite cenovni rang pića na manifestaciji" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
+            <ComboBox Name="comboBoxPrices" Text="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" ToolTip="Odaberite cenovni rang pića na manifestaciji" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" Margin="3">
                 <ComboBoxItem>Besplatno</ComboBoxItem>
                 <ComboBoxItem>Niske cene</ComboBoxItem>
                 <ComboBoxItem>Srednje cene</ComboBoxItem>
@@ -196,7 +204,7 @@
 
             <!--Alcohol-->
             <Label Grid.Column="0" Grid.Row="9" Content="Alkohol:" />
-            <ComboBox Name="comboBoxAlcohol"  Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3" SelectedIndex="0">
+            <ComboBox Name="comboBoxAlcohol" Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3">
                 <ComboBoxItem>Nema</ComboBoxItem>
                 <ComboBoxItem>Može se doneti</ComboBoxItem>
                 <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
@@ -204,9 +212,9 @@
 
             <!--Public-->
             <Label Grid.Column="0" Grid.Row="10" Content="Očekivana publika:" />
-            <TextBox Name="textBoxPublic" ToolTip="Opisite kakva publika se očekuje na manifestaciji" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3,4,3,5" Height="21" >
+            <TextBox Name="textBoxPublic" help:HelpProvider.HelpKey="manifestationPublic" ToolTip="Opisite kakva publika se očekuje na manifestaciji" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3,1,3,5" Height="24" >
                 <TextBox.Text>
-                    <Binding Path="ExpectedPublic" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="ExpectedPublic" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="150" />
                         </Binding.ValidationRules>
@@ -241,7 +249,7 @@
                                    ItemsSource="{Binding Tags}"
                                    DisplayMemberPath="Id"
                                    ValueMemberPath="{Binding Path=Id}"
-                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="3,0,0,0" />
+                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="4,3,0,3" />
                 <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Margin="3" Padding="20,0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -249,12 +257,13 @@
                     </StackPanel>
                 </Button>
             </Grid>
+
         </Grid>
 
         <!--Save/Cancel panel-->
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka"  Content="Odustani" Click="buttonCancel_Click" Margin="5" Padding="20,5" />
-            <Button Name="buttonSave" ToolTip="Čuvanje unetih podataka" Content="Sačuvaj"  Click="buttonSave_Click" Margin="5" Padding="20,5"  />
+            <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka" Content="Odustani" Click="buttonCancel_Click" Margin="5" Padding="20,5" />
+            <Button Name="buttonSave" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Content="Sačuvaj"  Click="buttonSave_Click" Margin="5" Padding="20,5"  />
         </StackPanel>
     </Grid>
 

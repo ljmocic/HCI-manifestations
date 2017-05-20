@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
+        xmlns:help="clr-namespace:HCI_Manifestations.Help"
         mc:Ignorable="d"
         Title="Dodavanje tipa manifestacije" Height="350" Width="550" Icon="../../Resources/Icons/favicon.ico" 
         ResizeMode="NoResize"
         Closing="Window_Closing">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
+    </Window.CommandBindings>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -31,7 +36,7 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" help:HelpProvider.HelpKey="typeId" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -61,7 +66,7 @@
 
             <!--Name-->
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
-            <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
+            <TextBox Name="textBoxName" help:HelpProvider.HelpKey="typeName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
@@ -125,7 +130,7 @@
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="3" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
+            <TextBox Name="textBoxDescription" help:HelpProvider.HelpKey="typeDescription" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>

@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
+        xmlns:help="clr-namespace:HCI_Manifestations.Help"
         mc:Ignorable="d"
         Title="Prikaz etiketa" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" ResizeMode="NoResize">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
+    </Window.CommandBindings>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />

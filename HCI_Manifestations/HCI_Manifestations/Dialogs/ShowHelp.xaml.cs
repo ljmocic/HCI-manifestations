@@ -15,21 +15,18 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for ShowHelp.xaml
-    /// </summary>
     public partial class ShowHelp : Window
     {
         public ShowHelp(string key, Window originator)
         {
             InitializeComponent();
             
-            string path = String.Format("{0}/Resources/Documentation/{1}.html", Directory.GetCurrentDirectory(), key);
+            string path = string.Format("{0}/Resources/Documentation/{1}.html", Directory.GetCurrentDirectory(), key);
 
             if (!File.Exists(path))
                 key = "error";
             
-            Uri url = new Uri(String.Format("file:///{0}/Resources/Documentation/{1}.html", Directory.GetCurrentDirectory(), key));
+            Uri url = new Uri(string.Format("file:///{0}/Resources/Documentation/{1}.html", Directory.GetCurrentDirectory(), key));
 
             HelpBrowser.Navigate(url);
         }

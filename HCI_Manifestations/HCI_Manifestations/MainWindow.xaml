@@ -27,6 +27,7 @@
     </Window.CommandBindings>
     
     <DockPanel>
+        
         <Menu DockPanel.Dock ="Top">
             <Menu.ItemsPanel>
                 <!--Podkontrola koja određuje kako se item-i prikazuju.-->
@@ -131,14 +132,18 @@
         </ToolBarTray>
         
         <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+            <!--Background canvas-->
             <Canvas Width="1050" Height="650" AllowDrop="True" MouseMove="Canvas_MouseMove" DragEnter="Canvas_DragEnter" Drop="Canvas_Drop">
                 <Canvas.Background>
                     <ImageBrush ImageSource="Resources\Images\sv2.png" AlignmentX="Left" AlignmentY="Top" Stretch="None"/>
                 </Canvas.Background>
             </Canvas>
+
+            <!--Sidebar-->
             <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200">
 
-                <!--Manifestacije-->
+                <!--Manifestations-->
                 <Button Name="buttonAddManifestation" Command="commands:RoutedCommands.AddManifestation" Opacity="1" ToolTip="Dodavanje nove manifestacije" Margin="5" Padding="3" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -155,7 +160,7 @@
 
                 <Separator></Separator>
 
-                <!--Tip manifestacije-->
+                <!--Types-->
                 <Button Name="buttonAddManifestationType" Command="commands:RoutedCommands.AddType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -172,7 +177,7 @@
 
                 <Separator></Separator>
 
-                <!--Etikete manifestacija-->
+                <!--Tags-->
                 <Button Name="buttonAddTag" Command="commands:RoutedCommands.AddTag" ToolTip="Dodavanje nove etikete"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>

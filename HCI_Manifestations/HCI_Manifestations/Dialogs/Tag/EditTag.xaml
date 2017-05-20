@@ -6,11 +6,16 @@
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:validation="clr-namespace:HCI_Manifestations.Validation"
+        xmlns:help="clr-namespace:HCI_Manifestations.Help"
         mc:Ignorable="d"
         Title="EditTag" Height="350" Width="500" Icon="../../Resources/Icons/favicon.ico"
         ResizeMode="NoResize"
         Closing="Window_Closing">
-    
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
+    </Window.CommandBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -30,7 +35,7 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" IsEnabled="False" ToolTip="Unos etikete manifestacija" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
+            <TextBox Name="textBoxId" help:HelpProvider.HelpKey="tagId" IsEnabled="False" ToolTip="Unos etikete manifestacija" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
@@ -64,7 +69,7 @@
 
             <!--Desription-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
+            <TextBox Name="textBoxDescription" help:HelpProvider.HelpKey="tagDescription" TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
@@ -90,6 +95,7 @@
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
             </TextBox>
+        
         </Grid>
 
         <!--Save/Cancel-->

@@ -1,4 +1,5 @@
-﻿using HCI_Manifestations.Models;
+﻿using HCI_Manifestations.Help;
+using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,5 +123,15 @@ namespace HCI_Manifestations.Dialogs
             return false;
         }
         #endregion
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
     }
 }
