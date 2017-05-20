@@ -78,7 +78,6 @@ namespace HCI_Manifestations.Commands
                 new KeyGesture(Key.F4, ModifierKeys.Alt)
             }
             );
-
     }
 }
 

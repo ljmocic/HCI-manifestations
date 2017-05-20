@@ -1,4 +1,5 @@
 ﻿using HCI_Manifestations.dialogs;
+using HCI_Manifestations.Help;
 using HCI_Manifestations.Models;
 using System;
 using System.Collections.Generic;
@@ -86,6 +87,21 @@ namespace HCI_Manifestations
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            HelpProvider.ShowHelp("index", this);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace HCI_Manifestations.Dialogs
     public partial class EditTag : Window
     {
         #region Attributes
+        private string oldId;
         private ManifestationTag tag;
         public ManifestationTag mTag
         {
@@ -32,6 +33,8 @@ namespace HCI_Manifestations.Dialogs
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
+            oldId = tagId;
 
             tag = new ManifestationTag(Database.GetTag(tagId));
             if(tag.Color != null)
@@ -52,7 +55,7 @@ namespace HCI_Manifestations.Dialogs
             bool validated = true;
             if (validated)
             {
-                Database.UpdateTag(mTag);
+                Database.UpdateTag(oldId, mTag);
                 Close();
             }
             else

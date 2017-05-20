@@ -20,6 +20,7 @@ namespace HCI_Manifestations.Dialogs
     public partial class EditType : Window
     {
         #region Attributes
+        private string oldId;
         private ManifestationType type;
         public ManifestationType Type
         {
@@ -31,6 +32,7 @@ namespace HCI_Manifestations.Dialogs
         #region Constructors
         public EditType(string typeId)
         {
+            oldId = typeId;
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
@@ -54,7 +56,7 @@ namespace HCI_Manifestations.Dialogs
             bool validated = true;
             if (validated)
             {
-                Database.UpdateType(type);
+                Database.UpdateType(oldId, type);
                 Close();
             }
             else

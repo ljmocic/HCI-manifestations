@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations"
+        xmlns:help="clr-namespace:HCI_Manifestations.Help"
         xmlns:commands="clr-namespace:HCI_Manifestations.Commands"
         mc:Ignorable="d"
         Title="Menadzer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" 
         ResizeMode="NoResize"
+        help:HelpProvider.HelpKey="home"
+        KeyDown="Window_KeyDown"
         Closing="Window_Closing">
 
     <Window.Resources>

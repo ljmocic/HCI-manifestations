@@ -1,4 +1,6 @@
-﻿using HCI_Manifestations.Models;
+﻿using HCI_Manifestations.Dialogs;
+using HCI_Manifestations.Help;
+using HCI_Manifestations.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -78,7 +80,22 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            // TODO validation later
+            // Force revalidation
+            textBoxId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDescription.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            
+            // Type validation
+            if (autoCompleteBoxTypes.SelectedItem == null
+                || string.IsNullOrEmpty(autoCompleteBoxTypes.Text)
+                || Database.GetType(autoCompleteBoxTypes.Text) == null)
+            {
+                MessageBox.Show("Odabir tipa je obavezan!");
+                autoCompleteBoxTypes.Text = "";
+                autoCompleteBoxTypes.Focus();
+                return;
+            }
+
             if (!hasError)
             {
                 manifestation.Type = Database.GetType(autoCompleteBoxTypes.Text);
@@ -167,6 +184,26 @@ namespace HCI_Manifestations.dialogs
             buttonSave.IsEnabled = !hasError;
         }
 
+        private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                hasError = true;
+            else
+                hasError = false;
+
+            buttonSave.IsEnabled = !hasError;
+        }
+
+        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                hasError = true;
+            else
+                hasError = false;
+
+            buttonSave.IsEnabled = !hasError;
+        }
+
         private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (textBoxId.Text.Length > 0)
@@ -174,16 +211,27 @@ namespace HCI_Manifestations.dialogs
             else
                 buttonSave.IsEnabled = false;
         }
-        #endregion
 
         private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+                if (Database.GetType(autoCompleteBoxTypes.Text) == null)
                 {
                     buttonAddNewType_Click(null, null);
                 }
+            }
+        }
+
+        #endregion
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
             }
         }
     }

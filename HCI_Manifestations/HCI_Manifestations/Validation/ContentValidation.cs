@@ -16,6 +16,7 @@ namespace HCI_Manifestations.Validation
             try
             {
                 // TODO Content validation
+                // Check for allowed chars
                 return new ValidationResult(true, "");
             }
             catch

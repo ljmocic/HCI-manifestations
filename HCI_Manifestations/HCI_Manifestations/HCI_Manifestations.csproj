@@ -99,12 +99,16 @@
     <Compile Include="Dialogs\Manifestation\EditManifestation.xaml.cs">
       <DependentUpon>EditManifestation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ShowHelp.xaml.cs">
+      <DependentUpon>ShowHelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Tag\EditTag.xaml.cs">
       <DependentUpon>EditTag.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Type\EditType.xaml.cs">
       <DependentUpon>EditType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Documentation\HelpProvider.cs" />
     <Compile Include="Serialization\DeserializationService.cs" />
     <Compile Include="Serialization\SerializationService.cs" />
     <Compile Include="Validation\ContentValidation.cs" />
@@ -113,6 +117,10 @@
     <Compile Include="Validation\TagIdValidation.cs" />
     <Compile Include="Validation\TypeIdValidation.cs" />
     <Page Include="Dialogs\Manifestation\AddManifestation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ShowHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,10 +141,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\Type\EditType.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\ShowHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,9 +172,6 @@
     </Compile>
     <Compile Include="Dialogs\Tag\AddTag.xaml.cs">
       <DependentUpon>AddTag.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\ShowHelp.xaml.cs">
-      <DependentUpon>ShowHelp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Manifestation\ShowManifestations.xaml.cs">
       <DependentUpon>ShowManifestations.xaml</DependentUpon>
@@ -255,9 +256,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Documentation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Icons\search.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -273,6 +272,17 @@
     <Resource Include="Resources\Icons\edit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Documentation\error.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Documentation\Id.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Documentation\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

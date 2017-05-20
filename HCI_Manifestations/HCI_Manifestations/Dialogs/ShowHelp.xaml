@@ -1,13 +1,12 @@
-﻿<Window x:Class="HCI_Manifestations.dialogs.ShowHelp"
+﻿<Window x:Class="HCI_Manifestations.Dialogs.ShowHelp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HCI_Manifestations.dialogs"
+        xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         mc:Ignorable="d"
-        Title="Pomoc" Height="300" Width="500" Icon="../Resources/Icons/favicon.ico" ResizeMode="NoResize">
+        Title="ShowHelp" Height="300" Width="300">
     <Grid>
-        <TextBlock Name="textBlock" HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." VerticalAlignment="Top" Height="249"/>
-
+        <WebBrowser Name="HelpBrowser"></WebBrowser>
     </Grid>
 </Window>

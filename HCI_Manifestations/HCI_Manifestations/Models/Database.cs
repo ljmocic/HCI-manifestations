@@ -143,11 +143,11 @@ namespace HCI_Manifestations.Models
             return null;
         }
 
-        public static void UpdateManifestation(Manifestation manifestation)
+        public static void UpdateManifestation(string oldId, Manifestation manifestation)
         {
             for (int i = 0; i < getInstance().Manifestations.Count; i++)
             {
-                if (manifestation.Id.Equals(getInstance().Manifestations[i].Id))
+                if (oldId.Equals(getInstance().Manifestations[i].Id))
                 {
                     getInstance().Manifestations[i] = manifestation;
                     SaveManifestations();
@@ -156,11 +156,11 @@ namespace HCI_Manifestations.Models
             }
         }
 
-        public static void UpdateType(ManifestationType type)
+        public static void UpdateType(string oldId, ManifestationType type)
         {
             for (int i = 0; i < getInstance().Types.Count; i++)
             {
-                if (type.Id.Equals(getInstance().Types[i].Id))
+                if (oldId.Equals(getInstance().Types[i].Id))
                 {
                     getInstance().Types[i] = type;
                     SaveTypes();
@@ -169,11 +169,11 @@ namespace HCI_Manifestations.Models
             }
         }
 
-        public static void UpdateTag(ManifestationTag tag)
+        public static void UpdateTag(string oldId, ManifestationTag tag)
         {
             for (int i = 0; i < getInstance().Tags.Count; i++)
             {
-                if (tag.Id.Equals(getInstance().Tags[i].Id))
+                if (oldId.Equals(getInstance().Tags[i].Id))
                 {
                     getInstance().Tags[i] = tag;
                     SaveTags();

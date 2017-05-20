@@ -23,6 +23,8 @@ namespace HCI_Manifestations.Dialogs
     public partial class EditManifestation : Window
     {
         #region Attributes
+        private bool hasError;
+        private string oldId;
         private Manifestation manifestation;
         public Manifestation Manifestation
         {
@@ -35,6 +37,8 @@ namespace HCI_Manifestations.Dialogs
         #region Constructors
         public EditManifestation(string manifestationId)
         {
+            oldId = manifestationId;
+
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
@@ -69,8 +73,9 @@ namespace HCI_Manifestations.Dialogs
                     }
                 }
             }
-
             
+            hasError = false;
+
         }
         #endregion
         
@@ -99,19 +104,26 @@ namespace HCI_Manifestations.Dialogs
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            // TODO validation later
-            bool validated = true;
-            if (validated)
+            if (string.IsNullOrEmpty(autoCompleteBoxTypes.Text)
+                || Database.GetType(autoCompleteBoxTypes.Text) == null)
+            {
+                System.Windows.MessageBox.Show("Odabir tipa je obavezan!");
+                autoCompleteBoxTypes.Text = "";
+                autoCompleteBoxTypes.Focus();
+                return;
+            }
+
+            if (!hasError)
             {
                 manifestation.Type = Database.GetType(autoCompleteBoxTypes.Text);
 
                 // Set the default type icon
-                if (textBoxIconPath.Text == null)
+                if (textBoxIconPath.Text == null || string.IsNullOrWhiteSpace(textBoxIconPath.Text))
                 {
                     manifestation.IconPath = manifestation.Type.IconPath;
                 }
 
-                Database.UpdateManifestation(manifestation);
+                Database.UpdateManifestation(oldId, manifestation);
                 Close();
             }
 
@@ -186,6 +198,36 @@ namespace HCI_Manifestations.Dialogs
             }
         }
 
+        private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                hasError = true;
+            else
+                hasError = false;
+
+            buttonSave.IsEnabled = !hasError;
+        }
+
+        private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                hasError = true;
+            else
+                hasError = false;
+
+            buttonSave.IsEnabled = !hasError;
+        }
+
+        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                hasError = true;
+            else
+                hasError = false;
+
+            buttonSave.IsEnabled = !hasError;
+        }
+
         private bool Data_Modified()
         {
             var compareManifestation = Database.GetManifestation(Manifestation.Id);
@@ -214,17 +256,18 @@ namespace HCI_Manifestations.Dialogs
             */
             return false;
         }
-        #endregion
 
         private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+                if (Database.GetType(autoCompleteBoxTypes.Text) == null)
                 {
                     buttonAddNewType_Click(null, null);
                 }
             }
         }
+        #endregion
+
     }
 }
