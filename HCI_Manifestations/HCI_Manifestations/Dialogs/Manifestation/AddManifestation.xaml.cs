@@ -101,7 +101,7 @@ namespace HCI_Manifestations.dialogs
                 manifestation.Type = Database.GetType(autoCompleteBoxTypes.Text);
 
                 // Set the default type icon
-                if (textBoxIconPath.Text == null)
+                if (string.IsNullOrEmpty(textBoxIconPath.Text) || string.IsNullOrWhiteSpace(textBoxIconPath.Text))
                 {
                     manifestation.IconPath = manifestation.Type.IconPath;
                 }
