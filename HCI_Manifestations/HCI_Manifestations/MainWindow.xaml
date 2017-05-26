@@ -7,7 +7,7 @@
         xmlns:help="clr-namespace:HCI_Manifestations.Help"
         xmlns:commands="clr-namespace:HCI_Manifestations.Commands"
         mc:Ignorable="d"
-        Title="Menadžer manifestacija" Height="550" Width="950" Icon="Resources\Icons\favicon.ico" 
+        Title="Menadžer manifestacija" Height="625" Width="1050" Icon="Resources\Icons\favicon.ico" 
         ResizeMode="NoResize"
         help:HelpProvider.HelpKey="home"
         Closing="Window_Closing">
@@ -25,16 +25,13 @@
         <CommandBinding Command="commands:RoutedCommands.ShowTags" Executed="ShowTags_Executed"/>
         <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
     </Window.CommandBindings>
-    
-    <DockPanel>
-        
+
+    <DockPanel LastChildFill="True">
+
         <Menu DockPanel.Dock ="Top">
             <Menu.ItemsPanel>
-                <!--Podkontrola koja određuje kako se item-i prikazuju.-->
                 <ItemsPanelTemplate>
-                    <!-- Specificiramo ne šta je u kontroli nego template koji je formira-->
                     <DockPanel HorizontalAlignment="Stretch"></DockPanel>
-                    <!-- Prikazujemo preko Dock Panela koji preuzme sav prostor -->
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="_Manifestacija" ToolTip="Prikaz svih opcija za uređivanje manifestacija">
@@ -130,20 +127,29 @@
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        
-        <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+        <Grid DockPanel.Dock="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
             <!--Background canvas-->
-            <Canvas Width="1050" Height="650" AllowDrop="True" MouseMove="Canvas_MouseMove" DragEnter="Canvas_DragEnter" Drop="Canvas_Drop">
+            <Canvas Name="Map" AllowDrop="True" Mouse.PreviewMouseDown="Map_PreviewMouseLeftButtonDown" MouseRightButtonDown="Map_MouseRightButtonDown" MouseMove="Map_MouseMove" DragEnter="Map_DragEnter" Drop="Map_Drop">
                 <Canvas.Background>
                     <ImageBrush ImageSource="Resources\Images\sv2.png" AlignmentX="Left" AlignmentY="Top" Stretch="None"/>
                 </Canvas.Background>
+                <Canvas.ContextMenu>
+                    <ContextMenu Name="contextMenu">
+                        <MenuItem Header="Ažuriraj manifestaciju" Click="UpdateManifestation_Click"> 
+                        </MenuItem>
+                        <MenuItem Header="Ukloni prikaz manifestacije" Click="RemoveManifestationIcon_Click">
+                        </MenuItem>
+                        <MenuItem Header="Obriši manifestaciju" Click="DeleteManifestation_Click">
+                        </MenuItem>
+                    </ContextMenu>
+                </Canvas.ContextMenu>
             </Canvas>
 
-            <!--Sidebar-->
-            <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200">
+            <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200" Height="545" VerticalAlignment="Top">
 
-                <!--Manifestations-->
+                <!--Manifestation Actions-->
                 <Button Name="buttonAddManifestation" Command="commands:RoutedCommands.AddManifestation" Opacity="1" ToolTip="Dodavanje nove manifestacije" Margin="5" Padding="3" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -160,7 +166,7 @@
 
                 <Separator></Separator>
 
-                <!--Types-->
+                <!--Types Actions-->
                 <Button Name="buttonAddManifestationType" Command="commands:RoutedCommands.AddType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -177,7 +183,7 @@
 
                 <Separator></Separator>
 
-                <!--Tags-->
+                <!--Tags Actions-->
                 <Button Name="buttonAddTag" Command="commands:RoutedCommands.AddTag" ToolTip="Dodavanje nove etikete"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -194,10 +200,22 @@
 
                 <Separator></Separator>
 
+                <GroupBox Header="Manifestacije" Height="275" Margin="10,0" Foreground="White">
+                    <ListView ItemsSource="{Binding Manifestations}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Id}" FontWeight="Bold" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </GroupBox>
+
             </StackPanel>
 
         </Grid>
-        
+
     </DockPanel>
 
 </Window>

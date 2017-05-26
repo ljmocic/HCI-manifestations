@@ -11,7 +11,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
     </Window.CommandBindings>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -96,7 +96,7 @@
                 <TextBlock Text="Ukloni" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
-        
-        
+
+
     </Grid>
 </Window>

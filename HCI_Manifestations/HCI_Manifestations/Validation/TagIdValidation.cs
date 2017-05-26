@@ -16,7 +16,7 @@ namespace HCI_Manifestations.Validation
             {
                 var text = value as string;
 
-                foreach (ManifestationTag tag in Database.getInstance().tags)
+                foreach (ManifestationTag tag in Database.getInstance().Tags)
                 {
                     if (tag.Id.Equals(text))
                     {

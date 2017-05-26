@@ -11,7 +11,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
     </Window.CommandBindings>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />

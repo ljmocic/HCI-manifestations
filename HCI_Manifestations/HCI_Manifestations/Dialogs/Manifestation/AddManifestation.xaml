@@ -13,7 +13,7 @@
         Title="Dodavanje manifestacije" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico" 
         ResizeMode="NoResize"
         Closing="Window_Closing">
-    
+
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
     </Window.CommandBindings>
@@ -257,7 +257,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            
+
         </Grid>
 
         <!--Save/Cancel panel-->

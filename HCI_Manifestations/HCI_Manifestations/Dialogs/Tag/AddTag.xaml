@@ -95,7 +95,7 @@
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
             </TextBox>
-        
+
         </Grid>
 
         <!--Save/Cancel-->

@@ -16,7 +16,7 @@ namespace HCI_Manifestations.Validation
             {
                 var text = value as string;
 
-                foreach (ManifestationType type in Database.getInstance().types)
+                foreach (ManifestationType type in Database.getInstance().Types)
                 {
                     if (type.Id.Equals(text))
                     {

@@ -45,7 +45,7 @@ namespace HCI_Manifestations.dialogs
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             SelectedTag = null;
             DataContext = this;
-            Tags = Database.getInstance().tags;
+            Tags = Database.getInstance().Tags;
         }
 
         #endregion

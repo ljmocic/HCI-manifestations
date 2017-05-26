@@ -193,6 +193,35 @@ namespace HCI_Manifestations.Models
                 }
             }
         }
+
+        private int x;
+        public int X
+        {
+            get { return x; }
+            set
+            {
+                if (value != x)
+                {
+                    x = value;
+                    OnPropertyChanged("X");
+                }
+            }
+        }
+
+        private int y;
+        public int Y
+        {
+            get { return y; }
+            set
+            {
+                if (value != y)
+                {
+                    y = value;
+                    OnPropertyChanged("Y");
+                }
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -216,6 +245,8 @@ namespace HCI_Manifestations.Models
             this.alcohol = alcohol;
             this.expectedPublic = expectedPublic;
             this.tags = tags;
+            this.x = -1;
+            this.y = -1;
         }
 
         public Manifestation(Manifestation manifestation)
@@ -233,6 +264,8 @@ namespace HCI_Manifestations.Models
             alcohol = manifestation.alcohol;
             expectedPublic = manifestation.expectedPublic;
             tags = new List<ManifestationTag>(manifestation.tags);
+            x = -1;
+            y = -1;
         }
         #endregion
 

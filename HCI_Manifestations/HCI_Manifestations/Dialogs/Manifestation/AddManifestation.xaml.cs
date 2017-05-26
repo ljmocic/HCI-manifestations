@@ -43,6 +43,8 @@ namespace HCI_Manifestations.dialogs
 
             Manifestation = new Manifestation();
             Manifestation.Date = DateTime.Now.Date;
+            Manifestation.X = -1;
+            Manifestation.Y = -1;
             
             autoCompleteBoxTypes.DataContext = Database.getInstance();
             comboBoxTags.DataContext = Database.getInstance();

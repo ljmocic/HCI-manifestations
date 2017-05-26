@@ -50,7 +50,7 @@ namespace HCI_Manifestations.Serialization
                 try
                 {
                     stream = File.Open(Config.TYPES_DATA, FileMode.Open);
-                    Database.getInstance().types = (ObservableCollection<ManifestationType>) formatter.Deserialize(stream);
+                    Database.getInstance().Types = (ObservableCollection<ManifestationType>) formatter.Deserialize(stream);
                 }
                 catch
                 {
@@ -75,7 +75,7 @@ namespace HCI_Manifestations.Serialization
                 try
                 {
                     stream = File.Open(Config.TAGS_DATA, FileMode.Open);
-                    Database.getInstance().tags = (ObservableCollection<ManifestationTag>) formatter.Deserialize(stream);
+                    Database.getInstance().Tags = (ObservableCollection<ManifestationTag>) formatter.Deserialize(stream);
                 }
                 catch
                 {

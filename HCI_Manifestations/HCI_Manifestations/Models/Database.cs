@@ -27,7 +27,8 @@ namespace HCI_Manifestations.Models
                 }
             }
         }
-        public ObservableCollection<ManifestationType> types;
+
+        private ObservableCollection<ManifestationType> types;
         public ObservableCollection<ManifestationType> Types
         {
             get { return types; }
@@ -40,7 +41,8 @@ namespace HCI_Manifestations.Models
                 }
             }
         }
-        public ObservableCollection<ManifestationTag> tags;
+
+        private ObservableCollection<ManifestationTag> tags;
         public ObservableCollection<ManifestationTag> Tags
         {
             get { return tags; }
@@ -51,6 +53,17 @@ namespace HCI_Manifestations.Models
                     tags = value;
                     OnPropertyChanged("Tags");
                 }
+            }
+        }
+        #endregion
+
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
         #endregion
@@ -231,15 +244,6 @@ namespace HCI_Manifestations.Models
         }
         #endregion
 
-        #region PropertyChangedNotifier
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
+        
     }
 }
