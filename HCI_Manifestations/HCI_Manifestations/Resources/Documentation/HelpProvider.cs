@@ -21,7 +21,7 @@ namespace HCI_Manifestations.Help
         }
 
         public static readonly DependencyProperty HelpKeyProperty =
-            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpProvider), new PropertyMetadata("index", HelpKey));
+            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpProvider), new PropertyMetadata("MainWindow", HelpKey));
 
         private static void HelpKey(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

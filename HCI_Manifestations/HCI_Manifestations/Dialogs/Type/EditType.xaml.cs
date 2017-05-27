@@ -123,7 +123,7 @@ namespace HCI_Manifestations.Dialogs
             }
             else
             {
-                HelpProvider.ShowHelp(GetType().Name, this);
+                HelpProvider.ShowHelp("Type", this);
             }
         }
        

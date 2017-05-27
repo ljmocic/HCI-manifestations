@@ -9,7 +9,6 @@
         mc:Ignorable="d"
         Title="Menadžer manifestacija" Height="625" Width="1050" Icon="Resources\Icons\favicon.ico" 
         ResizeMode="NoResize"
-        help:HelpProvider.HelpKey="home"
         Closing="Window_Closing">
 
     <Window.Resources>

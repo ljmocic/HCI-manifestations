@@ -124,7 +124,7 @@ namespace HCI_Manifestations.dialogs
             }
             else
             {
-                HelpProvider.ShowHelp(GetType().Name, this);
+                HelpProvider.ShowHelp("Tag", this);
             }
         }
     }

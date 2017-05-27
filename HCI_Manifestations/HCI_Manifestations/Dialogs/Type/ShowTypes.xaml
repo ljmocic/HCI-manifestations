@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <!--Search-->
-        <TextBox Name="textBoxId" help:HelpProvider.HelpKey="typeIdSearch" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
+        <TextBox Name="textBoxId" help:HelpProvider.HelpKey="Type" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake tipa manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
         <Label Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,-0.7"/>
         <Button Name="buttonSearch" ToolTip="Pretraga tipova manifestacije" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,2,2,48"  Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">

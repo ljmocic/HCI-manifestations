@@ -182,11 +182,6 @@ namespace HCI_Manifestations
             }
         }
 
-        private bool Map_IconOverlapping(int x, int y)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             startPoint = e.GetPosition(null);

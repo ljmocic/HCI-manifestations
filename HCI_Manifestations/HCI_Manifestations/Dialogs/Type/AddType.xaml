@@ -36,7 +36,7 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" help:HelpProvider.HelpKey="typeId" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" help:HelpProvider.HelpKey="Type" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -66,7 +66,7 @@
 
             <!--Name-->
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
-            <TextBox Name="textBoxName" help:HelpProvider.HelpKey="typeName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
+            <TextBox Name="textBoxName" help:HelpProvider.HelpKey="Type" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
@@ -130,7 +130,7 @@
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="3" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" help:HelpProvider.HelpKey="typeDescription" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
+            <TextBox Name="textBoxDescription" help:HelpProvider.HelpKey="Type" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
