@@ -1,4 +1,5 @@
 ﻿using HCI_Manifestations.Dialogs;
+using HCI_Manifestations.Dialogs.Type;
 using HCI_Manifestations.Help;
 using HCI_Manifestations.Models;
 using System;
@@ -66,8 +67,29 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Database.DeleteType(SelectedType);
+            int counter = 0;
+            ObservableCollection<Manifestation> manifestations = Database.getInstance().Manifestations;
+            foreach (Manifestation manifestation in manifestations)
+            {
+                if (manifestation.Type.Id.Equals(SelectedType.Id))
+                {
+                    counter++;
+                }
+            }
+
+            if (counter > 0)
+            {
+                DeleteActionHandler handler = new DeleteActionHandler(SelectedType);
+                handler.ShowDialog();
+            }
+            else
+            {
+                Database.DeleteType(SelectedType);
+            }
+
         }
+
+        
 
         private void typesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

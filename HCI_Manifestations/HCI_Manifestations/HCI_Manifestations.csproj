@@ -105,6 +105,9 @@
     <Compile Include="Dialogs\Tag\EditTag.xaml.cs">
       <DependentUpon>EditTag.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\Type\DeleteActionHandler.xaml.cs">
+      <DependentUpon>DeleteActionHandler.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Type\EditType.xaml.cs">
       <DependentUpon>EditType.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\Tag\EditTag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Type\DeleteActionHandler.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

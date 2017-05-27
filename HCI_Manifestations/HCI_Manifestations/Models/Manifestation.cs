@@ -264,8 +264,8 @@ namespace HCI_Manifestations.Models
             alcohol = manifestation.alcohol;
             expectedPublic = manifestation.expectedPublic;
             tags = new List<ManifestationTag>(manifestation.tags);
-            x = -1;
-            y = -1;
+            x = manifestation.X;
+            y = manifestation.Y;
         }
         #endregion
 
