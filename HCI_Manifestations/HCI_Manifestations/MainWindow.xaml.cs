@@ -166,11 +166,25 @@ namespace HCI_Manifestations
             {
                 Point dropPosition = e.GetPosition(Map);
                 Manifestation manifestationPin = e.Data.GetData("manifestation") as Manifestation;
-                manifestationPin.X = (int)dropPosition.X - 16;
-                manifestationPin.Y = (int)dropPosition.Y - 16;
+
+                if (Manifestation_Click((int)dropPosition.X, (int)dropPosition.Y) != null)
+                {
+                    manifestationPin.X = (int)dropPosition.X - 48;
+                    manifestationPin.Y = (int)dropPosition.Y - 48;
+                }
+                else
+                {
+                    manifestationPin.X = (int)dropPosition.X - 16;
+                    manifestationPin.Y = (int)dropPosition.Y - 16;
+                }
                 Database.UpdateManifestation(manifestationPin.Id, manifestationPin);
                 ManifestationPins_Draw();
             }
+        }
+
+        private bool Map_IconOverlapping(int x, int y)
+        {
+            throw new NotImplementedException();
         }
 
         private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
