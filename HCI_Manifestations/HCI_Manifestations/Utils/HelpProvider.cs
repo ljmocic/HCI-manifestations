@@ -20,8 +20,7 @@ namespace HCI_Manifestations.Help
             obj.SetValue(HelpKeyProperty, value);
         }
 
-        public static readonly DependencyProperty HelpKeyProperty =
-            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpProvider), new PropertyMetadata("MainWindow", HelpKey));
+        public static readonly DependencyProperty HelpKeyProperty = DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpProvider), new PropertyMetadata("MainWindow", HelpKey));
 
         private static void HelpKey(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

@@ -6,7 +6,7 @@
         Icon="..\Resources\Icons\favicon.ico" 
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         mc:Ignorable="d"
-        Title="ShowHelp" Height="400" Width="600">
+        Title="Pomoć" Height="400" Width="600">
     <Grid>
         <WebBrowser Name="HelpBrowser"></WebBrowser>
     </Grid>

@@ -8,8 +8,7 @@
         xmlns:commands="clr-namespace:HCI_Manifestations.Commands"
         mc:Ignorable="d"
         Title="Menadžer manifestacija" Height="625" Width="1050" Icon="Resources\Icons\favicon.ico" 
-        ResizeMode="NoResize"
-        Closing="Window_Closing">
+        ResizeMode="NoResize">
 
     <Window.Resources>
         <SolidColorBrush x:Key="White" Color="#000000" Opacity="0.5" />
@@ -25,7 +24,7 @@
         <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>
     </Window.CommandBindings>
 
-    <DockPanel LastChildFill="True">
+    <DockPanel>
 
         <Menu DockPanel.Dock ="Top">
             <Menu.ItemsPanel>
@@ -72,8 +71,8 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Pomoć" ToolTip="Prikaz pomoćne dokumentacije" HorizontalAlignment="Right"  InputGestureText="F1">
-                <MenuItem Header="_Dokumentacija" InputGestureText="Ctrl+D">
+            <MenuItem Header="_Pomoć" ToolTip="Prikaz pomoćne dokumentacije" HorizontalAlignment="Right">
+                <MenuItem Header="_Dokumentacija" InputGestureText="F1" Click="Help_Click">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\document.png" Width="12" Height="12"/>
                     </MenuItem.Icon>

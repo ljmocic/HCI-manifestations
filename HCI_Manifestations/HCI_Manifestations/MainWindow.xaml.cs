@@ -239,16 +239,6 @@ namespace HCI_Manifestations
             return null;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda zatvaranja aplikacije", MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-
-            }
-        }
-
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             IInputElement focusedControl = FocusManager.GetFocusedElement(this);
@@ -307,5 +297,11 @@ namespace HCI_Manifestations
             ManifestationPins_Draw();
         }
         #endregion
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHelp help = new ShowHelp("MainWindow", this);
+            help.Show();
+        }
     }
 }
