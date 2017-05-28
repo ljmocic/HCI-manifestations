@@ -34,7 +34,7 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" help:HelpProvider.HelpKey="Tag" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error" ToolTip="Unos etikete manifestacija" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
+            <TextBox Name="textBoxId" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error" ToolTip="Unos etikete manifestacija" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -68,7 +68,7 @@
 
             <!--Desription-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" help:HelpProvider.HelpKey="Tag" TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
+            <TextBox Name="textBoxDescription" TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>

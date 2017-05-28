@@ -30,7 +30,7 @@
 
         <!--Search-->
         <Label x:Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="textBoxId" help:HelpProvider.HelpKey="tagIdSearch" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake etikete za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
+        <TextBox Name="textBoxId" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake etikete za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,4,113,4"/>
         <Button Name="buttonSearch" ToolTip="Pretraga etiketa" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,2,2,48"  Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>

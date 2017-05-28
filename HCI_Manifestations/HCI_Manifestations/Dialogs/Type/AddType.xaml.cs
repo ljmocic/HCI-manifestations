@@ -103,16 +103,7 @@ namespace HCI_Manifestations.dialogs
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
-            if (focusedControl is DependencyObject)
-            {
-                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp(str, this);
-            }
-            else
-            {
-                HelpProvider.ShowHelp("Type", this);
-            }
+            HelpProvider.ShowHelp("Type", this);
         }
         #endregion
     }
