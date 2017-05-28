@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +106,9 @@ namespace HCI_Manifestations.Models
                 if (value != iconPath)
                 {
                     iconPath = value;
+                    string newPath = Directory.GetCurrentDirectory() + "\\" + @iconPath.Split('\\').Last();
+                    File.Copy(@iconPath, @newPath);
+                    iconPath = newPath;
                     OnPropertyChanged("IconPath");
                 }
             }
@@ -238,6 +242,8 @@ namespace HCI_Manifestations.Models
             this.description = description;
             this.date = date;
             this.type = type;
+            string newPath = Directory.GetCurrentDirectory() + @iconPath.Split('/').Last();
+            File.Copy(@iconPath, @newPath);
             this.iconPath = iconPath;
             this.smokingInside = smokingInside;
             this.smokingOutside = smokingOutside;

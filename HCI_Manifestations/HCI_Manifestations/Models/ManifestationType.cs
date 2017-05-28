@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,9 @@ namespace HCI_Manifestations.Models
                 if (value != iconPath)
                 {
                     iconPath = value;
+                    string newPath = Directory.GetCurrentDirectory() + "\\" + @iconPath.Split('\\').Last();
+                    File.Copy(@iconPath, @newPath);
+                    iconPath = newPath;
                     OnPropertyChanged("IconPath");
                 }
             }
