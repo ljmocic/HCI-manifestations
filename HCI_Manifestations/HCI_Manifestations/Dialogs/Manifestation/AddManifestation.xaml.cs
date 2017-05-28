@@ -22,10 +22,7 @@ namespace HCI_Manifestations.dialogs
 
     public partial class AddManifestation : Window
     {
-
         #region Attributes
-        bool saved;
-        bool hasError;
         private Manifestation manifestation;
         public Manifestation Manifestation
         {
@@ -33,6 +30,7 @@ namespace HCI_Manifestations.dialogs
             set { manifestation = value; }
         }
         
+        bool hasError;
         #endregion
 
         #region Constructors
@@ -50,10 +48,8 @@ namespace HCI_Manifestations.dialogs
             comboBoxTags.DataContext = Database.getInstance();
 
             DataContext = Manifestation;
-
-            saved = false;
-            hasError = false;
             
+            hasError = false;
         }
         #endregion
 
@@ -61,7 +57,7 @@ namespace HCI_Manifestations.dialogs
         private void loadIcon_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
+            dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
             dialog.ShowDialog();
             textBoxIconPath.Text = dialog.FileName;
         }
@@ -109,7 +105,6 @@ namespace HCI_Manifestations.dialogs
                 }
 
                 Database.AddManifestation(manifestation);
-                saved = true;
                 Close();
             }
 
@@ -118,18 +113,6 @@ namespace HCI_Manifestations.dialogs
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            if (!Fields_Empty() && !saved)
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći ? ", "Potvrda odustajanja", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
         }
 
         private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
@@ -152,28 +135,6 @@ namespace HCI_Manifestations.dialogs
         private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Manifestation.Type = new ManifestationType((ManifestationType)autoCompleteBoxTypes.SelectedItem);
-        }
-
-        private bool Fields_Empty()
-        {
-            if (string.IsNullOrWhiteSpace(textBoxId.Text) &&
-                string.IsNullOrWhiteSpace(textBoxDescription.Text) &&
-                string.IsNullOrWhiteSpace(textBoxIconPath.Text) &&
-                string.IsNullOrWhiteSpace(textBoxName.Text) &&
-                string.IsNullOrWhiteSpace(textBoxPublic.Text) &&
-                string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) &&
-                string.IsNullOrWhiteSpace(comboBoxPrices.Text) &&
-                string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text) &&
-                checkBoxHandicap.IsChecked == false &&
-                checkBoxInside.IsChecked == false &&
-                checkBoxOutside.IsChecked == false)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
@@ -225,8 +186,6 @@ namespace HCI_Manifestations.dialogs
             }
         }
 
-        #endregion
-
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             IInputElement focusedControl = FocusManager.GetFocusedElement(this);
@@ -240,5 +199,6 @@ namespace HCI_Manifestations.dialogs
                 HelpProvider.ShowHelp("Manifestation", this);
             }
         }
+        #endregion
     }
 }

@@ -8,8 +8,7 @@
         xmlns:help="clr-namespace:HCI_Manifestations.Help"
         mc:Ignorable="d"
         Title="Dodavanje tipa manifestacije" Height="350" Width="550" Icon="../../Resources/Icons/favicon.ico" 
-        ResizeMode="NoResize"
-        Closing="Window_Closing">
+        ResizeMode="NoResize">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>

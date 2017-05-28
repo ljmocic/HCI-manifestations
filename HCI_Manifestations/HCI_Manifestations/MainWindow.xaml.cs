@@ -44,30 +44,17 @@ namespace HCI_Manifestations
         private Point startPoint = new Point();
         #endregion
 
-        #region PropertyChangedNotifier
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
-
+        
         #region Constructors
         public MainWindow()
         {
-            //string temp = Directory.GetCurrentDirectory();
-            //Console.WriteLine(temp);
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Database.loadData();
 
             DataContext = this;
             Manifestations = Database.getInstance().Manifestations;
             ManifestationPins_Draw();
-
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
         #endregion
 
@@ -277,6 +264,17 @@ namespace HCI_Manifestations
                 }
             }
         }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            ManifestationPins_Draw();
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHelp help = new ShowHelp("MainWindow", this);
+            help.Show();
+        }
         #endregion
 
         #region Context Menu Actions
@@ -300,11 +298,16 @@ namespace HCI_Manifestations
             ManifestationPins_Draw();
         }
         #endregion
-
-        private void Help_Click(object sender, RoutedEventArgs e)
+        
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
         {
-            ShowHelp help = new ShowHelp("MainWindow", this);
-            help.Show();
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
+        #endregion
     }
 }

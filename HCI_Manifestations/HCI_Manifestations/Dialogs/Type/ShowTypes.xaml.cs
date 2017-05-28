@@ -88,9 +88,7 @@ namespace HCI_Manifestations.dialogs
             }
 
         }
-
         
-
         private void typesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SelectedType != null)
@@ -126,18 +124,6 @@ namespace HCI_Manifestations.dialogs
             }
             textBoxId.Text = "";
         }
-        #endregion
-
-        #region PropertyChangedNotifier
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
 
         private void textBoxId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -160,5 +146,17 @@ namespace HCI_Manifestations.dialogs
                 HelpProvider.ShowHelp("ShowTypes", this);
             }
         }
+        #endregion
+
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
     }
 }

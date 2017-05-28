@@ -21,22 +21,23 @@ namespace HCI_Manifestations.Dialogs
     public partial class EditType : Window
     {
         #region Attributes
-        private string oldId;
         private ManifestationType type;
         public ManifestationType Type
         {
             get { return type; }
             set { type = value; }
         }
+
+        private string oldId;
         #endregion
 
         #region Constructors
         public EditType(string typeId)
         {
-            oldId = typeId;
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
+            oldId = typeId;
             type = new ManifestationType(Database.GetType(typeId));
             DataContext = type;
         }
@@ -46,7 +47,7 @@ namespace HCI_Manifestations.Dialogs
         private void buttonBrowse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
+            dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
             dialog.ShowDialog();
             textBoxIconPath.Text = dialog.FileName;
         }
@@ -71,30 +72,6 @@ namespace HCI_Manifestations.Dialogs
             Close();
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            if (!Fields_Empty() && Data_Modified())
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
-        private bool Fields_Empty()
-        {
-            if (string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(textBoxName.Text) && string.IsNullOrWhiteSpace(textBoxDescription.Text) && string.IsNullOrWhiteSpace(textBoxIconPath.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private bool Data_Modified()
         {
             // TODO
@@ -111,7 +88,6 @@ namespace HCI_Manifestations.Dialogs
             */
             return false;
         }
-        #endregion
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -126,6 +102,6 @@ namespace HCI_Manifestations.Dialogs
                 HelpProvider.ShowHelp("Type", this);
             }
         }
-       
+        #endregion
     }
 }

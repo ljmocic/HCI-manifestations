@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs.Type"
         mc:Ignorable="d"
-        Icon="../../Resources/Icons/favicon.ico"
+        Icon="../Resources/Icons/favicon.ico"
         ResizeMode="NoResize"
         Title="Ažuriranje manifestacija" Height="150" Width="350">
     <Grid>
         <Button Name="cancel" ToolTip="Odustani od uklanjanja odabranog tipa" Height="30" Width="100" Click="cancel_Click" HorizontalAlignment="Left" Margin="223,75,0,0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
-                <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <Image Source="..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Odustani" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
         <Button Name="delete" ToolTip="Obriši sve manifestacije povezane sa odabranim tipom" Height="30" Width="100" Click="delete_Click" HorizontalAlignment="Left" Margin="118,75,0,0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
-                <Image Source="..\..\Resources\Icons\delete.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <Image Source="..\Resources\Icons\delete.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Obriši" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
         <Button Name="update" ToolTip="Ažuriraj svih povezanih manifestacija" Height="30" Width="100" Click="update_Click" HorizontalAlignment="Left" Margin="13,75,0,0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
-                <Image Source="..\..\Resources\Icons\edit.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <Image Source="..\Resources\Icons\edit.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Ažuriraj" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>

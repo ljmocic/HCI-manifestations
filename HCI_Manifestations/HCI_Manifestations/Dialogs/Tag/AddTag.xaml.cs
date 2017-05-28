@@ -20,14 +20,14 @@ namespace HCI_Manifestations.dialogs
     public partial class AddTag : Window
     {
         #region Attributes
-        bool saved;
-        bool hasError;
         private ManifestationTag tag;
         public ManifestationTag mTag // Tag name Overshadows Tag from .NET library
         {
             get { return tag; }
             set { tag = value; }
         }
+        
+        bool hasError;
         #endregion
 
         #region Constructors
@@ -38,7 +38,6 @@ namespace HCI_Manifestations.dialogs
 
             tag = new ManifestationTag();
             DataContext = tag;
-            saved = false;
             hasError = false;
         }
         #endregion
@@ -56,7 +55,6 @@ namespace HCI_Manifestations.dialogs
             if (validated)
             {
                 Database.AddTag(mTag);
-                saved = true;
                 Close();
             }
             else
@@ -71,31 +69,6 @@ namespace HCI_Manifestations.dialogs
             Close();
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            if (!Fields_Empty() && !saved)
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-        #endregion
-
-        private bool Fields_Empty()
-        {
-            if (string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(mTag.Color) && string.IsNullOrWhiteSpace(textBoxDescription.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
@@ -108,7 +81,7 @@ namespace HCI_Manifestations.dialogs
 
         private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(textBoxId.Text.Length > 0)
+            if (textBoxId.Text.Length > 0)
                 buttonSave.IsEnabled = true;
             else
                 buttonSave.IsEnabled = false;
@@ -127,5 +100,6 @@ namespace HCI_Manifestations.dialogs
                 HelpProvider.ShowHelp("Tag", this);
             }
         }
+        #endregion
     }
 }

@@ -57,17 +57,6 @@ namespace HCI_Manifestations.Models
         }
         #endregion
 
-        #region PropertyChangedNotifier
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
-
         #region Singleton
         private Database()
         {
@@ -244,5 +233,15 @@ namespace HCI_Manifestations.Models
         }
         #endregion
 
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
     }
 }

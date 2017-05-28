@@ -71,7 +71,7 @@ namespace HCI_Manifestations.Models
             }
         }
         #endregion
-
+        
         #region Constructors
         public ManifestationType()
         {
@@ -95,7 +95,7 @@ namespace HCI_Manifestations.Models
             }
         }
         #endregion
-
+        
         #region PropertyChangedNotifier
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;

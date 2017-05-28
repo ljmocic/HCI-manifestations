@@ -20,13 +20,14 @@ namespace HCI_Manifestations.Dialogs
     public partial class EditTag : Window
     {
         #region Attributes
-        private string oldId;
         private ManifestationTag tag;
         public ManifestationTag mTag
         {
             get { return tag; }
             set { tag = value; }
         }
+
+        private string oldId;
         #endregion
 
         #region Constructors
@@ -37,8 +38,8 @@ namespace HCI_Manifestations.Dialogs
 
             oldId = tagId;
 
-            tag = new ManifestationTag(Database.GetTag(tagId));
-            if(tag.Color != null)
+            mTag = new ManifestationTag(Database.GetTag(tagId));
+            if(mTag.Color != null)
                 ColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(tag.Color);
             DataContext = tag;
         }
@@ -71,30 +72,6 @@ namespace HCI_Manifestations.Dialogs
             Close();
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            if (!Fields_Empty() && Data_Modified())
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-        
-        private void AreYouSureCheck()
-        {
-            if (!Fields_Empty() && Data_Modified())
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.Yes)
-                {
-                    Close();
-                }
-            }
-        }
-
         private bool Fields_Empty()
         {
             if (string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(mTag.Color) && string.IsNullOrWhiteSpace(textBoxDescription.Text))
@@ -122,7 +99,6 @@ namespace HCI_Manifestations.Dialogs
             */
             return false;
         }
-        #endregion
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -137,5 +113,6 @@ namespace HCI_Manifestations.Dialogs
                 HelpProvider.ShowHelp("Tag", this);
             }
         }
+        #endregion
     }
 }

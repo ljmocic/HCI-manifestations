@@ -281,7 +281,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Documentation\error.html">
+    <Content Include="Resources\Documentation\Error.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Documentation\MainWindow.html">

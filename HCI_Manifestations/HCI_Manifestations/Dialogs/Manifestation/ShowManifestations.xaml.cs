@@ -22,7 +22,6 @@ namespace HCI_Manifestations.dialogs
     public partial class ShowManifestations: Window, INotifyPropertyChanged
     {
         #region Attributes
-        public Manifestation SelectedManifestation { get; set; }
         private ObservableCollection<Manifestation> manifestations;
         public ObservableCollection<Manifestation> Manifestations
         {
@@ -36,22 +35,22 @@ namespace HCI_Manifestations.dialogs
                 }
             }
         }
-        #endregion
 
+        public Manifestation SelectedManifestation { get; set; }
+        #endregion
+        
+        
         #region Constructor
         public ShowManifestations()
         {
             InitializeComponent();
-            SelectedManifestation = null;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            DataContext = this;
-            
-            comboBoxType.DataContext = Database.getInstance();
 
+            SelectedManifestation = null;
+            DataContext = this;
+            comboBoxType.DataContext = Database.getInstance();
             Manifestations = Database.getInstance().Manifestations;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region Event handlers
@@ -140,6 +139,28 @@ namespace HCI_Manifestations.dialogs
             }
 
             Manifestations = result;
+        }
+
+        private void searchInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                buttonSearch_Click(null, null);
+            }
+        }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+            else
+            {
+                HelpProvider.ShowHelp("ShowManifestations", this);
+            }
         }
         #endregion
 
@@ -266,6 +287,8 @@ namespace HCI_Manifestations.dialogs
         #endregion
 
         #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -274,27 +297,5 @@ namespace HCI_Manifestations.dialogs
             }
         }
         #endregion
-
-        private void searchInput_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                buttonSearch_Click(null, null);
-            }
-        }
-
-        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
-            if (focusedControl is DependencyObject)
-            {
-                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp(str, this);
-            }
-            else
-            {
-                HelpProvider.ShowHelp("ShowManifestations", this);
-            }
-        }
     }
 }

@@ -20,9 +20,7 @@ namespace HCI_Manifestations.dialogs
 {
     public partial class AddType : Window
     {
-
         #region Attributes
-        bool saved;
         bool hasError;
         private ManifestationType type;
         public ManifestationType Type
@@ -40,7 +38,6 @@ namespace HCI_Manifestations.dialogs
 
             type = new ManifestationType();
             DataContext = type;
-            saved = false;
             hasError = false;
         }
 
@@ -52,7 +49,6 @@ namespace HCI_Manifestations.dialogs
             type = new ManifestationType();
             type.Id = id;
             DataContext = type;
-            saved = false;
             hasError = false;
         }
         #endregion
@@ -61,7 +57,7 @@ namespace HCI_Manifestations.dialogs
         private void buttonBrowse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
+            dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
             dialog.ShowDialog();
             textBoxIconPath.Text = dialog.FileName;
             Type.IconPath = dialog.FileName;
@@ -74,7 +70,6 @@ namespace HCI_Manifestations.dialogs
             if (validated)
             {
                 Database.AddType(type);
-                saved = true;
                 Close();
             }
             else
@@ -86,31 +81,6 @@ namespace HCI_Manifestations.dialogs
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            if (!Fields_Empty() && !saved)
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-        #endregion
-
-        private bool Fields_Empty()
-        {
-            if (string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(textBoxName.Text) && string.IsNullOrWhiteSpace(textBoxDescription.Text) && string.IsNullOrWhiteSpace(textBoxIconPath.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
@@ -144,6 +114,6 @@ namespace HCI_Manifestations.dialogs
                 HelpProvider.ShowHelp("Type", this);
             }
         }
-        
+        #endregion
     }
 }

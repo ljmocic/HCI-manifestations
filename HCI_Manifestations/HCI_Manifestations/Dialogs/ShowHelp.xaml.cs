@@ -25,7 +25,7 @@ namespace HCI_Manifestations.Dialogs
             string path = string.Format("{0}/Resources/Documentation/{1}.html", Directory.GetCurrentDirectory(), key);
 
             if (!File.Exists(path))
-                key = "error";
+                key = "Error";
             
             Uri url = new Uri(string.Format("file:///{0}/Resources/Documentation/{1}.html", Directory.GetCurrentDirectory(), key));
 

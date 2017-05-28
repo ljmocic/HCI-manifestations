@@ -10,8 +10,7 @@
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         mc:Ignorable="d"
         Title="EditManifestation" Height="550" Width="700" Icon="../../Resources/Icons/favicon.ico"
-        ResizeMode="NoResize"
-        Closing="Window_Closing">
+        ResizeMode="NoResize">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="Help_Executed"/>

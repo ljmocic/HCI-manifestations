@@ -38,11 +38,10 @@ namespace HCI_Manifestations.Dialogs
         #region Constructors
         public EditManifestation(string manifestationId)
         {
-            oldId = manifestationId;
-
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
+            oldId = manifestationId;
             Manifestation = new Manifestation(Database.GetManifestation(manifestationId));
             DataContext = Manifestation;
 
@@ -76,7 +75,6 @@ namespace HCI_Manifestations.Dialogs
             }
             
             hasError = false;
-
         }
         #endregion
         
@@ -84,7 +82,7 @@ namespace HCI_Manifestations.Dialogs
         private void loadIcon_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
+            dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
             dialog.ShowDialog();
             textBoxIconPath.Text = dialog.FileName;
         }
@@ -135,18 +133,6 @@ namespace HCI_Manifestations.Dialogs
             Close();
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            if (!Fields_Empty() && Data_Modified())
-            {
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Izmene nisu sačuvane, da li želite izaći?", "Potvrda odustajanja", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
         private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
         {
             if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
@@ -176,29 +162,7 @@ namespace HCI_Manifestations.Dialogs
         {
             Manifestation.Type = new ManifestationType((ManifestationType)autoCompleteBoxTypes.SelectedItem);
         }
-        
-        private bool Fields_Empty()
-        {
-            if (string.IsNullOrWhiteSpace(textBoxId.Text) &&
-                string.IsNullOrWhiteSpace(textBoxDescription.Text) && 
-                string.IsNullOrWhiteSpace(textBoxIconPath.Text) && 
-                string.IsNullOrWhiteSpace(textBoxName.Text) && 
-                string.IsNullOrWhiteSpace(textBoxPublic.Text) &&
-                string.IsNullOrWhiteSpace(comboBoxAlcohol.Text) &&
-                string.IsNullOrWhiteSpace(comboBoxPrices.Text) && 
-                string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text) &&
-                checkBoxHandicap.IsChecked == false &&
-                checkBoxInside.IsChecked == false &&
-                checkBoxOutside.IsChecked == false)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
+  
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
@@ -207,6 +171,14 @@ namespace HCI_Manifestations.Dialogs
                 hasError = false;
 
             buttonSave.IsEnabled = !hasError;
+        }
+
+        private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBoxId.Text.Length > 0)
+                buttonSave.IsEnabled = true;
+            else
+                buttonSave.IsEnabled = false;
         }
 
         private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
@@ -229,35 +201,6 @@ namespace HCI_Manifestations.Dialogs
             buttonSave.IsEnabled = !hasError;
         }
 
-        private bool Data_Modified()
-        {
-            var compareManifestation = Database.GetManifestation(Manifestation.Id);
-            /*
-            if (Manifestation.Name.Equals(compareManifestation.Name) &&
-                Manifestation.Description.Equals(compareManifestation.Description) &&
-                Manifestation.Date.Equals(compareManifestation.Date) &&
-                Manifestation.Alcohol.Equals(compareManifestation.Alcohol) &&
-                Manifestation.ExpectedPublic.Equals(compareManifestation.ExpectedPublic) &&
-                Manifestation.Handicap == compareManifestation.Handicap &&
-                Manifestation.SmokingInside == compareManifestation.SmokingInside &&
-                Manifestation.SmokingOutside == compareManifestation.SmokingOutside &&
-                -- TODO
-                Manifestation.Tags.Equals(compareManifestation.Tags) &&
-                Manifestation.Type.Id.Equals(compareManifestation.Type.Id) &&
-                -- 
-                Manifestation.Price.Equals(compareManifestation.Price)
-                )
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-            */
-            return false;
-        }
-
         private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -267,15 +210,6 @@ namespace HCI_Manifestations.Dialogs
                     buttonAddNewType_Click(null, null);
                 }
             }
-        }
-        #endregion
-
-        private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (textBoxId.Text.Length > 0)
-                buttonSave.IsEnabled = true;
-            else
-                buttonSave.IsEnabled = false;
         }
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -291,5 +225,6 @@ namespace HCI_Manifestations.Dialogs
                 HelpProvider.ShowHelp("Manifestation", this);
             }
         }
+        #endregion
     }
 }

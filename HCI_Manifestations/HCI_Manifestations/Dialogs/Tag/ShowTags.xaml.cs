@@ -22,7 +22,6 @@ namespace HCI_Manifestations.dialogs
     public partial class ShowTags : Window, INotifyPropertyChanged
     {
         #region Attributes
-        public ManifestationTag SelectedTag { get; set; }
         private ObservableCollection<ManifestationTag> tags;
         public ObservableCollection<ManifestationTag> Tags
         {
@@ -36,6 +35,8 @@ namespace HCI_Manifestations.dialogs
                 }
             }
         }
+
+        public ManifestationTag SelectedTag { get; set; }
         #endregion
 
         #region Constructors
@@ -43,6 +44,7 @@ namespace HCI_Manifestations.dialogs
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
             SelectedTag = null;
             DataContext = this;
             Tags = Database.getInstance().Tags;
@@ -102,18 +104,6 @@ namespace HCI_Manifestations.dialogs
             Tags = Database.getInstance().Tags;
             textBoxId.Text = "";
         }
-        #endregion
-
-        #region PropertyChangedHandler
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
 
         private void textBoxId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -136,5 +126,17 @@ namespace HCI_Manifestations.dialogs
                 HelpProvider.ShowHelp("ShowTags", this);
             }
         }
+        #endregion
+
+        #region PropertyChangedHandler
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
     }
 }

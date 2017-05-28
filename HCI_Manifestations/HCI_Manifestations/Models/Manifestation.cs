@@ -107,7 +107,10 @@ namespace HCI_Manifestations.Models
                 {
                     iconPath = value;
                     string newPath = Directory.GetCurrentDirectory() + "\\" + @iconPath.Split('\\').Last();
-                    File.Copy(@iconPath, @newPath);
+                    if (!File.Exists(newPath))
+                    {
+                        File.Copy(@iconPath, @newPath, true);
+                    }
                     iconPath = newPath;
                     OnPropertyChanged("IconPath");
                 }
@@ -231,7 +234,7 @@ namespace HCI_Manifestations.Models
         #region Constructors
         public Manifestation()
         {
-            tags = new List<ManifestationTag>();
+            Tags = new List<ManifestationTag>();
         }
 
         public Manifestation(string id, string name, string description, DateTime date, ManifestationType type, string iconPath,
@@ -243,7 +246,10 @@ namespace HCI_Manifestations.Models
             this.date = date;
             this.type = type;
             string newPath = Directory.GetCurrentDirectory() + @iconPath.Split('/').Last();
-            File.Copy(@iconPath, @newPath);
+            if (!File.Exists(newPath))
+            {
+                File.Copy(@iconPath, @newPath, true);
+            }
             this.iconPath = iconPath;
             this.smokingInside = smokingInside;
             this.smokingOutside = smokingOutside;

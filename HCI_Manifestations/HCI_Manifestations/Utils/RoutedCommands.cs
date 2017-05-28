@@ -80,4 +80,3 @@ namespace HCI_Manifestations.Commands
             );
     }
 }
-
