@@ -30,7 +30,10 @@ namespace HCI_Manifestations.dialogs
             set { manifestation = value; }
         }
         
-        bool hasError;
+        private bool idError;
+        private bool nameError;
+        private bool descriptionError;
+        private bool publicError;
         #endregion
 
         #region Constructors
@@ -49,7 +52,10 @@ namespace HCI_Manifestations.dialogs
 
             DataContext = Manifestation;
             
-            hasError = false;
+            idError = false;
+            nameError = false;
+            descriptionError = false;
+            publicError = false;
         }
         #endregion
 
@@ -79,10 +85,12 @@ namespace HCI_Manifestations.dialogs
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             // Force revalidation
+            idError = false; nameError = false;  descriptionError = false;  publicError = false;
             textBoxId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textBoxName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textBoxDescription.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            
+            textBoxPublic.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
             // Type validation
             if (autoCompleteBoxTypes.SelectedItem == null
                 || string.IsNullOrEmpty(autoCompleteBoxTypes.Text)
@@ -94,7 +102,10 @@ namespace HCI_Manifestations.dialogs
                 return;
             }
 
-            if (!hasError)
+            if (idError == false &&
+                nameError == false &&
+                descriptionError == false &&
+                publicError == false)
             {
                 manifestation.Type = Database.GetType(autoCompleteBoxTypes.Text);
 
@@ -140,31 +151,25 @@ namespace HCI_Manifestations.dialogs
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
-
-            buttonSave.IsEnabled = !hasError;
+                idError = true;
         }
 
         private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
-
-            buttonSave.IsEnabled = !hasError;
+                nameError = true;
         }
 
         private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
+                descriptionError = true;
+        }
 
-            buttonSave.IsEnabled = !hasError;
+        private void textBoxPublic_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                publicError = true;
         }
 
         private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)

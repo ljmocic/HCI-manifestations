@@ -24,15 +24,19 @@ namespace HCI_Manifestations.Dialogs
     public partial class EditManifestation : Window
     {
         #region Attributes
-        private bool hasError;
-        private string oldId;
         private Manifestation manifestation;
         public Manifestation Manifestation
         {
             get { return manifestation; }
             set { manifestation = value; }
         }
-        
+
+        private string oldId;
+
+        private bool idError;
+        private bool nameError;
+        private bool descriptionError;
+        private bool publicError;
         #endregion
 
         #region Constructors
@@ -73,8 +77,11 @@ namespace HCI_Manifestations.Dialogs
                     }
                 }
             }
-            
-            hasError = false;
+
+            idError = false;
+            nameError = false;
+            descriptionError = false;
+            publicError = false;
         }
         #endregion
         
@@ -103,7 +110,16 @@ namespace HCI_Manifestations.Dialogs
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(autoCompleteBoxTypes.Text)
+            // Force revalidation
+            idError = false; nameError = false; descriptionError = false; publicError = false;
+            textBoxId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDescription.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxPublic.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            // Type validation
+            if (autoCompleteBoxTypes.SelectedItem == null
+                || string.IsNullOrEmpty(autoCompleteBoxTypes.Text)
                 || Database.GetType(autoCompleteBoxTypes.Text) == null)
             {
                 System.Windows.MessageBox.Show("Odabir tipa je obavezan!");
@@ -112,12 +128,15 @@ namespace HCI_Manifestations.Dialogs
                 return;
             }
 
-            if (!hasError)
+            if (idError == false &&
+                nameError == false &&
+                descriptionError == false &&
+                publicError == false)
             {
                 manifestation.Type = Database.GetType(autoCompleteBoxTypes.Text);
 
                 // Set the default type icon
-                if (textBoxIconPath.Text == null || string.IsNullOrWhiteSpace(textBoxIconPath.Text))
+                if (string.IsNullOrEmpty(textBoxIconPath.Text) || string.IsNullOrWhiteSpace(textBoxIconPath.Text))
                 {
                     manifestation.IconPath = manifestation.Type.IconPath;
                 }
@@ -162,15 +181,29 @@ namespace HCI_Manifestations.Dialogs
         {
             Manifestation.Type = new ManifestationType((ManifestationType)autoCompleteBoxTypes.SelectedItem);
         }
-  
+
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
+                idError = true;
+        }
 
-            buttonSave.IsEnabled = !hasError;
+        private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                nameError = true;
+        }
+
+        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                descriptionError = true;
+        }
+
+        private void textBoxPublic_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                publicError = true;
         }
 
         private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
@@ -179,26 +212,6 @@ namespace HCI_Manifestations.Dialogs
                 buttonSave.IsEnabled = true;
             else
                 buttonSave.IsEnabled = false;
-        }
-
-        private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
-        {
-            if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
-
-            buttonSave.IsEnabled = !hasError;
-        }
-
-        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
-        {
-            if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
-
-            buttonSave.IsEnabled = !hasError;
         }
 
         private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)

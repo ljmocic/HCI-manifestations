@@ -64,7 +64,10 @@ namespace HCI_Manifestations.Models
                 {
                     iconPath = value;
                     string newPath = Directory.GetCurrentDirectory() + "\\" + @iconPath.Split('\\').Last();
-                    File.Copy(@iconPath, @newPath);
+                    if (!File.Exists(newPath) && newPath != null && !string.IsNullOrEmpty(newPath) && !string.IsNullOrWhiteSpace(newPath))
+                    {
+                        File.Copy(@iconPath, @newPath, true);
+                    }
                     iconPath = newPath;
                     OnPropertyChanged("IconPath");
                 }
@@ -81,7 +84,12 @@ namespace HCI_Manifestations.Models
             this.id = id;
             this.name = name;
             this.description = description;
-            this.iconPath = iconPath;
+            string newPath = Directory.GetCurrentDirectory() + @iconPath.Split('/').Last();
+            if (!File.Exists(newPath) && newPath != null && !string.IsNullOrEmpty(newPath) && !string.IsNullOrWhiteSpace(newPath))
+            {
+                File.Copy(@iconPath, @newPath, true);
+            }
+            this.iconPath = newPath;
         }
 
         public ManifestationType(ManifestationType type)

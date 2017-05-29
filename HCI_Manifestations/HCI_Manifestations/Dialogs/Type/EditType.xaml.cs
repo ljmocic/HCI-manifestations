@@ -29,6 +29,10 @@ namespace HCI_Manifestations.Dialogs
         }
 
         private string oldId;
+        private bool idError;
+        private bool nameError;
+        private bool iconPathError;
+        private bool descriptionError;
         #endregion
 
         #region Constructors
@@ -40,6 +44,11 @@ namespace HCI_Manifestations.Dialogs
             oldId = typeId;
             type = new ManifestationType(Database.GetType(typeId));
             DataContext = type;
+
+            idError = false;
+            nameError = false;
+            iconPathError = false;
+            descriptionError = false;
         }
         #endregion
 
@@ -54,16 +63,19 @@ namespace HCI_Manifestations.Dialogs
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            // TODO validation later
-            bool validated = true;
-            if (validated)
+            idError = false; nameError = false; iconPathError = false; descriptionError = false;
+            textBoxId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxIconPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDescription.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (idError == false &&
+                nameError == false &&
+                iconPathError == false &&
+                descriptionError == false)
             {
                 Database.UpdateType(oldId, type);
                 Close();
-            }
-            else
-            {
-                // If data is not validated
             }
         }
         
@@ -72,21 +84,28 @@ namespace HCI_Manifestations.Dialogs
             Close();
         }
 
-        private bool Data_Modified()
+        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
         {
-            // TODO
-            /*
-            var compareType = Database.GetType(type.Id);
-            if (Type.Description.Equals(compareType.Description) && Type.IconPath.Equals(compareType.IconPath) && Type.Name.Equals(compareType.Name))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-            */
-            return false;
+            if (e.Action == ValidationErrorEventAction.Added)
+                descriptionError = true;
+        }
+
+        private void textBoxIconPath_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                iconPathError = true;
+        }
+
+        private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                nameError = true;
+        }
+
+        private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                idError = true;
         }
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)

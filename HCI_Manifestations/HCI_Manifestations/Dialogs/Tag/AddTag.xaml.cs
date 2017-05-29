@@ -26,8 +26,9 @@ namespace HCI_Manifestations.dialogs
             get { return tag; }
             set { tag = value; }
         }
-        
-        bool hasError;
+
+        private bool idError;
+        private bool descriptionError;
         #endregion
 
         #region Constructors
@@ -38,7 +39,9 @@ namespace HCI_Manifestations.dialogs
 
             tag = new ManifestationTag();
             DataContext = tag;
-            hasError = false;
+
+            idError = false;
+            descriptionError = false;
         }
         #endregion
 
@@ -50,18 +53,15 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            // TODO validation later
-            bool validated = true;
-            if (validated)
+            idError = false; descriptionError = false;
+            textBoxId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDescription.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (idError == false && descriptionError == false)
             {
                 Database.AddTag(mTag);
                 Close();
             }
-            else
-            {
-                // If data is not valid
-            }
-
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -72,11 +72,13 @@ namespace HCI_Manifestations.dialogs
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
+                idError = true;
+        }
 
-            buttonSave.IsEnabled = !hasError;
+        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                descriptionError = true;
         }
 
         private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)

@@ -34,7 +34,7 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene ljudski čitljive oznake etikete" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
+            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene ljudski čitljive oznake etikete" Validation.Error="textBoxId_Error"  Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
@@ -52,11 +52,11 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="150" />
                             </Grid.ColumnDefinitions>
 
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
-                            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            <TextBlock TextWrapping="Wrap" Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
@@ -68,12 +68,11 @@
 
             <!--Desription-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
+            <TextBox Name="textBoxDescription" TextWrapping="Wrap" Validation.Error="textBoxDescription_Error"  AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="150" />
-                            <validation:ContentValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -85,11 +84,11 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="150" />
                             </Grid.ColumnDefinitions>
 
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="2" x:Name="textBox"/>
-                            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            <TextBlock TextWrapping="Wrap" Grid.Column="1" Grid.Row="2" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>

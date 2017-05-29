@@ -16,22 +16,26 @@ namespace HCI_Manifestations.Validation
         {
             try
             {
-                var text = value as string;
-                if (text.Length == 0)
+                if (value != null)
                 {
-                    return new ValidationResult(false, "Popunjavanje polja je obavezno.");
-                }
-                else if (text.Length < Min)
-                {
-                    return new ValidationResult(false, "Minimalna dužina unosa je " + Min + " karaktera.");
-                }
-                else if (text.Length > Max)
-                {
-                    return new ValidationResult(false, "Maksimalna dužina unosa je " + Max + " karaktera.");
+                    var text = value as string;
+                    if (text.Length == 0 || text == null)
+                    {
+                        return new ValidationResult(false, "Popunjavanje polja je obavezno");
+                    }
+                    else if (text.Length < Min)
+                    {
+                        return new ValidationResult(false, "Minimalna dužina unosa je " + Min + " karaktera");
+                    }
+                    else if (text.Length > Max)
+                    {
+                        return new ValidationResult(false, "Maksimalna dužina unosa je " + Max + " karaktera");
+                    }
+                    return new ValidationResult(true, null);
                 }
                 else
                 {
-                    return new ValidationResult(true, null);
+                    return new ValidationResult(false, "Popunjavanje polja je obavezno");
                 }
             }
             catch

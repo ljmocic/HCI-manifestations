@@ -107,7 +107,7 @@ namespace HCI_Manifestations.Models
                 {
                     iconPath = value;
                     string newPath = Directory.GetCurrentDirectory() + "\\" + @iconPath.Split('\\').Last();
-                    if (!File.Exists(newPath))
+                    if (!File.Exists(newPath) && newPath != null && !string.IsNullOrEmpty(newPath) && !string.IsNullOrWhiteSpace(newPath))
                     {
                         File.Copy(@iconPath, @newPath, true);
                     }
@@ -246,11 +246,11 @@ namespace HCI_Manifestations.Models
             this.date = date;
             this.type = type;
             string newPath = Directory.GetCurrentDirectory() + @iconPath.Split('/').Last();
-            if (!File.Exists(newPath))
+            if (!File.Exists(newPath) && newPath != null && !string.IsNullOrEmpty(newPath) && !string.IsNullOrWhiteSpace(newPath))
             {
                 File.Copy(@iconPath, @newPath, true);
             }
-            this.iconPath = iconPath;
+            this.iconPath = newPath;
             this.smokingInside = smokingInside;
             this.smokingOutside = smokingOutside;
             this.price = price;

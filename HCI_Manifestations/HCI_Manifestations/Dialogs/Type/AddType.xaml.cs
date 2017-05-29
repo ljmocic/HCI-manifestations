@@ -21,13 +21,17 @@ namespace HCI_Manifestations.dialogs
     public partial class AddType : Window
     {
         #region Attributes
-        bool hasError;
         private ManifestationType type;
         public ManifestationType Type
         {
             get { return type; }
             set { type = value; }
         }
+
+        private bool idError;
+        private bool nameError;
+        private bool iconPathError;
+        private bool descriptionError;
         #endregion
 
         #region Constructors
@@ -38,7 +42,11 @@ namespace HCI_Manifestations.dialogs
 
             type = new ManifestationType();
             DataContext = type;
-            hasError = false;
+
+            idError = false;
+            nameError = false;
+            iconPathError = false;
+            descriptionError = false;
         }
 
         public AddType(string id)
@@ -49,7 +57,11 @@ namespace HCI_Manifestations.dialogs
             type = new ManifestationType();
             type.Id = id;
             DataContext = type;
-            hasError = false;
+
+            idError = false;
+            nameError = false;
+            iconPathError = false;
+            descriptionError = false;
         }
         #endregion
 
@@ -65,16 +77,19 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            // TODO validation later
-            bool validated = true;
-            if (validated)
+            idError = false; nameError = false; iconPathError = false; descriptionError = false;
+            textBoxId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxIconPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDescription.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (idError == false &&
+                nameError == false &&
+                iconPathError == false &&
+                descriptionError == false)
             {
                 Database.AddType(type);
                 Close();
-            }
-            else
-            {
-                // If data is not validated
             }
         }
 
@@ -83,14 +98,28 @@ namespace HCI_Manifestations.dialogs
             Close();
         }
 
+        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                descriptionError = true;
+        }
+
+        private void textBoxIconPath_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                iconPathError = true;
+        }
+
+        private void textBoxName_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                nameError = true;
+        }
+
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                hasError = true;
-            else
-                hasError = false;
-
-            buttonSave.IsEnabled = !hasError;
+                idError = true;
         }
 
         private void textBoxId_TextChanged(object sender, TextChangedEventArgs e)
@@ -106,5 +135,6 @@ namespace HCI_Manifestations.dialogs
             HelpProvider.ShowHelp("Type", this);
         }
         #endregion
+
     }
 }

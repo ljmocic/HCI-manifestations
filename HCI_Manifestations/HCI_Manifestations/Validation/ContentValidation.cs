@@ -9,19 +9,24 @@ namespace HCI_Manifestations.Validation
 {
     public class ContentValidation : ValidationRule
     {
-        public string Type { get; set; }
 
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             try
             {
-                // TODO Content validation
-                // Check for allowed chars
-                return new ValidationResult(true, "");
+                var temp = value as string;
+                if (temp.Any(ch => !char.IsLetterOrDigit(ch)))
+                { 
+                    return new ValidationResult(false, "Dozvoljeni karakteri su samo slova i brojevi");
+                }
+                else
+                {
+                    return new ValidationResult(true, "");
+                }
             }
             catch
             {
-                return new ValidationResult(false, "Desila se neočekivana greška.");
+                return new ValidationResult(false, "Desila se neočekivana greška");
             }
         }
     }

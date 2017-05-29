@@ -28,6 +28,8 @@ namespace HCI_Manifestations.Dialogs
         }
 
         private string oldId;
+        private bool idError;
+        private bool descriptionError;
         #endregion
 
         #region Constructors
@@ -42,6 +44,9 @@ namespace HCI_Manifestations.Dialogs
             if(mTag.Color != null)
                 ColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(tag.Color);
             DataContext = tag;
+
+            idError = false;
+            descriptionError = false;
         }
         #endregion
 
@@ -53,18 +58,15 @@ namespace HCI_Manifestations.Dialogs
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            // TODO validation later
-            bool validated = true;
-            if (validated)
+            idError = false; descriptionError = false;
+            textBoxId.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDescription.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (idError == false && descriptionError == false)
             {
                 Database.UpdateTag(oldId, mTag);
                 Close();
             }
-            else
-            {
-                // If data is not valid
-            }
-
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -72,32 +74,16 @@ namespace HCI_Manifestations.Dialogs
             Close();
         }
 
-        private bool Fields_Empty()
+        private void textBoxDescription_Error(object sender, ValidationErrorEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxId.Text) && string.IsNullOrWhiteSpace(mTag.Color) && string.IsNullOrWhiteSpace(textBoxDescription.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (e.Action == ValidationErrorEventAction.Added)
+                descriptionError = true;
         }
 
-        private bool Data_Modified()
+        private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
-            /*
-            var compareTag = Database.GetTag(tag.Id);
-            if (tag.Description.Equals(compareTag.Description) && tag.Color.Equals(compareTag.Color))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-            */
-            return false;
+            if (e.Action == ValidationErrorEventAction.Added)
+                descriptionError = true;
         }
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)

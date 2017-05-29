@@ -35,7 +35,7 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" TextChanged="textBoxId_TextChanged" Validation.Error="textBoxId_Error"  ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -53,11 +53,11 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="150" />
                             </Grid.ColumnDefinitions>
 
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
-                            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            <TextBlock TextWrapping="Wrap" Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
@@ -65,12 +65,11 @@
 
             <!--Name-->
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
-            <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
+            <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Validation.Error="textBoxName_Error"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
-                            <validation:ContentValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -82,11 +81,11 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="150" />
                             </Grid.ColumnDefinitions>
 
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="1" x:Name="textBoxName"/>
-                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            <TextBlock TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
@@ -94,12 +93,11 @@
 
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="2" Content="Ikonica:"/>
-            <TextBox Name="textBoxIconPath" ToolTip="Prikaz lokacije ikonice na vašem računaru" IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Width="255" >
+            <TextBox Name="textBoxIconPath" ToolTip="Prikaz lokacije ikonice na vašem računaru" Validation.Error="textBoxIconPath_Error"  IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Width="255" >
                 <TextBox.Text>
                     <Binding Path="IconPath" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="150" />
-                            <validation:ContentValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -111,11 +109,11 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="225" />
                             </Grid.ColumnDefinitions>
 
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="3" x:Name="textBoxDescription"/>
-                            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            <TextBlock TextWrapping="Wrap" Margin="75,0,0,0" Grid.Column="1" Grid.Row="3" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
@@ -129,12 +127,11 @@
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="3" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
+            <TextBox Name="textBoxDescription" TextWrapping="Wrap" Validation.Error="textBoxDescription_Error"  AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />
-                            <validation:ContentValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -146,11 +143,11 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="150" />
                             </Grid.ColumnDefinitions>
 
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="2" x:Name="textBoxDescription"/>
-                            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            <TextBlock TextWrapping="Wrap" Grid.Column="1" Grid.Row="2" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                         </Grid>
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
