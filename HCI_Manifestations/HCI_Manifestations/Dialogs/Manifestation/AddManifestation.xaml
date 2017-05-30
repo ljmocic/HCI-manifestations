@@ -49,11 +49,11 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:" />
-            <TextBox Name="textBoxId" Validation.Error="textBoxId_Error" TextChanged="textBoxId_TextChanged" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" MaxLength="55" Validation.Error="textBoxId_Error" TextChanged="textBoxId_TextChanged" ToolTip="Unos jedinstvene čitljive oznake za manifestaciju" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="50" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
                             <validation:ManifestationIdValidation ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>
@@ -79,11 +79,11 @@
 
             <!--Name-->
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:" />
-            <TextBox Name="textBoxName" Validation.Error="textBoxName_Error"  ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxName" MaxLength="55" Validation.Error="textBoxName_Error"  ToolTip="Unos proizvoljnog imena manifestacije" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="Name" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="50" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -107,11 +107,11 @@
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:" />
-            <TextBox Name="textBoxDescription" Validation.Error="textBoxDescription_Error"  ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" >
+            <TextBox Name="textBoxDescription" MaxLength="1100" Validation.Error="textBoxDescription_Error"  ToolTip="Unos detaljnog opisa manifestacije" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="3" >
                 <TextBox.Text>
-                    <Binding Path="Description" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="Description" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="1000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -170,7 +170,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <TextBox Name="textBoxIconPath" IsReadOnly="True" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" ToolTip="Lokacija ikonice na vašem racunaru" VerticalContentAlignment="Center" Margin="3" IsEnabled="False"/>
+                <TextBox Name="textBoxIconPath" ToolTip="Polje koje sadrži adresu lokacije ikonice" IsReadOnly="True" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Margin="3" IsEnabled="False"/>
                 <Button Name="loadIcon" Grid.Column="1" ToolTip="Kliknite da biste dodali novu ikonicu koja označava manifestaciju" Grid.Row="0" Margin="2" Padding="15,0" Click="loadIcon_Click">
                     <StackPanel Orientation="Horizontal" Width="74">
                         <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -201,7 +201,7 @@
 
             <!--Alcohol-->
             <Label Grid.Column="0" Grid.Row="9" Content="Alkohol:" />
-            <ComboBox Name="comboBoxAlcohol" Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3">
+            <ComboBox Name="comboBoxAlcohol" Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" ToolTip="Mogućnost dobavljanja alkohola na manifestaciji" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3">
                 <ComboBoxItem>Nema</ComboBoxItem>
                 <ComboBoxItem>Može se doneti</ComboBoxItem>
                 <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
@@ -211,7 +211,7 @@
             <Label Grid.Column="0" Grid.Row="10" Content="Očekivana publika:" />
             <TextBox Name="textBoxPublic" ToolTip="Opisite kakva publika se očekuje na manifestaciji" Validation.Error="textBoxPublic_Error"  Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Margin="3,1,3,5" Height="24" >
                 <TextBox.Text>
-                    <Binding Path="ExpectedPublic" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="ExpectedPublic" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="150" />
                         </Binding.ValidationRules>
@@ -242,7 +242,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" PreviewKeyDown="autoCompleteBoxTag_PreviewKeyDown" IsDropDownOpen="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Tags, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" ToolTip="Polje za dodavanje etiketa" PreviewKeyDown="autoCompleteBoxTag_PreviewKeyDown" IsDropDownOpen="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Tags, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"></TextBlock>
@@ -255,7 +255,7 @@
                         <TextBlock Text="Dodaj" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
-                <wpfTool:CheckComboBox Name="comboBoxTags"
+                <wpfTool:CheckComboBox ToolTip="Lista etiketa manifestacije" Name="comboBoxTags"
                                    ItemsSource="{Binding Tags}"
                                    DisplayMemberPath="Id"
                                    ValueMemberPath="{Binding Path=Id}"

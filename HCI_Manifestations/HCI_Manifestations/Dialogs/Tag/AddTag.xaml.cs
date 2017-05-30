@@ -29,6 +29,8 @@ namespace HCI_Manifestations.dialogs
 
         private bool idError;
         private bool descriptionError;
+
+        private bool openedAsDialog;
         #endregion
 
         #region Constructors
@@ -42,6 +44,7 @@ namespace HCI_Manifestations.dialogs
 
             idError = false;
             descriptionError = false;
+            openedAsDialog = false;
         }
 
         public AddTag(string id)
@@ -55,6 +58,7 @@ namespace HCI_Manifestations.dialogs
 
             idError = false;
             descriptionError = false;
+            openedAsDialog = true;
         }
         #endregion
 
@@ -73,7 +77,10 @@ namespace HCI_Manifestations.dialogs
             if (idError == false && descriptionError == false)
             {
                 Database.AddTag(mTag);
-                DialogResult = true;
+                if (openedAsDialog == true)
+                {
+                    DialogResult = true;
+                }
                 Close();
             }
         }

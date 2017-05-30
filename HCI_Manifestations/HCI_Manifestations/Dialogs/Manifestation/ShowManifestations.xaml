@@ -30,8 +30,8 @@
         </Grid.ColumnDefinitions>
 
         <!--Main search-->
-        <TextBox Name="searchInputId" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,425,4"/>
-        <TextBox Name="searchInputName" KeyDown="searchInput_KeyDown" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="232,4,213,4"/>
+        <TextBox Name="searchInputId" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,425,4"/>
+        <TextBox Name="searchInputName" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="232,4,213,4"/>
         <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Grid.Column="1" Grid.Row="0" Click="buttonSearch_Click" Margin="0,4,2,46" Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>

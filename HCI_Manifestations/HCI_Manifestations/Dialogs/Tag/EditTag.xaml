@@ -36,7 +36,7 @@
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
             <TextBox Name="textBoxId" ToolTip="Unos jedinstvene ljudski čitljive oznake etikete"  IsEnabled="False" Validation.Error="textBoxId_Error"  Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
-                    <Binding Path="Id" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
@@ -68,11 +68,11 @@
 
             <!--Desription-->
             <Label Grid.Column="0" Grid.Row="2" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" TextWrapping="Wrap" Validation.Error="textBoxDescription_Error"  AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
+            <TextBox Name="textBoxDescription" MaxLength="1100" TextWrapping="Wrap" Validation.Error="textBoxDescription_Error"  AcceptsReturn="True" Grid.Column="1" Grid.Row="2" ToolTip="Opis etikete" VerticalScrollBarVisibility="Auto" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="150" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="1000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

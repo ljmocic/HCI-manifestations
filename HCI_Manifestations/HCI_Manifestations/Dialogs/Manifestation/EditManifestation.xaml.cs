@@ -164,6 +164,10 @@ namespace HCI_Manifestations.Dialogs
                 {
                     comboBoxTags.Text = Manifestation.Tags[0].Id;
                 }
+                if (comboBoxTags.SelectedItems.Count == 0)
+                {
+                    comboBoxTags.Text = "";
+                }
             }
             else if (!string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
             {
@@ -184,6 +188,10 @@ namespace HCI_Manifestations.Dialogs
                     {
                         comboBoxTags.Text = Manifestation.Tags[0].Id;
                     }
+                    if (comboBoxTags.SelectedItems.Count == 0)
+                    {
+                        comboBoxTags.Text = "";
+                    }
                 }
 
             }
@@ -199,6 +207,15 @@ namespace HCI_Manifestations.Dialogs
             foreach (var selectedTag in selectedTags)
             {
                 Manifestation.Tags.Add(new ManifestationTag((ManifestationTag)selectedTag));
+            }
+
+            if (comboBoxTags.SelectedItems.Count == 1)
+            {
+                comboBoxTags.Text = Manifestation.Tags[0].Id;
+            }
+            if (comboBoxTags.SelectedItems.Count == 0)
+            {
+                comboBoxTags.Text = "";
             }
         }
 

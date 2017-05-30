@@ -34,7 +34,7 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="_Manifestacija" ToolTip="Prikaz svih opcija za uređivanje manifestacija">
-                <MenuItem Header="_Dodaj manifestaciju" ToolTip="Dodavanje novu manifestacije" Command="commands:RoutedCommands.AddManifestation" InputGestureText="Ctrl+M">
+                <MenuItem Header="_Dodaj manifestaciju" ToolTip="Dodavanje nove manifestacije" Command="commands:RoutedCommands.AddManifestation" InputGestureText="Ctrl+M">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\add.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
@@ -88,7 +88,7 @@
 
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
-                <Button ToolTip="Dodavanje novu manifestacije" Command="commands:RoutedCommands.AddManifestation">
+                <Button ToolTip="Dodavanje nove manifestacije" Command="commands:RoutedCommands.AddManifestation">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Nova manifestacija" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -130,7 +130,7 @@
         <Grid DockPanel.Dock="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
             <!--Background canvas-->
-            <Canvas Name="Map" AllowDrop="True" Mouse.PreviewMouseDown="Map_PreviewMouseLeftButtonDown" MouseRightButtonDown="Map_MouseRightButtonDown" MouseMove="Map_MouseMove" DragEnter="Map_DragEnter" Drop="Map_Drop">
+            <Canvas Name="Map" ToolTip="Mapa grada koja može sadržati grafičke predstave manifestacija" AllowDrop="True" Mouse.PreviewMouseDown="Map_PreviewMouseLeftButtonDown" MouseRightButtonDown="Map_MouseRightButtonDown" MouseMove="Map_MouseMove" DragEnter="Map_DragEnter" Drop="Map_Drop">
                 <Canvas.Background>
                     <ImageBrush ImageSource="Resources\Images\sv2.png" AlignmentX="Left" AlignmentY="Top" Stretch="None"/>
                 </Canvas.Background>
@@ -166,7 +166,7 @@
                 <Separator></Separator>
 
                 <!--Types Actions-->
-                <Button Name="buttonAddManifestationType" Command="commands:RoutedCommands.AddType" ToolTip="Dodaj novi tip manifestacije"  Margin="5" Padding="3">
+                <Button Name="buttonAddManifestationType" Command="commands:RoutedCommands.AddType" ToolTip="Dodavanje novog tipa manifestacije"  Margin="5" Padding="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Novi tip" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -199,7 +199,7 @@
 
                 <Separator></Separator>
 
-                <GroupBox Header="Manifestacije" Height="275" Margin="10,0" Foreground="White">
+                <GroupBox ToolTip="Lista manifestacija spremnih za prenošenje njihovih grafičkih predstava na mapu" Header="Manifestacije" Height="275" Margin="10,0" Foreground="White">
                     <ListView ItemsSource="{Binding Manifestations}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
                         <ListView.ItemTemplate>
                             <DataTemplate>

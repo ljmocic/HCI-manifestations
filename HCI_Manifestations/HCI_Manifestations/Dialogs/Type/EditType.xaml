@@ -35,11 +35,11 @@
 
             <!--Id-->
             <Label Grid.Column="0" Grid.Row="0" Content="Id:"/>
-            <TextBox Name="textBoxId" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije"  IsEnabled="False" Validation.Error="textBoxId_Error" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
+            <TextBox Name="textBoxId" MaxLength="55" ToolTip="Unos jedinstvene čitljive oznake za tip manifestacije"  IsEnabled="False" Validation.Error="textBoxId_Error" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3" >
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="50" />
                             <validation:ContentValidation ValidationStep="RawProposedValue" />
                             <!--<validation:TypeIdValidation ValidationStep="RawProposedValue" />-->
                         </Binding.ValidationRules>
@@ -65,11 +65,11 @@
 
             <!--Name-->
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
-            <TextBox Name="textBoxName" ToolTip="Unos proizvoljnog imena tipa manifestacije" Validation.Error="textBoxName_Error"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
+            <TextBox Name="textBoxName" MaxLength="55" ToolTip="Unos proizvoljnog imena tipa manifestacije" Validation.Error="textBoxName_Error"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Name" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="30" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="50" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -127,11 +127,11 @@
 
             <!--Description-->
             <Label Grid.Column="0" Grid.Row="3" Content="Opis:"/>
-            <TextBox Name="textBoxDescription" Validation.Error="textBoxDescription_Error"  TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
+            <TextBox Name="textBoxDescription" MaxLength="1100" Validation.Error="textBoxDescription_Error"  TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Unos detaljnog opisa tipa manifestacije" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3">
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="1000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

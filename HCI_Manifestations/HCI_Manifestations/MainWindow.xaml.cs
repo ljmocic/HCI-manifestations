@@ -254,7 +254,18 @@ namespace HCI_Manifestations
                     ManifestationIcon.Height = 32;
                     ManifestationIcon.Name = manifestation.Id;
                     ManifestationIcon.ToolTip = manifestation.Id + " " + manifestation.Name;
-                    ManifestationIcon.Source = new BitmapImage(new Uri(manifestation.IconPath, UriKind.Absolute));
+
+                    if (File.Exists(manifestation.IconPath))
+                    {
+                        ManifestationIcon.Source = new BitmapImage(new Uri(manifestation.IconPath, UriKind.Absolute));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Došlo je do greške pri učitavanju ikonice manifestacije, molimo dodajte novu ikonicu!", "Došlo je do greške!");
+                        EditManifestation edit = new EditManifestation(manifestation.Id);
+                        edit.ShowDialog();
+                        break;
+                    }
 
                     Map.Children.Add(ManifestationIcon);
 
