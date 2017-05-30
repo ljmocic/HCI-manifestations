@@ -94,6 +94,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\Tag\DeleteTag.xaml.cs">
+      <DependentUpon>DeleteTag.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Type\DeleteType.xaml.cs">
+      <DependentUpon>DeleteType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\RoutedCommands.cs" />
     <Compile Include="Utils\Config.cs" />
     <Compile Include="Dialogs\Manifestation\EditManifestation.xaml.cs">
@@ -104,9 +110,6 @@
     </Compile>
     <Compile Include="Dialogs\Tag\EditTag.xaml.cs">
       <DependentUpon>EditTag.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Utils\DeleteActionHandler.xaml.cs">
-      <DependentUpon>DeleteActionHandler.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Type\EditType.xaml.cs">
       <DependentUpon>EditType.xaml</DependentUpon>
@@ -127,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\Tag\DeleteTag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\Type\AddType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Utils\DeleteActionHandler.xaml">
+    <Page Include="Dialogs\Type\DeleteType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

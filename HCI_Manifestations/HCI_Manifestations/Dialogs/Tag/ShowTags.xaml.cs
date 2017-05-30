@@ -1,4 +1,5 @@
 ﻿using HCI_Manifestations.Dialogs;
+using HCI_Manifestations.Dialogs.Tag;
 using HCI_Manifestations.Help;
 using HCI_Manifestations.Models;
 using System;
@@ -70,7 +71,8 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Database.DeleteTag(SelectedTag);
+            DeleteTag dialog = new DeleteTag(SelectedTag.Id);
+            dialog.ShowDialog();
         }
 
         private void tagsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

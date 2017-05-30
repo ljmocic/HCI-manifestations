@@ -148,7 +148,7 @@
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
 
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxName_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxType_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"  ></TextBlock>
@@ -242,25 +242,33 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <wpfTool:CheckComboBox Name="comboBoxTags"
-                                   ItemsSource="{Binding Tags}"
-                                   DisplayMemberPath="Id"
-                                   ValueMemberPath="{Binding Path=Id}"
-                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="4,3,0,3" />
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" PreviewKeyDown="autoCompleteBoxTag_PreviewKeyDown" IsDropDownOpen="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Tags, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
+                    <toolkit:AutoCompleteBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Id}"></TextBlock>
+                        </DataTemplate>
+                    </toolkit:AutoCompleteBox.ItemTemplate>
+                </toolkit:AutoCompleteBox>
                 <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Margin="3" Padding="20,0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Dodaj" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
                     </StackPanel>
                 </Button>
+                <wpfTool:CheckComboBox Name="comboBoxTags"
+                                   ItemsSource="{Binding Tags}"
+                                   DisplayMemberPath="Id"
+                                   ValueMemberPath="{Binding Path=Id}"
+                                   MaxDropDownHeight="100"
+                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="3,37,3,-50" Grid.ColumnSpan="2" />
             </Grid>
 
         </Grid>
 
         <!--Save/Cancel panel-->
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka" Content="Odustani" Click="buttonCancel_Click" Margin="5" Padding="20,5" />
-            <Button Name="buttonSave" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Content="Sačuvaj"  Click="buttonSave_Click" Margin="5" Padding="20,5"  />
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Background="LightGray">
+            <Button Name="buttonSave" Margin="500,5,5,5" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Content="Sačuvaj"  Click="buttonSave_Click"  Padding="20,5" />
+            <Button Name="buttonCancel" Margin="5" ToolTip="Odustajanje od unosa podataka" Content="Odustani" Click="buttonCancel_Click" Padding="20,5" />
         </StackPanel>
     </Grid>
 </Window>

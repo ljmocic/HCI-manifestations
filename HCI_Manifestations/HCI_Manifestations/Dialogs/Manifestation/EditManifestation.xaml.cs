@@ -50,22 +50,13 @@ namespace HCI_Manifestations.Dialogs
             DataContext = Manifestation;
 
             autoCompleteBoxTypes.DataContext = Database.getInstance();
-            comboBoxTags.DataContext = Database.getInstance();
-
-            var selectedItems = new List<ManifestationTag>();
-
+            autoCompleteBoxTags.DataContext = Database.getInstance();
+            comboBoxTags.DataContext = Manifestation;
+            
             foreach (var tag in Manifestation.Tags)
             {
-                foreach (var tagDatabase in Database.getInstance().Tags)
-                {
-                    if (tag.Id.Equals(tagDatabase.Id))
-                    {
-                        selectedItems.Add(tagDatabase);
-                    }
-                }
+                comboBoxTags.SelectedItems.Add(tag);
             }
-
-            comboBoxTags.SelectedItemsOverride = selectedItems;
 
             foreach (var typeDatabase in Database.getInstance().Types)
             {
@@ -90,8 +81,10 @@ namespace HCI_Manifestations.Dialogs
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
-            dialog.ShowDialog();
-            textBoxIconPath.Text = dialog.FileName;
+            if (dialog.ShowDialog() == true)
+            {
+                textBoxIconPath.Text = dialog.FileName;
+            }
         }
 
         private void buttonAddNewType_Click(object sender, RoutedEventArgs e)
@@ -118,8 +111,7 @@ namespace HCI_Manifestations.Dialogs
             textBoxPublic.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
             // Type validation
-            if (autoCompleteBoxTypes.SelectedItem == null
-                || string.IsNullOrEmpty(autoCompleteBoxTypes.Text)
+            if (string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text)
                 || Database.GetType(autoCompleteBoxTypes.Text) == null)
             {
                 System.Windows.MessageBox.Show("Odabir tipa je obavezan!");
@@ -152,18 +144,51 @@ namespace HCI_Manifestations.Dialogs
             Close();
         }
 
+        // TODO refactor!
         private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
         {
-            if (Database.GetManifestation(autoCompleteBoxTypes.Text) == null)
+            if (Database.GetTag(autoCompleteBoxTags.Text) == null && !string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
             {
-                AddType addType = new AddType(autoCompleteBoxTypes.Text);
-                addType.Show();
+                AddTag dialog = new AddTag(autoCompleteBoxTags.Text);
+                dialog.ShowDialog();
+
+                // If it has successfully added a new tag
+                if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
+                {
+                    ManifestationTag tag = new ManifestationTag(Database.getInstance().Tags.Last());
+                    Manifestation.Tags.Add(tag);
+                    comboBoxTags.SelectedItems.Add(tag);
+                }
+
+                if (comboBoxTags.SelectedItems.Count == 1)
+                {
+                    comboBoxTags.Text = Manifestation.Tags[0].Id;
+                }
             }
-            else
+            else if (!string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
             {
-                AddType addType = new AddType();
-                addType.Show();
+                ManifestationTag tag = new ManifestationTag(Database.GetTag(autoCompleteBoxTags.Text));
+
+                bool found = false;
+                foreach (var item in comboBoxTags.SelectedItems)
+                {
+                    if (((ManifestationTag)item).Id.Equals(tag.Id))
+                        found = true;
+                }
+                if (!found)
+                {
+                    Manifestation.Tags.Add(tag);
+                    comboBoxTags.SelectedItems.Add(tag);
+
+                    if (comboBoxTags.SelectedItems.Count == 1)
+                    {
+                        comboBoxTags.Text = Manifestation.Tags[0].Id;
+                    }
+                }
+
             }
+            autoCompleteBoxTags.SelectedItem = null;
+            autoCompleteBoxTags.Text = string.Empty;
         }
 
         private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
@@ -214,13 +239,59 @@ namespace HCI_Manifestations.Dialogs
                 buttonSave.IsEnabled = false;
         }
 
-        private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void autoCompleteBoxType_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 if (Database.GetType(autoCompleteBoxTypes.Text) == null)
                 {
                     buttonAddNewType_Click(null, null);
+                }
+            }
+        }
+
+        private void autoCompleteBoxTag_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (Database.GetTag(autoCompleteBoxTags.Text) == null && !string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+                {
+                    AddTag dialog = new AddTag(autoCompleteBoxTags.Text);
+                    dialog.ShowDialog();
+
+                    // If it has successfully added a new tag
+                    if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
+                    {
+                        ManifestationTag tag = new ManifestationTag(Database.getInstance().Tags.Last());
+                        Manifestation.Tags.Add(tag);
+                        comboBoxTags.SelectedItems.Add(tag);
+
+                        autoCompleteBoxTags.SelectedItem = null;
+                        autoCompleteBoxTags.Text = string.Empty;
+                    }
+                    autoCompleteBoxTags.SelectedItem = null;
+                    autoCompleteBoxTags.Text = string.Empty;
+                }
+                else if (!string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+                {
+                    ManifestationTag tag = new ManifestationTag(Database.GetTag(autoCompleteBoxTags.Text));
+
+                    bool found = false;
+                    foreach (var item in comboBoxTags.SelectedItems)
+                    {
+                        if (((ManifestationTag)item).Id.Equals(tag.Id))
+                        {
+                            found = true;
+                        }
+                    }
+                    if (!found)
+                    {
+                        Manifestation.Tags.Add(tag);
+                        comboBoxTags.SelectedItems.Add(tag);
+                    }
+
+                    autoCompleteBoxTags.SelectedItem = null;
+                    autoCompleteBoxTags.Text = string.Empty;
                 }
             }
         }

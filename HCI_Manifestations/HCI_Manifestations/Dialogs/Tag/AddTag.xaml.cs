@@ -43,6 +43,19 @@ namespace HCI_Manifestations.dialogs
             idError = false;
             descriptionError = false;
         }
+
+        public AddTag(string id)
+        {
+            InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
+            tag = new ManifestationTag();
+            tag.Id = id;
+            DataContext = tag;
+
+            idError = false;
+            descriptionError = false;
+        }
         #endregion
 
         #region Event handlers
@@ -60,6 +73,7 @@ namespace HCI_Manifestations.dialogs
             if (idError == false && descriptionError == false)
             {
                 Database.AddTag(mTag);
+                DialogResult = true;
                 Close();
             }
         }

@@ -1,0 +1,35 @@
+﻿<Window x:Class="HCI_Manifestations.Dialogs.Tag.DeleteTag"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI_Manifestations.Dialogs.Tag"
+        Icon="../../Resources/Icons/favicon.ico"
+        mc:Ignorable="d"
+        Title="DeleteTag" Height="300" Width="300">
+    <Grid>
+        <DataGrid Name="manifestationsGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih manifestacija koji sadrže etiketu za brisanje" ItemsSource="{Binding Path=ManifestationsWithTag}" Margin="5,63,5,48" IsReadOnly="True" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Oznaka manifestacije" MinWidth="100" Width="*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Naziv manifestacije"  MinWidth="100" Width="*" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+            Etikete su povezane sa navedenim manifestacijama. Uklanjanjem, etikete ce biti obrisane iz navedenih manifestacija. Da li ste sigurni da to želite uraditi?
+        </TextBlock>
+
+        <Button Click="Delete_Click" HorizontalAlignment="Left" Margin="122,229,0,0" VerticalAlignment="Top" Width="75">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\delete.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Obriši" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+        <Button Click="Cancel_Click" HorizontalAlignment="Left" Margin="202,229,0,0" VerticalAlignment="Top" Width="75">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Odustani" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

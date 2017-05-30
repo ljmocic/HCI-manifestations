@@ -39,7 +39,6 @@ namespace HCI_Manifestations.dialogs
         public Manifestation SelectedManifestation { get; set; }
         #endregion
         
-        
         #region Constructor
         public ShowManifestations()
         {

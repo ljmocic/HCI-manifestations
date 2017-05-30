@@ -93,9 +93,9 @@
 
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="2" Content="Ikonica:"/>
-            <TextBox Name="textBoxIconPath" ToolTip="Prikaz lokacije ikonice na vašem računaru" Validation.Error="textBoxIconPath_Error"  IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Width="255" >
+            <TextBox Name="textBoxIconPath" ToolTip="Prikaz lokacije ikonice na vašem računaru" Validation.Error="textBoxIconPath_Error" IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Width="255" >
                 <TextBox.Text>
-                    <Binding Path="IconPath" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="IconPath" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="150" />
                         </Binding.ValidationRules>
@@ -131,7 +131,7 @@
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />
+                            <!--<validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="300" />-->
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -156,9 +156,9 @@
         </Grid>
 
         <!--Save/Cancel-->
-        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Background="LightGray">
-            <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka" Click="buttonCancel_Click" Content="Odustani" Margin="10" Padding="20,5"/>
-            <Button Name="buttonSave" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Click="buttonSave_Click" Content="Sačuvaj" Margin="10" Padding="20,5"/>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Background="LightGray">
+            <Button Name="buttonSave" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Click="buttonSave_Click" Content="Sačuvaj" Margin="330,10,10,10" Padding="20,5"/>
+            <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka" Click="buttonCancel_Click" Content="Odustani" Margin="10,10,10,10" Padding="20,5"/>
         </StackPanel>
 
     </Grid>

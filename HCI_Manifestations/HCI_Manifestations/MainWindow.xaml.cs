@@ -44,7 +44,6 @@ namespace HCI_Manifestations
         private Point startPoint = new Point();
         #endregion
 
-        
         #region Constructors
         public MainWindow()
         {
@@ -68,7 +67,7 @@ namespace HCI_Manifestations
         private void ShowManifestations_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             ShowManifestations showManifestations = new ShowManifestations();
-            showManifestations.Show();
+            showManifestations.ShowDialog();
         }
 
         private void AddType_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -80,7 +79,7 @@ namespace HCI_Manifestations
         private void ShowTypes_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             ShowTypes showTypes = new ShowTypes();
-            showTypes.Show();
+            showTypes.ShowDialog();
         }
 
         private void AddTag_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -92,7 +91,7 @@ namespace HCI_Manifestations
         private void ShowTags_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             ShowTags showTags = new ShowTags();
-            showTags.Show();
+            showTags.ShowDialog();
         }
         #endregion
 

@@ -83,7 +83,7 @@ namespace HCI_Manifestations.Dialogs
         private void textBoxId_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                descriptionError = true;
+                idError = true;
         }
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)

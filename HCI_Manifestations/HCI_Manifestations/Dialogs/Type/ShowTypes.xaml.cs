@@ -79,7 +79,7 @@ namespace HCI_Manifestations.dialogs
 
             if (counter > 0)
             {
-                DeleteActionHandler handler = new DeleteActionHandler(SelectedType);
+                DeleteType handler = new DeleteType(SelectedType);
                 handler.ShowDialog();
             }
             else

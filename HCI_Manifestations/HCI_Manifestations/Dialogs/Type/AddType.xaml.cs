@@ -70,9 +70,11 @@ namespace HCI_Manifestations.dialogs
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
-            dialog.ShowDialog();
-            textBoxIconPath.Text = dialog.FileName;
-            Type.IconPath = dialog.FileName;
+            if (dialog.ShowDialog() == true)
+            {
+                textBoxIconPath.Text = dialog.FileName;
+                Type.IconPath = dialog.FileName;
+            }
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)

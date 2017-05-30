@@ -16,20 +16,39 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace HCI_Manifestations.dialogs
 {
 
-    public partial class AddManifestation : Window
+    public partial class AddManifestation : Window, INotifyPropertyChanged
     {
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
+
         #region Attributes
         private Manifestation manifestation;
         public Manifestation Manifestation
         {
             get { return manifestation; }
-            set { manifestation = value; }
+            set
+            {
+                if (value != manifestation)
+                {
+                    manifestation = value;
+                    OnPropertyChanged("Manifestation");
+                }
+            }
         }
-        
+
         private bool idError;
         private bool nameError;
         private bool descriptionError;
@@ -48,7 +67,7 @@ namespace HCI_Manifestations.dialogs
             Manifestation.Y = -1;
             
             autoCompleteBoxTypes.DataContext = Database.getInstance();
-            comboBoxTags.DataContext = Database.getInstance();
+            autoCompleteBoxTags.DataContext = Database.getInstance();
 
             DataContext = Manifestation;
             
@@ -64,8 +83,10 @@ namespace HCI_Manifestations.dialogs
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
-            dialog.ShowDialog();
-            textBoxIconPath.Text = dialog.FileName;
+            if (dialog.ShowDialog() == true)
+            {
+                textBoxIconPath.Text = dialog.FileName;
+            }
         }
 
         private void buttonAddNewType_Click(object sender, RoutedEventArgs e)
@@ -92,11 +113,10 @@ namespace HCI_Manifestations.dialogs
             textBoxPublic.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
             // Type validation
-            if (autoCompleteBoxTypes.SelectedItem == null
-                || string.IsNullOrEmpty(autoCompleteBoxTypes.Text)
+            if (string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text)
                 || Database.GetType(autoCompleteBoxTypes.Text) == null)
             {
-                MessageBox.Show("Odabir tipa je obavezan!");
+                System.Windows.MessageBox.Show("Odabir tipa je obavezan!");
                 autoCompleteBoxTypes.Text = "";
                 autoCompleteBoxTypes.Focus();
                 return;
@@ -126,10 +146,51 @@ namespace HCI_Manifestations.dialogs
             Close();
         }
 
+        // TODO refactor!
         private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
         {
-            AddTag addTag = new AddTag();
-            addTag.Show();
+            if (Database.GetTag(autoCompleteBoxTags.Text) == null && !string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+            {
+                AddTag dialog = new AddTag(autoCompleteBoxTags.Text);
+                dialog.ShowDialog();
+
+                // If it has successfully added a new tag
+                if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
+                {
+                    ManifestationTag tag = new ManifestationTag(Database.getInstance().Tags.Last());
+                    Manifestation.Tags.Add(tag);
+                    comboBoxTags.SelectedItems.Add(tag);
+                }
+
+                if (comboBoxTags.SelectedItems.Count == 1)
+                {
+                    comboBoxTags.Text = Manifestation.Tags[0].Id;
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+            {
+                ManifestationTag tag = new ManifestationTag(Database.GetTag(autoCompleteBoxTags.Text));
+
+                bool found = false;
+                foreach (var item in comboBoxTags.SelectedItems)
+                {
+                    if (((ManifestationTag)item).Id.Equals(tag.Id))
+                        found = true;
+                }
+                if (!found)
+                {
+                    Manifestation.Tags.Add(tag);
+                    comboBoxTags.SelectedItems.Add(tag);
+
+                    if (comboBoxTags.SelectedItems.Count == 1)
+                    {
+                        comboBoxTags.Text = Manifestation.Tags[0].Id;
+                    }
+                }
+
+            }
+            autoCompleteBoxTags.SelectedItem = null;
+            autoCompleteBoxTags.Text = string.Empty;
         }
 
         private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
@@ -180,7 +241,7 @@ namespace HCI_Manifestations.dialogs
                 buttonSave.IsEnabled = false;
         }
 
-        private void autoCompleteBoxName_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void autoCompleteBoxType_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -188,6 +249,14 @@ namespace HCI_Manifestations.dialogs
                 {
                     buttonAddNewType_Click(null, null);
                 }
+            }
+        }
+
+        private void autoCompleteBoxTag_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                buttonAddNewTag_Click(null, null);
             }
         }
 

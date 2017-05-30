@@ -16,11 +16,14 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.Dialogs.Type
 {
-    public partial class DeleteActionHandler : Window
+    /// <summary>
+    /// Interaction logic for DeleteType.xaml
+    /// </summary>
+    public partial class DeleteType : Window
     {
         private ManifestationType SelectedType;
 
-        public DeleteActionHandler(ManifestationType SelectedType)
+        public DeleteType(ManifestationType SelectedType)
         {
             InitializeComponent();
             this.SelectedType = SelectedType;
