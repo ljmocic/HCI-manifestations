@@ -30,47 +30,56 @@
         </Grid.ColumnDefinitions>
 
         <!--Main search-->
-        <TextBox Name="searchInputId" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="33,4,425,4"/>
-        <TextBox Name="searchInputName" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="232,4,213,4"/>
-        <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Grid.Column="1" Grid.Row="0" Click="buttonSearch_Click" Margin="0,4,2,46" Height="30" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-            </StackPanel>
-        </Button>
-        <Button Name="buttonClear" ToolTip="Poništi pretragu" Margin="486,4,10,46" VerticalAlignment="Center" IsEnabled="True" Click="buttonClear_Click" Height="30" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
-            </StackPanel>
-        </Button>
+        <Label x:Name="searchInputLabelId" Content="Id:" HorizontalAlignment="Left" Margin="16,4,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="searchInputLabelName" Content="Ime:" HorizontalAlignment="Left" Margin="202,4,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="searchInputId" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="44,6,401,2"/>
+        <TextBox Name="searchInputName" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="239,6,195,2"/>
+        <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="428,6,0,0" VerticalAlignment="Top" Width="154"/>
 
         <!--Search prefs-->
-        <CheckBox x:Name="checkBoxHandicap" ToolTip="Uključuje filter pretrage manifestacija sa podrškom za hendikepiranje osobe" Content="Hendikep" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBoxSmokingInside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja unutra" Content="Pušenje unutra" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBoxSmokingOutside" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja napolju" Content="Pušenje napolju" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="430,14,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
-        <Label x:Name="searchInputLabelId" Content="Id:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="searchInputLabelName" Content="Ime:" HorizontalAlignment="Left" Margin="195,2,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="3" HorizontalAlignment="Left" Margin="248,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
+        <Label Content="Od:" HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{Binding Path=ToDate, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="44,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149" Grid.RowSpan="2"/>
+        <Label Content="Do:" HorizontalAlignment="Left" Margin="11,43,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <DatePicker SelectedDate="{Binding Path=FromDate, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="44,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149"/>
+
+        <RadioButton Name="radioButtonInside" Content="Unutra" HorizontalAlignment="Left" Margin="223,15,0,0" Grid.Row="1" VerticalAlignment="Top" />
+        <RadioButton Name="radioButtonOutside" Content="Napolju" HorizontalAlignment="Left" Margin="223,49,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
+
+        <CheckBox x:Name="checkBoxHandicap" ToolTip="Uključuje filter pretrage manifestacija sa podrškom za hendikepiranje osobe" Content="Hendikep" HorizontalAlignment="Left" Margin="298,15,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxSmokingAllowed" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja unutra" Content="Pušenje" HorizontalAlignment="Left" Margin="298,48,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        
+        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="3" HorizontalAlignment="Left" Margin="428,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="154">
             <ComboBoxItem>Nema</ComboBoxItem>
             <ComboBoxItem>Može se doneti</ComboBoxItem>
             <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
             <ComboBoxItem>Sve</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="comboBoxPrice" ToolTip="Uključuje filter pretrage manifestacija sa određenim cenovnim rangom" SelectedIndex="4" HorizontalAlignment="Left" Margin="248,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Grid.RowSpan="2">
+        <ComboBox x:Name="comboBoxPrice" ToolTip="Uključuje filter pretrage manifestacija sa određenim cenovnim rangom" SelectedIndex="4" HorizontalAlignment="Left" Margin="430,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="152" Grid.RowSpan="2">
             <ComboBoxItem>Besplatno</ComboBoxItem>
             <ComboBoxItem>Niske cene</ComboBoxItem>
             <ComboBoxItem>Srednje cene</ComboBoxItem>
             <ComboBoxItem>Visoke cene</ComboBoxItem>
             <ComboBoxItem>Sve</ComboBoxItem>
         </ComboBox>
-        <Label x:Name="labelAlcohol" Content="Alkohol:" HorizontalAlignment="Left" Margin="190,12,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="labelPrice" Content="Cena:" HorizontalAlignment="Left" Margin="195,46,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <Label x:Name="labelType" Content="Tip:" HorizontalAlignment="Left" Margin="396,12,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label x:Name="labelAlcohol" Content="Alkohol:" HorizontalAlignment="Left" Margin="370,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="labelPrice" Content="Cena:" HorizontalAlignment="Left" Margin="384,43,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Label x:Name="labelType" Content="Tip:" HorizontalAlignment="Left" Margin="399,4,0,0" VerticalAlignment="Top"/>
+
+        <Button Name="buttonSearch" ToolTip="Pretraži ili filtriraj manifestacije" Grid.Column="1" Grid.Row="0" Click="buttonSearch_Click" Margin="0,4,2,46" Height="30" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
+        <Button Name="buttonClear" ToolTip="Poništi pretragu" Margin="0,10,2,10" VerticalAlignment="Center" IsEnabled="True" Click="buttonClear_Click" Height="30" Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="..\..\Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
+            </StackPanel>
+        </Button>
 
         <!--Data-->
-        <DataGrid Name="manifestationsGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih manifestacija ili rezultata pretrage manifestacija" SelectedItem="{Binding Path=SelectedManifestation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Manifestations}" Margin="5,0,5,5" IsReadOnly="True" Grid.Column="0" Grid.Row="3" Grid.RowSpan="4" SelectionChanged="manifestationsGrid_SelectionChanged">
+        <DataGrid Name="manifestationsGrid" MouseDoubleClick="manifestationsGrid_MouseDoubleClick" AutoGenerateColumns="False" ToolTip="Prikaz svih manifestacija ili rezultata pretrage manifestacija" SelectedItem="{Binding Path=SelectedManifestation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Manifestations}" Margin="5,24,5,5" IsReadOnly="True" Grid.Column="0" Grid.Row="2" Grid.RowSpan="5" SelectionChanged="manifestationsGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka manifestacije" MinWidth="100" Width="*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Naziv manifestacije"  MinWidth="100" Width="*" Binding="{Binding Name}"/>
@@ -79,25 +88,24 @@
         </DataGrid>
 
         <!--Data manipulation buttons-->
-        <Button Name="buttonAdd" ToolTip="Dodaj novu manifestaciju" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="True" Click="buttonAdd_Click" Height="30">
+        <Button Name="buttonAdd" ToolTip="Dodaj novu manifestaciju" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="0,24,2,46" IsEnabled="True" Click="buttonAdd_Click" Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Dodaj" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
-        <Button Name="buttonEdit" ToolTip="Uredi odabranu manifestaciju" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="False" Click="buttonEdit_Click" Height="30">
+        <Button Name="buttonEdit" ToolTip="Uredi odabranu manifestaciju" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="False" Click="buttonEdit_Click" Height="30">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\edit.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Uredi" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
-        <Button Name="buttonDelete" ToolTip="Ukloni odabranu manifestaciju" Grid.Row="5" VerticalAlignment="Center" Margin="0,10,2,10" IsEnabled="False" Click="buttonDelete_Click" Height="30" Grid.Column="1">
+        <Button Name="buttonDelete" ToolTip="Ukloni odabranu manifestaciju" Grid.Row="3" VerticalAlignment="Center" Margin="0,45,2,25" IsEnabled="False" Click="buttonDelete_Click" Height="30" Grid.Column="1" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\delete.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Ukloni" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
             </StackPanel>
         </Button>
-
 
     </Grid>
 </Window>

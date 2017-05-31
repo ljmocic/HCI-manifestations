@@ -47,9 +47,9 @@
         <!--Data-->
         <DataGrid Name="typesGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih tipova manifestacija ili rezultata pretrage tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Oznaka etikete" MinWidth="100" Width="*" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Ime etikete"  MinWidth="100" Width="*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Opis etikete"   MinWidth="100" Width="*" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Oznaka tipa" MinWidth="100" Width="*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Ime tipa"  MinWidth="100" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Opis tipa"   MinWidth="100" Width="*" Binding="{Binding Description}"/>
             </DataGrid.Columns>
         </DataGrid>
 

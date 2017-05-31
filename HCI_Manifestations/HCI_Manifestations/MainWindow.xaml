@@ -7,7 +7,7 @@
         xmlns:help="clr-namespace:HCI_Manifestations.Help"
         xmlns:commands="clr-namespace:HCI_Manifestations.Commands"
         mc:Ignorable="d"
-        Title="Menadžer manifestacija" Height="625" Width="1050" Icon="Resources\Icons\favicon.ico" 
+        Title="Menadžer manifestacija" Height="600" Width="1050" Icon="Resources\Icons\favicon.ico" 
         ResizeMode="NoResize"
         Activated="Window_Activated">
 
@@ -86,7 +86,7 @@
             </MenuItem>
         </Menu>
 
-        <ToolBarTray DockPanel.Dock="Top">
+        <!--<ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
                 <Button ToolTip="Dodavanje nove manifestacije" Command="commands:RoutedCommands.AddManifestation">
                     <StackPanel Orientation="Horizontal">
@@ -125,12 +125,12 @@
                     </StackPanel>
                 </Button>
             </ToolBar>
-        </ToolBarTray>
+        </ToolBarTray>-->
 
         <Grid DockPanel.Dock="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
             <!--Background canvas-->
-            <Canvas Name="Map" ToolTip="Mapa grada koja može sadržati grafičke predstave manifestacija" AllowDrop="True" Mouse.PreviewMouseDown="Map_PreviewMouseLeftButtonDown" MouseRightButtonDown="Map_MouseRightButtonDown" MouseMove="Map_MouseMove" DragEnter="Map_DragEnter" Drop="Map_Drop">
+            <Canvas Name="Map" AllowDrop="True" Mouse.PreviewMouseDown="Map_PreviewMouseLeftButtonDown" MouseRightButtonDown="Map_MouseRightButtonDown" MouseMove="Map_MouseMove" DragEnter="Map_DragEnter" Drop="Map_Drop">
                 <Canvas.Background>
                     <ImageBrush ImageSource="Resources\Images\sv2.png" AlignmentX="Left" AlignmentY="Top" Stretch="None"/>
                 </Canvas.Background>
@@ -146,7 +146,7 @@
                 </Canvas.ContextMenu>
             </Canvas>
 
-            <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200" Height="545" VerticalAlignment="Top">
+            <StackPanel HorizontalAlignment="Right" Background="{StaticResource White}" DockPanel.Dock="Right" Orientation="Vertical" Width="200" Height="578" VerticalAlignment="Top">
 
                 <!--Manifestation Actions-->
                 <Button Name="buttonAddManifestation" Command="commands:RoutedCommands.AddManifestation" Opacity="1" ToolTip="Dodavanje nove manifestacije" Margin="5" Padding="3" >

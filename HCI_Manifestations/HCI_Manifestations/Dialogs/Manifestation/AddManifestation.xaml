@@ -134,7 +134,8 @@
             </TextBox>
 
             <!--Handicap-->
-            <CheckBox Grid.Column="1" Grid.Row="3" IsChecked="{Binding Path=Handicap, UpdateSourceTrigger=PropertyChanged}" Name="checkBoxHandicap" ToolTip="Označite da li je manifestacija prilagođena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="3"/>
+            <RadioButton Grid.Column="1" Grid.Row="3" Margin="0,5,10,10" Name="radioButtonInside" IsChecked="{Binding Path=Inside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Manifestacija se održava u zatvorenom prostoru" Content="Unutra"/>
+            <RadioButton Grid.Column="1" Grid.Row="3" Margin="202,5,-42,10" Name="radioButtonOutside" IsChecked="{Binding Path=Outside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Manifestacija se održava na otvorenom" Content="Napolju"/>
 
             <!--Date-->
             <Label Grid.Column="0" Grid.Row="4" Content="Datum održavanja:" />
@@ -179,15 +180,15 @@
                 </Button>
             </Grid>
 
-            <!--Smoking-->
-            <Label Grid.Column="0" Grid.Row="7" Content="Dozvoljeno pušenje:" />
+            <!--Other-->
+            <Label Grid.Column="0" Grid.Row="7" Content="Dodatno:" />
             <Grid Grid.Column="1" Grid.Row="7" Margin="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <CheckBox Name="checkBoxInside" IsChecked="{Binding Path=SmokingInside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Pušenje je dozvoljeno unutra" Grid.Column="0" Grid.Row="0" Content="Unutra"/>
-                <CheckBox Name="checkBoxOutside" IsChecked="{Binding Path=SmokingOutside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Pušenje je dozvoljeno napolju" Grid.Column="1" Grid.Row="0" Content="Napolju"/>
+                <CheckBox Content="Dozvoljeno pušenje" IsChecked="{Binding Path=SmokingAllowed, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,4,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <CheckBox IsChecked="{Binding Path=Handicap, UpdateSourceTrigger=PropertyChanged}" Name="checkBoxHandicap" ToolTip="Označite da li je manifestacija prilagođena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="0,4,0,5"/>
             </Grid>
 
             <!--Prices-->
@@ -201,7 +202,7 @@
 
             <!--Alcohol-->
             <Label Grid.Column="0" Grid.Row="9" Content="Alkohol:" />
-            <ComboBox Name="comboBoxAlcohol" Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" ToolTip="Mogućnost dobavljanja alkohola na manifestaciji" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3">
+            <ComboBox Name="comboBoxAlcohol" Text="{Binding Path=Alcohol, UpdateSourceTrigger=PropertyChanged}" ToolTip="Status služenja alkohola na manifestaciji" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="3">
                 <ComboBoxItem>Nema</ComboBoxItem>
                 <ComboBoxItem>Može se doneti</ComboBoxItem>
                 <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
@@ -262,6 +263,7 @@
                                    MaxDropDownHeight="100"
                                    ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="3,37,3,-50" Grid.ColumnSpan="2" />
             </Grid>
+            <Label Content="Održava se:" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top"/>
 
         </Grid>
 

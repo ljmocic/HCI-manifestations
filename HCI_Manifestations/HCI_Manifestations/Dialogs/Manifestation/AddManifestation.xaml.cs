@@ -63,6 +63,7 @@ namespace HCI_Manifestations.dialogs
 
             Manifestation = new Manifestation();
             Manifestation.Date = DateTime.Now.Date;
+            Manifestation.Inside = true;
             Manifestation.X = -1;
             Manifestation.Y = -1;
             
@@ -282,5 +283,6 @@ namespace HCI_Manifestations.dialogs
             HelpProvider.ShowHelp("Manifestation", this);
         }
         #endregion
+
     }
 }

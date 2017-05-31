@@ -37,8 +37,34 @@ namespace HCI_Manifestations.dialogs
         }
 
         public Manifestation SelectedManifestation { get; set; }
+        public DateTime fromDate;
+        public DateTime FromDate
+        {
+            get { return fromDate; }
+            set
+            {
+                if (value != fromDate)
+                {
+                    fromDate = value;
+                    OnPropertyChanged("FromDate");
+                }
+            }
+        }
+        public DateTime toDate;
+        public DateTime ToDate
+        {
+            get { return toDate; }
+            set
+            {
+                if (value != toDate)
+                {
+                    toDate = value;
+                    OnPropertyChanged("ToDate");
+                }
+            }
+        }
         #endregion
-        
+
         #region Constructor
         public ShowManifestations()
         {
@@ -49,6 +75,9 @@ namespace HCI_Manifestations.dialogs
             DataContext = this;
             comboBoxType.DataContext = Database.getInstance();
             Manifestations = Database.getInstance().Manifestations;
+
+            FromDate = DateTime.Now;
+            ToDate = DateTime.Now;
         }
         #endregion
 
@@ -92,29 +121,36 @@ namespace HCI_Manifestations.dialogs
             comboBoxPrice.SelectedIndex = 4;
             comboBoxType.SelectedValue = null;
             checkBoxHandicap.IsChecked = false;
-            checkBoxSmokingInside.IsChecked = false;
-            checkBoxSmokingOutside.IsChecked = false;
+            checkBoxHandicap.IsChecked = false;
+            radioButtonInside.IsChecked = false;
+            radioButtonOutside.IsChecked = false;
+            FromDate = DateTime.Now;
+            ToDate = DateTime.Now;
         }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
             var result = new ObservableCollection<Manifestation>();
             result = Database.getInstance().Manifestations;
+            if (!fromDate.Equals("Select a date") || !toDate.Equals("Select a date"))
+            {
+                result = filterDate(result, true);
+            }
             if (checkBoxHandicap.IsChecked == true)
             {
                 result = filterHandicap(result, true);
             }
-            if (checkBoxSmokingInside.IsChecked == true)
+            if (checkBoxSmokingAllowed.IsChecked == true)
             {
-                result = filterSmokingInside(result, true);
+                result = filterSmoking(result, true);
             }
-            if (checkBoxSmokingOutside.IsChecked == true)
+            if (radioButtonInside.IsChecked == true)
             {
-                result = filterSmokingOutside(result, true);
+                result = filterInside(result, true);
             }
-            if (checkBoxSmokingOutside.IsChecked == true)
+            if (radioButtonOutside.IsChecked == true)
             {
-                result = filterSmokingOutside(result, true);
+                result = filterOutside(result, true);
             }
             if (!searchInputId.Text.Equals(""))
             {
@@ -152,9 +188,34 @@ namespace HCI_Manifestations.dialogs
         {
             HelpProvider.ShowHelp("ShowManifestations", this);
         }
+
+        private void manifestationsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            buttonEdit_Click(null, null);
+        }
         #endregion
 
         #region Filters
+        private ObservableCollection<Manifestation> filterDate(ObservableCollection<Manifestation> manifestations, bool value)
+        {
+            var replace = new ObservableCollection<Manifestation>();
+
+            foreach (var data in manifestations)
+            {
+                int result = DateTime.Compare(fromDate, toDate);
+                if (result <= 0)
+                {
+                    int compareFrom = DateTime.Compare(fromDate, data.Date);
+                    int compareTo = DateTime.Compare(data.Date, toDate);
+                    if (compareFrom <= 0 && compareTo <= 0)
+                    {
+                        replace.Add(new Manifestation(data));
+                    }
+                }
+            }
+            return replace;
+        }
+
         private ObservableCollection<Manifestation> filterHandicap(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
@@ -169,13 +230,13 @@ namespace HCI_Manifestations.dialogs
             return replace;
         }
 
-        private ObservableCollection<Manifestation> filterSmokingInside(ObservableCollection<Manifestation> manifestations, bool value)
+        private ObservableCollection<Manifestation> filterInside(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
 
             foreach (var data in manifestations)
             {
-                if (data.SmokingInside == value)
+                if (data.Inside == value)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -183,13 +244,27 @@ namespace HCI_Manifestations.dialogs
             return replace;
         }
 
-        private ObservableCollection<Manifestation> filterSmokingOutside(ObservableCollection<Manifestation> manifestations, bool value)
+        private ObservableCollection<Manifestation> filterOutside(ObservableCollection<Manifestation> manifestations, bool value)
         {
             var replace = new ObservableCollection<Manifestation>();
 
             foreach (var data in manifestations)
             {
-                if (data.SmokingOutside == value)
+                if (data.Outside == value)
+                {
+                    replace.Add(new Manifestation(data));
+                }
+            }
+            return replace;
+        }
+
+        private ObservableCollection<Manifestation> filterSmoking(ObservableCollection<Manifestation> manifestations, bool value)
+        {
+            var replace = new ObservableCollection<Manifestation>();
+
+            foreach (var data in manifestations)
+            {
+                if (data.SmokingAllowed == value)
                 {
                     replace.Add(new Manifestation(data));
                 }
@@ -239,9 +314,12 @@ namespace HCI_Manifestations.dialogs
 
             foreach (var data in manifestations)
             {
-                if (data.Alcohol.Equals(comboBoxAlcohol.Text))
-                {
-                    replace.Add(new Manifestation(data));
+                if (data.Alcohol != null)
+                { 
+                    if (data.Alcohol.Equals(comboBoxAlcohol.Text))
+                    {
+                        replace.Add(new Manifestation(data));
+                    }
                 }
             }
             return replace;
@@ -253,9 +331,12 @@ namespace HCI_Manifestations.dialogs
 
             foreach (var data in manifestations)
             {
-                if (data.Price.Equals(comboBoxPrice.Text))
+                if (data.Price != null)
                 {
-                    replace.Add(new Manifestation(data));
+                    if (data.Price.Equals(comboBoxPrice.Text))
+                    {
+                        replace.Add(new Manifestation(data));
+                    }
                 }
             }
             return replace;
@@ -267,9 +348,12 @@ namespace HCI_Manifestations.dialogs
 
             foreach (var data in manifestations)
             {
-                if (data.Type.Id.Equals(comboBoxType.Text))
-                {
-                    replace.Add(new Manifestation(data));
+                if (data.Type != null)
+                { 
+                    if (data.Type.Id.Equals(comboBoxType.Text))
+                    {
+                        replace.Add(new Manifestation(data));
+                    }
                 }
             }
             return replace;
@@ -287,5 +371,6 @@ namespace HCI_Manifestations.dialogs
             }
         }
         #endregion
+
     }
 }

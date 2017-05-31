@@ -117,30 +117,44 @@ namespace HCI_Manifestations.Models
             }
         }
 
-        private bool smokingInside;
-        public bool SmokingInside
+        private bool smokingAllowed;
+        public bool SmokingAllowed
         {
-            get { return smokingInside; }
+            get { return smokingAllowed; }
             set
             {
-                if (value != smokingInside)
+                if (value != smokingAllowed)
                 {
-                    smokingInside = value;
-                    OnPropertyChanged("SmokingInside");
+                    smokingAllowed = value;
+                    OnPropertyChanged("SmokingAllowed");
                 }
             }
         }
 
-        private bool smokingOutside;
-        public bool SmokingOutside
+        private bool inside;
+        public bool Inside
         {
-            get { return smokingOutside; }
+            get { return inside; }
             set
             {
-                if (value != smokingOutside)
+                if (value != inside)
                 {
-                    smokingOutside = value;
-                    OnPropertyChanged("SmokingOuside");
+                    inside = value;
+                    OnPropertyChanged("Inside");
+                }
+            }
+        }
+
+        private bool outside;
+        public bool Outside
+        {
+            get { return outside; }
+            set
+            {
+                if (value != outside)
+                {
+                    outside = value;
+                    OnPropertyChanged("Outside");
                 }
             }
         }
@@ -238,7 +252,7 @@ namespace HCI_Manifestations.Models
         }
 
         public Manifestation(string id, string name, string description, DateTime date, ManifestationType type, string iconPath,
-            bool smokingInside, bool smokingOutside, string price, string alcohol, string expectedPublic, List<ManifestationTag> tags)
+            bool smokingAllowed, bool inside, bool outside, string price, string alcohol, string expectedPublic, List<ManifestationTag> tags)
         {
             this.id = id;
             this.name = name;
@@ -251,8 +265,9 @@ namespace HCI_Manifestations.Models
                 File.Copy(@iconPath, @newPath, true);
             }
             this.iconPath = newPath;
-            this.smokingInside = smokingInside;
-            this.smokingOutside = smokingOutside;
+            this.smokingAllowed = smokingAllowed;
+            this.inside = inside;
+            this.outside = outside;
             this.price = price;
             this.alcohol = alcohol;
             this.expectedPublic = expectedPublic;
@@ -270,8 +285,9 @@ namespace HCI_Manifestations.Models
             handicap = manifestation.handicap;
             type = new ManifestationType(manifestation.type);
             iconPath = manifestation.iconPath;
-            smokingInside = manifestation.smokingInside;
-            smokingOutside = manifestation.smokingOutside;
+            inside = manifestation.inside;
+            outside = manifestation.outside;
+            smokingAllowed = manifestation.smokingAllowed;
             price = manifestation.price;
             alcohol = manifestation.alcohol;
             expectedPublic = manifestation.expectedPublic;

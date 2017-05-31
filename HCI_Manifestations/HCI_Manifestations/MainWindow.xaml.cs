@@ -156,10 +156,23 @@ namespace HCI_Manifestations
                 Point dropPosition = e.GetPosition(Map);
                 Manifestation manifestationPin = e.Data.GetData("manifestation") as Manifestation;
 
-                if (Manifestation_Click((int)dropPosition.X, (int)dropPosition.Y) != null)
+                Manifestation manifestationOnThatPosition = Manifestation_Click((int)dropPosition.X, (int)dropPosition.Y);
+
+                if (manifestationOnThatPosition != null && !manifestationPin.Id.Equals(manifestationOnThatPosition.Id))
                 {
-                    manifestationPin.X = (int)dropPosition.X - 48;
-                    manifestationPin.Y = (int)dropPosition.Y - 48;
+                    manifestationPin.X = (int)dropPosition.X - 36;
+                    manifestationPin.Y = (int)dropPosition.Y - 36;
+                }
+                // if it is close to the upper edge, move it down a little bit
+                else if ((int)dropPosition.Y > -5 && (int)dropPosition.Y < 5)
+                {
+                    manifestationPin.X = (int)dropPosition.X - 16;
+                    manifestationPin.Y = (int)dropPosition.Y + 8;
+                }
+                else if ((int)dropPosition.X > -5 && (int)dropPosition.X < 5)
+                {
+                    manifestationPin.X = (int)dropPosition.X + 8;
+                    manifestationPin.Y = (int)dropPosition.Y - 16;
                 }
                 else
                 {
