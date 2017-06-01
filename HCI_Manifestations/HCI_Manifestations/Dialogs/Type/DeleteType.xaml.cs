@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.Dialogs.Type
 {
-    /// <summary>
-    /// Interaction logic for DeleteType.xaml
-    /// </summary>
     public partial class DeleteType : Window
     {
         private ManifestationType SelectedType;

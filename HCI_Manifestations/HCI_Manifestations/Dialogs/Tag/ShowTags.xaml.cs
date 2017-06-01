@@ -71,8 +71,30 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            DeleteTag dialog = new DeleteTag(SelectedTag.Id);
-            dialog.ShowDialog();
+            if (manifestationsHaveTag(SelectedTag.Id))
+            {
+                DeleteTag dialog = new DeleteTag(SelectedTag.Id);
+                dialog.ShowDialog();
+            }
+            else
+            {
+                Database.DeleteTag(SelectedTag);
+            }
+        }
+
+        private bool manifestationsHaveTag(string Id)
+        {
+            foreach (var manifestation in Database.getInstance().Manifestations)
+            {
+                foreach (var tag in manifestation.Tags)
+                {
+                    if (tag.Id.Equals(Id))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private void tagsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

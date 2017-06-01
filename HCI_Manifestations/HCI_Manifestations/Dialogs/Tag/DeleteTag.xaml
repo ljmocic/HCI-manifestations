@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs.Tag"
         Icon="../../Resources/Icons/favicon.ico"
         mc:Ignorable="d"
-        Title="DeleteTag" Height="300" Width="300">
+        Title="Brisanje etikete" Height="300" Width="300">
     <Grid>
         <DataGrid Name="manifestationsGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih manifestacija koji sadrže etiketu za brisanje" ItemsSource="{Binding Path=ManifestationsWithTag}" Margin="5,63,5,48" IsReadOnly="True" Grid.Column="0">
             <DataGrid.Columns>
