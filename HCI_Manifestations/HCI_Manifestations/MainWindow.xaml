@@ -136,7 +136,7 @@
                 </Canvas.Background>
                 <Canvas.ContextMenu>
                     <ContextMenu Name="contextMenu">
-                        <MenuItem Header="Ažuriraj manifestaciju" Click="UpdateManifestation_Click"> 
+                        <MenuItem Header="Ažuriraj manifestaciju" Click="UpdateManifestation_Click">
                         </MenuItem>
                         <MenuItem Header="Ukloni prikaz manifestacije" Click="RemoveManifestationIcon_Click">
                         </MenuItem>

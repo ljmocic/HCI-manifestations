@@ -114,7 +114,7 @@ namespace HCI_Manifestations.Dialogs
             if (string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text)
                 || Database.GetType(autoCompleteBoxTypes.Text) == null)
             {
-                System.Windows.MessageBox.Show("Odabir tipa je obavezan!");
+                textBoxTypeError.Visibility = System.Windows.Visibility.Visible;
                 autoCompleteBoxTypes.Text = "";
                 autoCompleteBoxTypes.Focus();
                 return;
@@ -144,12 +144,20 @@ namespace HCI_Manifestations.Dialogs
             Close();
         }
 
-        // TODO refactor!
         private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
         {
-            if (Database.GetTag(autoCompleteBoxTags.Text) == null && !string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+            // if it hasn't been found in database, open dialog to add it
+            if (Database.GetTag(autoCompleteBoxTags.Text) == null)
             {
-                AddTag dialog = new AddTag(autoCompleteBoxTags.Text);
+                AddTag dialog;
+                if (string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+                {
+                    dialog = new AddTag();
+                }
+                else
+                {
+                    dialog = new AddTag(autoCompleteBoxTags.Text);
+                }
                 dialog.ShowDialog();
 
                 // If it has successfully added a new tag
@@ -160,6 +168,7 @@ namespace HCI_Manifestations.Dialogs
                     comboBoxTags.SelectedItems.Add(tag);
                 }
 
+                // solve xceed library bug
                 if (comboBoxTags.SelectedItems.Count == 1)
                 {
                     comboBoxTags.Text = Manifestation.Tags[0].Id;
@@ -169,10 +178,12 @@ namespace HCI_Manifestations.Dialogs
                     comboBoxTags.Text = "";
                 }
             }
-            else if (!string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+            // if it has been found in database
+            else
             {
                 ManifestationTag tag = new ManifestationTag(Database.GetTag(autoCompleteBoxTags.Text));
 
+                // make sure tag is't already added
                 bool found = false;
                 foreach (var item in comboBoxTags.SelectedItems)
                 {
@@ -183,18 +194,20 @@ namespace HCI_Manifestations.Dialogs
                 {
                     Manifestation.Tags.Add(tag);
                     comboBoxTags.SelectedItems.Add(tag);
-
-                    if (comboBoxTags.SelectedItems.Count == 1)
-                    {
-                        comboBoxTags.Text = Manifestation.Tags[0].Id;
-                    }
-                    if (comboBoxTags.SelectedItems.Count == 0)
-                    {
-                        comboBoxTags.Text = "";
-                    }
                 }
 
+                // solve xceed library bug
+                if (comboBoxTags.SelectedItems.Count == 1)
+                {
+                    comboBoxTags.Text = Manifestation.Tags[0].Id;
+                }
+                if (comboBoxTags.SelectedItems.Count == 0)
+                {
+                    comboBoxTags.Text = "";
+                }
             }
+
+            // reset field
             autoCompleteBoxTags.SelectedItem = null;
             autoCompleteBoxTags.Text = string.Empty;
         }
@@ -316,6 +329,22 @@ namespace HCI_Manifestations.Dialogs
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             HelpProvider.ShowHelp("Manifestation", this);
+        }
+
+        private void textBoxTypeError_LostFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxTypeError.Visibility = System.Windows.Visibility.Hidden;
+        }
+        #endregion
+
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
         #endregion
     }

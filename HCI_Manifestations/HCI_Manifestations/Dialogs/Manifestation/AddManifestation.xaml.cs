@@ -23,17 +23,6 @@ namespace HCI_Manifestations.dialogs
 
     public partial class AddManifestation : Window, INotifyPropertyChanged
     {
-        #region PropertyChangedNotifier
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
-
         #region Attributes
         private Manifestation manifestation;
         public Manifestation Manifestation
@@ -63,7 +52,6 @@ namespace HCI_Manifestations.dialogs
 
             Manifestation = new Manifestation();
             Manifestation.Date = DateTime.Now.Date;
-            Manifestation.Inside = true;
             Manifestation.X = -1;
             Manifestation.Y = -1;
             
@@ -117,7 +105,7 @@ namespace HCI_Manifestations.dialogs
             if (string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text)
                 || Database.GetType(autoCompleteBoxTypes.Text) == null)
             {
-                System.Windows.MessageBox.Show("Odabir tipa je obavezan!");
+                textBoxTypeError.Visibility = System.Windows.Visibility.Visible;
                 autoCompleteBoxTypes.Text = "";
                 autoCompleteBoxTypes.Focus();
                 return;
@@ -146,13 +134,21 @@ namespace HCI_Manifestations.dialogs
         {
             Close();
         }
-
-        // TODO refactor!
+        
         private void buttonAddNewTag_Click(object sender, RoutedEventArgs e)
         {
-            if (Database.GetTag(autoCompleteBoxTags.Text) == null && !string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+            // if it hasn't been found in database, open dialog to add it
+            if (Database.GetTag(autoCompleteBoxTags.Text) == null)
             {
-                AddTag dialog = new AddTag(autoCompleteBoxTags.Text);
+                AddTag dialog;
+                if (string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+                {
+                    dialog = new AddTag();
+                }
+                else
+                {
+                    dialog = new AddTag(autoCompleteBoxTags.Text);
+                }
                 dialog.ShowDialog();
 
                 // If it has successfully added a new tag
@@ -163,6 +159,7 @@ namespace HCI_Manifestations.dialogs
                     comboBoxTags.SelectedItems.Add(tag);
                 }
 
+                // solve xceed library bug
                 if (comboBoxTags.SelectedItems.Count == 1)
                 {
                     comboBoxTags.Text = Manifestation.Tags[0].Id;
@@ -172,10 +169,12 @@ namespace HCI_Manifestations.dialogs
                     comboBoxTags.Text = "";
                 }
             }
-            else if (!string.IsNullOrWhiteSpace(autoCompleteBoxTags.Text))
+            // if it has been found in database
+            else
             {
                 ManifestationTag tag = new ManifestationTag(Database.GetTag(autoCompleteBoxTags.Text));
 
+                // make sure tag is't already added
                 bool found = false;
                 foreach (var item in comboBoxTags.SelectedItems)
                 {
@@ -186,18 +185,20 @@ namespace HCI_Manifestations.dialogs
                 {
                     Manifestation.Tags.Add(tag);
                     comboBoxTags.SelectedItems.Add(tag);
-
-                    if (comboBoxTags.SelectedItems.Count == 1)
-                    {
-                        comboBoxTags.Text = Manifestation.Tags[0].Id;
-                    }
-                    if (comboBoxTags.SelectedItems.Count == 0)
-                    {
-                        comboBoxTags.Text = "";
-                    }
                 }
 
+                // solve xceed library bug
+                if (comboBoxTags.SelectedItems.Count == 1)
+                {
+                    comboBoxTags.Text = Manifestation.Tags[0].Id;
+                }
+                if (comboBoxTags.SelectedItems.Count == 0)
+                {
+                    comboBoxTags.Text = "";
+                }
             }
+
+            // reset field
             autoCompleteBoxTags.SelectedItem = null;
             autoCompleteBoxTags.Text = string.Empty;
         }
@@ -282,7 +283,22 @@ namespace HCI_Manifestations.dialogs
         {
             HelpProvider.ShowHelp("Manifestation", this);
         }
+
+        private void textBoxTypeError_LostFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxTypeError.Visibility = System.Windows.Visibility.Hidden;
+        }
         #endregion
 
+        #region PropertyChangedNotifier
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
     }
 }

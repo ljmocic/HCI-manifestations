@@ -32,9 +32,9 @@
         <!--Main search-->
         <Label x:Name="searchInputLabelId" Content="Id:" HorizontalAlignment="Left" Margin="16,4,0,0" VerticalAlignment="Top"/>
         <Label x:Name="searchInputLabelName" Content="Ime:" HorizontalAlignment="Left" Margin="202,4,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="searchInputId" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="44,6,401,2"/>
+        <TextBox Name="searchInputId" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos jedinstvene oznake manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="44,6,392,2"/>
         <TextBox Name="searchInputName" MaxLength="55" KeyDown="searchInput_KeyDown" ToolTip="Unos imena manifestacije za pretragu" Grid.Column="0" Grid.Row="0" Margin="239,6,195,2"/>
-        <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="428,6,0,0" VerticalAlignment="Top" Width="154"/>
+        <ComboBox x:Name="comboBoxType" ToolTip="Uključuje filter pretrage odabranog tipa manifestacije" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="428,6,0,0" VerticalAlignment="Top" Width="152"/>
 
         <!--Search prefs-->
         <Label Content="Od:" HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
@@ -48,13 +48,13 @@
         <CheckBox x:Name="checkBoxHandicap" ToolTip="Uključuje filter pretrage manifestacija sa podrškom za hendikepiranje osobe" Content="Hendikep" HorizontalAlignment="Left" Margin="298,15,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxSmokingAllowed" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja unutra" Content="Pušenje" HorizontalAlignment="Left" Margin="298,48,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
         
-        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="3" HorizontalAlignment="Left" Margin="428,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="154">
+        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="3" HorizontalAlignment="Left" Margin="428,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="152">
             <ComboBoxItem>Nema</ComboBoxItem>
             <ComboBoxItem>Može se doneti</ComboBoxItem>
             <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
             <ComboBoxItem>Sve</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="comboBoxPrice" ToolTip="Uključuje filter pretrage manifestacija sa određenim cenovnim rangom" SelectedIndex="4" HorizontalAlignment="Left" Margin="430,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="152" Grid.RowSpan="2">
+        <ComboBox x:Name="comboBoxPrice" ToolTip="Uključuje filter pretrage manifestacija sa određenim cenovnim rangom" SelectedIndex="4" HorizontalAlignment="Left" Margin="430,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Grid.RowSpan="2">
             <ComboBoxItem>Besplatno</ComboBoxItem>
             <ComboBoxItem>Niske cene</ComboBoxItem>
             <ComboBoxItem>Srednje cene</ComboBoxItem>
@@ -83,7 +83,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka manifestacije" MinWidth="100" Width="*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Naziv manifestacije"  MinWidth="100" Width="*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Opis manifestacije"   MinWidth="100" Width="*" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Tip manifestacije"   MinWidth="100" Width="*" Binding="{Binding Type.Id}"/>
             </DataGrid.Columns>
         </DataGrid>
 

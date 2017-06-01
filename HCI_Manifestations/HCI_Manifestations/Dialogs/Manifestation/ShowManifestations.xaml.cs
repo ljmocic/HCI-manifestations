@@ -121,7 +121,7 @@ namespace HCI_Manifestations.dialogs
             comboBoxPrice.SelectedIndex = 4;
             comboBoxType.SelectedValue = null;
             checkBoxHandicap.IsChecked = false;
-            checkBoxHandicap.IsChecked = false;
+            checkBoxSmokingAllowed.IsChecked = false;
             radioButtonInside.IsChecked = false;
             radioButtonOutside.IsChecked = false;
             FromDate = DateTime.Now;
@@ -132,7 +132,7 @@ namespace HCI_Manifestations.dialogs
         {
             var result = new ObservableCollection<Manifestation>();
             result = Database.getInstance().Manifestations;
-            if (!fromDate.Equals("Select a date") || !toDate.Equals("Select a date"))
+            if (DateTime.Compare(fromDate, toDate) != 0)
             {
                 result = filterDate(result, true);
             }
@@ -152,11 +152,11 @@ namespace HCI_Manifestations.dialogs
             {
                 result = filterOutside(result, true);
             }
-            if (!searchInputId.Text.Equals(""))
+            if (!string.IsNullOrWhiteSpace(searchInputId.Text))
             {
                 result = filterId(result, true);
             }
-            if (!searchInputName.Text.Equals(""))
+            if (!string.IsNullOrWhiteSpace(searchInputName.Text))
             {
                 result = filterName(result, true);
             }
@@ -168,7 +168,7 @@ namespace HCI_Manifestations.dialogs
             {
                 result = filterPrice(result);
             }
-            if (!string.IsNullOrEmpty(comboBoxType.Text))
+            if (!string.IsNullOrWhiteSpace(comboBoxType.Text))
             {
                 result = filterType(result);
             }

@@ -111,7 +111,7 @@
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="1000" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="1000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -133,7 +133,7 @@
                 </Validation.ErrorTemplate>
             </TextBox>
 
-            <!--Handicap-->
+            <!--Inside/Outside location-->
             <RadioButton Grid.Column="1" Grid.Row="3" Margin="0,5,10,10" Name="radioButtonInside" IsChecked="{Binding Path=Inside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Manifestacija se održava u zatvorenom prostoru" Content="Unutra"/>
             <RadioButton Grid.Column="1" Grid.Row="3" Margin="202,5,-42,10" Name="radioButtonOutside" IsChecked="{Binding Path=Outside, UpdateSourceTrigger=PropertyChanged}" ToolTip="Manifestacija se održava na otvorenom" Content="Napolju"/>
 
@@ -149,10 +149,10 @@
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
 
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxType_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxType_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,2,3" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Id}"  ></TextBlock>
+                            <TextBlock Text="{Binding Id}" ></TextBlock>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
@@ -163,6 +163,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
+            <TextBlock Name="textBoxTypeError" LostFocus="textBoxTypeError_LostFocus" Grid.Column="1" HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" Visibility="Hidden" Text="Odabir tipa je obavezan!" Foreground="Red" VerticalAlignment="Top"/>
 
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="6" Content="Ikonica:" />
@@ -171,7 +172,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <TextBox Name="textBoxIconPath" ToolTip="Polje koje sadrži adresu lokacije ikonice" IsReadOnly="True" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Margin="3" IsEnabled="False"/>
+                <TextBox Name="textBoxIconPath" ToolTip="Polje koje sadrži adresu lokacije ikonice" IsReadOnly="True" Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Margin="3,3,2,3" IsEnabled="False"/>
                 <Button Name="loadIcon" Grid.Column="1" ToolTip="Kliknite da biste dodali novu ikonicu koja označava manifestaciju" Grid.Row="0" Margin="2" Padding="15,0" Click="loadIcon_Click">
                     <StackPanel Orientation="Horizontal" Width="74">
                         <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
@@ -187,8 +188,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <CheckBox Content="Dozvoljeno pušenje" IsChecked="{Binding Path=SmokingAllowed, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,4,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 <CheckBox IsChecked="{Binding Path=Handicap, UpdateSourceTrigger=PropertyChanged}" Name="checkBoxHandicap" ToolTip="Označite da li je manifestacija prilagođena hendikepiranim osobama" Content="Dostupna za hendikepirane" VerticalAlignment="Center" Margin="0,4,0,5"/>
+                <CheckBox Content="Dozvoljeno pušenje" IsChecked="{Binding Path=SmokingAllowed, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,4,0,0" VerticalAlignment="Top" Grid.Column="1" />
             </Grid>
 
             <!--Prices-->
@@ -240,17 +241,18 @@
             <Label Grid.Column="0" Grid.Row="11" Content="Etikete:" />
             <Grid Grid.Column="1" Grid.Row="11">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="173*" />
+                    <ColumnDefinition Width="101*"/>
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" ToolTip="Polje za dodavanje etiketa" PreviewKeyDown="autoCompleteBoxTag_PreviewKeyDown" IsDropDownOpen="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Tags, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" >
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" ToolTip="Polje za dodavanje etiketa" PreviewKeyDown="autoCompleteBoxTag_PreviewKeyDown" IsDropDownOpen="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Tags, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" Grid.ColumnSpan="2" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"></TextBlock>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-                <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="1" Grid.Row="0" Margin="3" Padding="20,0">
+                <Button Name="buttonAddNewTag" Click="buttonAddNewTag_Click" ToolTip="Dodaj novu etiketu" Grid.Column="2" Grid.Row="0" Margin="3" Padding="20,0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="..\..\Resources\Icons\add.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                         <TextBlock Text="Dodaj" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -261,7 +263,7 @@
                                    DisplayMemberPath="Id"
                                    ValueMemberPath="{Binding Path=Id}"
                                    MaxDropDownHeight="100"
-                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="3,37,3,-50" Grid.ColumnSpan="2" />
+                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="3,37,3,-31" Grid.ColumnSpan="3" />
             </Grid>
             <Label Content="Održava se:" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top"/>
 
@@ -272,5 +274,6 @@
             <Button Name="buttonSave" Margin="500,5,5,5" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Content="Sačuvaj"  Click="buttonSave_Click"  Padding="20,5" />
             <Button Name="buttonCancel" Margin="5" ToolTip="Odustajanje od unosa podataka" Content="Odustani" Click="buttonCancel_Click" Padding="20,5" />
         </StackPanel>
-    </Grid>
+
+        </Grid>
 </Window>
