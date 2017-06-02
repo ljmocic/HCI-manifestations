@@ -265,7 +265,6 @@ namespace HCI_Manifestations
                     Image ManifestationIcon = new Image();
                     ManifestationIcon.Width = 32;
                     ManifestationIcon.Height = 32;
-                    ManifestationIcon.Name = manifestation.Id;
                     ManifestationIcon.ToolTip = manifestation.Id + " " + manifestation.Name;
 
                     if (File.Exists(manifestation.IconPath))
@@ -297,6 +296,12 @@ namespace HCI_Manifestations
         {
             ShowHelp help = new ShowHelp("MainWindow", this);
             help.Show();
+        }
+
+        private void Demo_Click(object sender, RoutedEventArgs e)
+        {
+            ShowVideoTutorial tutorial = new ShowVideoTutorial();
+            tutorial.Show();
         }
         #endregion
 
@@ -332,5 +337,6 @@ namespace HCI_Manifestations
             }
         }
         #endregion
+        
     }
 }

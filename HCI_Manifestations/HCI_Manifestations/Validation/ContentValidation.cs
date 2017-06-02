@@ -15,9 +15,13 @@ namespace HCI_Manifestations.Validation
             try
             {
                 var temp = value as string;
-                if (temp.Any(ch => !char.IsLetterOrDigit(ch)))
+                if (string.IsNullOrWhiteSpace(temp))
+                {
+                    return new ValidationResult(false, "Id se ne sme sastojati samo od razmaka");
+                }
+                if (temp.Any(ch => char.IsPunctuation(ch)))
                 { 
-                    return new ValidationResult(false, "Dozvoljeni karakteri su samo slova i brojevi");
+                    return new ValidationResult(false, "Id mora biti ljudski čitljiv i ne sme sadržati znakove interpunkcije");
                 }
                 else
                 {

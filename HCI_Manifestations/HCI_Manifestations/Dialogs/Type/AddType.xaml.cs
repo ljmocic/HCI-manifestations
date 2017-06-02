@@ -69,7 +69,7 @@ namespace HCI_Manifestations.dialogs
         private void buttonBrowse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.png;*.jpeg,*.ico)|*.ico;*.png;*.jpeg";
+            dialog.Filter = "Image files (*.png;*.jpg,*.ico)|*.ico;*.png;*.jpg";
             if (dialog.ShowDialog() == true)
             {
                 textBoxIconPath.Text = dialog.FileName;

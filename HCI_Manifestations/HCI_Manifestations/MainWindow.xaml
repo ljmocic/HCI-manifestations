@@ -78,7 +78,7 @@
                         <Image Source="Resources\Icons\document.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Demo mod" InputGestureText="Alt+D">
+                <MenuItem Name="Demo" Header="_Demo mod" Click="Demo_Click">
                     <MenuItem.Icon>
                         <Image Source="Resources\Icons\demo_play.png" Width="12" Height="12"/>
                     </MenuItem.Icon>
