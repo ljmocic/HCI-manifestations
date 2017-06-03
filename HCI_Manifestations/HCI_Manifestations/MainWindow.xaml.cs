@@ -283,7 +283,12 @@ namespace HCI_Manifestations
 
                     Canvas.SetLeft(ManifestationIcon, manifestation.X);
                     Canvas.SetTop(ManifestationIcon, manifestation.Y);
+
                 }
+            }
+            if (listView != null && listView.Items.Count != 0)
+            {
+                listView.ScrollIntoView(listView.Items.GetItemAt(listView.Items.Count - 1));
             }
         }
 
@@ -338,5 +343,9 @@ namespace HCI_Manifestations
         }
         #endregion
         
+        private void listView_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            
+        }
     }
 }

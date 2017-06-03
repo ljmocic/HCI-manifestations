@@ -99,7 +99,11 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Database.DeleteManifestation(SelectedManifestation);
+            if (SelectedManifestation != null)
+            {
+                Database.DeleteManifestation(SelectedManifestation);
+                SelectedManifestation = null;
+            }
         }
 
         private void manifestationsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

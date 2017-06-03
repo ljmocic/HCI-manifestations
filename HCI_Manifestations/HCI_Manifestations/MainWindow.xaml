@@ -200,11 +200,14 @@
                 <Separator></Separator>
 
                 <GroupBox ToolTip="Lista manifestacija spremnih za prenošenje njihovih grafičkih predstava na mapu" Header="Manifestacije" Height="275" Margin="10,0" Foreground="White">
-                    <ListView ItemsSource="{Binding Manifestations}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
+                    <ListView Name="listView" SourceUpdated="listView_SourceUpdated"  ItemsSource="{Binding Manifestations}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
-                                    <TextBlock Text="{Binding Id}" FontWeight="Bold" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding IconPath}" Height="15" Width="15" Margin="0,0,5,0" HorizontalAlignment="Left"/>
+                                        <TextBlock Text="{Binding Id}" FontWeight="Bold" />
+                                    </StackPanel>
                                 </WrapPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

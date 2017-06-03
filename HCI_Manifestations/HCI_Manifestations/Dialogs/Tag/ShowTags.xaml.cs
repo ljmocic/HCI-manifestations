@@ -71,14 +71,22 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (manifestationsHaveTag(SelectedTag.Id))
+            if (SelectedTag != null)
             {
-                DeleteTag dialog = new DeleteTag(SelectedTag.Id);
-                dialog.ShowDialog();
+                if (manifestationsHaveTag(SelectedTag.Id))
+                {
+                    DeleteTag dialog = new DeleteTag(SelectedTag.Id);
+                    dialog.ShowDialog();
+                }
+                else
+                {
+                    Database.DeleteTag(SelectedTag);
+                    SelectedTag = null;
+                }
             }
             else
             {
-                Database.DeleteTag(SelectedTag);
+                MessageBox.Show("Molimo, odaberite etiketu za brisanje", "Brisanje etikete");
             }
         }
 

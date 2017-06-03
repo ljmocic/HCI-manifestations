@@ -69,22 +69,30 @@ namespace HCI_Manifestations.dialogs
         {
             int counter = 0;
             ObservableCollection<Manifestation> manifestations = Database.getInstance().Manifestations;
-            foreach (Manifestation manifestation in manifestations)
+            if (SelectedType != null)
             {
-                if (manifestation.Type.Id.Equals(SelectedType.Id))
+                foreach (Manifestation manifestation in manifestations)
                 {
-                    counter++;
+                    if (manifestation.Type.Id.Equals(SelectedType.Id))
+                    {
+                        counter++;
+                    }
                 }
-            }
 
-            if (counter > 0)
-            {
-                DeleteType handler = new DeleteType(SelectedType);
-                handler.ShowDialog();
+                if (counter > 0)
+                {
+                    DeleteType handler = new DeleteType(SelectedType);
+                    handler.ShowDialog();
+                }
+                else
+                {
+                    Database.DeleteType(SelectedType);
+                    SelectedType = null;
+                }
             }
             else
             {
-                Database.DeleteType(SelectedType);
+                MessageBox.Show("Molimo, odaberite tip manifestacije za brisanje", "Brisanje tipa manifestacije");
             }
 
         }
