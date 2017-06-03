@@ -67,6 +67,10 @@ namespace HCI_Manifestations.dialogs
                 EditTag editTag = new EditTag(SelectedTag.Id);
                 editTag.Show();
             }
+            else
+            {
+                MessageBox.Show("Molimo, odaberite etiketu za ažuriranje", "Ažuriranje etikete");
+            }
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
@@ -143,6 +147,11 @@ namespace HCI_Manifestations.dialogs
             {
                 buttonSearch_Click(null, null);
             }
+        }
+
+        private void tagsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            buttonEdit_Click(null, null);
         }
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)

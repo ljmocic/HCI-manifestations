@@ -137,6 +137,5 @@ namespace HCI_Manifestations.dialogs
             HelpProvider.ShowHelp("Type", this);
         }
         #endregion
-
     }
 }

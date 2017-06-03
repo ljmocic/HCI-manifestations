@@ -45,7 +45,7 @@
         </Button>
 
         <!--Data-->
-        <DataGrid Name="tagsGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih etiketa ili rezultata pretrage etiketa" SelectedItem="{Binding Path=SelectedTag, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Tags}" Margin="-3,10,5,10" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="tagsGrid_SelectionChanged">
+        <DataGrid Name="tagsGrid" MouseDoubleClick="tagsGrid_MouseDoubleClick"  AutoGenerateColumns="False" ToolTip="Prikaz svih etiketa ili rezultata pretrage etiketa" SelectedItem="{Binding Path=SelectedTag, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Tags}" Margin="-3,10,5,10" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" SelectionChanged="tagsGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka etikete" MinWidth="100" Width="*" Binding="{Binding Id}"/>
                 <DataGridTemplateColumn Header="Boja etikete">

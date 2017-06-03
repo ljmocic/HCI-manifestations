@@ -37,6 +37,7 @@ namespace HCI_Manifestations.dialogs
         }
 
         public Manifestation SelectedManifestation { get; set; }
+
         public DateTime fromDate;
         public DateTime FromDate
         {
@@ -50,6 +51,7 @@ namespace HCI_Manifestations.dialogs
                 }
             }
         }
+
         public DateTime toDate;
         public DateTime ToDate
         {
@@ -95,6 +97,10 @@ namespace HCI_Manifestations.dialogs
                 EditManifestation editManifestation = new EditManifestation(SelectedManifestation.Id);
                 editManifestation.Show();
             }
+            else
+            {
+                MessageBox.Show("Molimo, odaberite manifestaciju za ažuriranje", "Ažuriranje manifestacije");
+            }
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
@@ -103,6 +109,10 @@ namespace HCI_Manifestations.dialogs
             {
                 Database.DeleteManifestation(SelectedManifestation);
                 SelectedManifestation = null;
+            }
+            else
+            {
+                MessageBox.Show("Molimo, odaberite manifestaciju za brisanje", "Brisanje manifestacije");
             }
         }
 

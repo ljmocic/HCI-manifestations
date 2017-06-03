@@ -106,7 +106,6 @@ namespace HCI_Manifestations.dialogs
                 || Database.GetType(autoCompleteBoxTypes.Text) == null)
             {
                 textBoxTypeError.Visibility = System.Windows.Visibility.Visible;
-                autoCompleteBoxTypes.Text = "";
                 autoCompleteBoxTypes.Focus();
                 return;
             }
@@ -213,6 +212,7 @@ namespace HCI_Manifestations.dialogs
                 Manifestation.Tags.Add(new ManifestationTag((ManifestationTag)selectedTag));
             }
 
+            // solve xceed library bug
             if (comboBoxTags.SelectedItems.Count == 1)
             {
                 comboBoxTags.Text = Manifestation.Tags[0].Id;
@@ -279,14 +279,18 @@ namespace HCI_Manifestations.dialogs
             }
         }
 
+        private void autoCompleteBoxTypes_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(autoCompleteBoxTypes.Text)
+                || Database.GetType(autoCompleteBoxTypes.Text) == null)
+            {
+                textBoxTypeError.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             HelpProvider.ShowHelp("Manifestation", this);
-        }
-
-        private void textBoxTypeError_LostFocus(object sender, RoutedEventArgs e)
-        {
-            textBoxTypeError.Visibility = System.Windows.Visibility.Hidden;
         }
         #endregion
 

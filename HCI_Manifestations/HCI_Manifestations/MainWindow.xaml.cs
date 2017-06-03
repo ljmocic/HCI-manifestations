@@ -160,16 +160,16 @@ namespace HCI_Manifestations
 
                 if (manifestationOnThatPosition != null && !manifestationPin.Id.Equals(manifestationOnThatPosition.Id))
                 {
-                    manifestationPin.X = (int)dropPosition.X - 36;
-                    manifestationPin.Y = (int)dropPosition.Y - 36;
+                    manifestationPin.X = (int)dropPosition.X - 50;
+                    manifestationPin.Y = (int)dropPosition.Y - 50;
                 }
-                // if it is close to the upper edge, move it down a little bit
-                else if ((int)dropPosition.Y > -5 && (int)dropPosition.Y < 5)
+                // if it is close to the edge, move it a little bit
+                else if ((int)dropPosition.Y > -30 && (int)dropPosition.Y < 10)
                 {
                     manifestationPin.X = (int)dropPosition.X - 16;
                     manifestationPin.Y = (int)dropPosition.Y + 8;
                 }
-                else if ((int)dropPosition.X > -5 && (int)dropPosition.X < 5)
+                else if ((int)dropPosition.X > -30 && (int)dropPosition.X < 10)
                 {
                     manifestationPin.X = (int)dropPosition.X + 8;
                     manifestationPin.Y = (int)dropPosition.Y - 16;
@@ -241,20 +241,6 @@ namespace HCI_Manifestations
             return null;
         }
 
-        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
-            if (focusedControl is DependencyObject)
-            {
-                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp(str, this);
-            }
-            else
-            {
-                HelpProvider.ShowHelp(GetType().Name, this);
-            }
-        }
-
         private void ManifestationPins_Draw()
         {
             Map.Children.Clear();
@@ -286,6 +272,8 @@ namespace HCI_Manifestations
 
                 }
             }
+
+            // To scroll down in list, for easier drag and dropping recent item
             if (listView != null && listView.Items.Count != 0)
             {
                 listView.ScrollIntoView(listView.Items.GetItemAt(listView.Items.Count - 1));
@@ -307,6 +295,20 @@ namespace HCI_Manifestations
         {
             ShowVideoTutorial tutorial = new ShowVideoTutorial();
             tutorial.Show();
+        }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+            else
+            {
+                HelpProvider.ShowHelp(GetType().Name, this);
+            }
         }
         #endregion
 
@@ -343,9 +345,5 @@ namespace HCI_Manifestations
         }
         #endregion
         
-        private void listView_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            
-        }
     }
 }

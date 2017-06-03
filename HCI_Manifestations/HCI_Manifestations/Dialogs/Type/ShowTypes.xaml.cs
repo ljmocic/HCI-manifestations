@@ -59,9 +59,14 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedType != null) {
+            if (SelectedType != null)
+            {
                 EditType editType = new EditType(SelectedType.Id);
                 editType.Show();
+            }
+            else
+            {
+                MessageBox.Show("Molimo, odaberite tip manifestacije za ažuriranje", "Ažuriranje tipa manifestacije");
             }
         }
 
@@ -139,6 +144,11 @@ namespace HCI_Manifestations.dialogs
             {
                 buttonSearch_Click(null, null);
             }
+        }
+
+        private void typesGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            buttonEdit_Click(null, null);
         }
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)

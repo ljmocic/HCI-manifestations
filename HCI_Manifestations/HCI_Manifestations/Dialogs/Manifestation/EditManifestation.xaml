@@ -148,7 +148,7 @@
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
 
-                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" PreviewKeyDown="autoCompleteBoxType_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" HorizontalAlignment="Left" Width="270" >
+                <toolkit:AutoCompleteBox Name="autoCompleteBoxTypes" LostFocus="autoCompleteBoxTypes_LostFocus" PreviewKeyDown="autoCompleteBoxType_PreviewKeyDown" IsTextCompletionEnabled="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Types, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id" Margin="3,3,0,3" HorizontalAlignment="Left" Width="270" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Id}"  ></TextBlock>
@@ -162,8 +162,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <TextBlock Name="textBoxTypeError" LostFocus="textBoxTypeError_LostFocus" Grid.Column="1" HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" Visibility="Hidden" Text="Odabir tipa je obavezan!" Foreground="Red" VerticalAlignment="Top"/>
-
+            
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="6" Content="Ikonica:" />
             <Grid Grid.Column="1" Grid.Row="6">
@@ -272,6 +271,7 @@
             <Button Name="buttonSave" Margin="500,5,5,5" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Content="Sačuvaj"  Click="buttonSave_Click"  Padding="20,5" />
             <Button Name="buttonCancel" Margin="5" ToolTip="Odustajanje od unosa podataka" Content="Odustani" Click="buttonCancel_Click" Padding="20,5" />
         </StackPanel>
+        <TextBlock x:Name="textBoxTypeError" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" Visibility="Hidden" Text="Molimo da unesite naziv postojećeg ili dodajte novi tip manifestacije" Foreground="Red" VerticalAlignment="Top" Margin="5,212,-5,0"/>
 
     </Grid>
 

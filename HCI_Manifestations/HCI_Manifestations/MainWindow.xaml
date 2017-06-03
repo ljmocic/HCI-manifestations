@@ -137,10 +137,19 @@
                 <Canvas.ContextMenu>
                     <ContextMenu Name="contextMenu">
                         <MenuItem Header="Ažuriraj manifestaciju" Click="UpdateManifestation_Click">
+                            <MenuItem.Icon>
+                                <Image Source="Resources\Icons\edit.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                            </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="Ukloni prikaz manifestacije" Click="RemoveManifestationIcon_Click">
+                            <MenuItem.Icon>
+                                <Image Source="Resources\Icons\cancel.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                            </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="Obriši manifestaciju" Click="DeleteManifestation_Click">
+                            <MenuItem.Icon>
+                                <Image Source="Resources\Icons\delete.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                            </MenuItem.Icon>
                         </MenuItem>
                     </ContextMenu>
                 </Canvas.ContextMenu>
@@ -200,7 +209,7 @@
                 <Separator></Separator>
 
                 <GroupBox ToolTip="Lista manifestacija spremnih za prenošenje njihovih grafičkih predstava na mapu" Header="Manifestacije" Height="275" Margin="10,0" Foreground="White">
-                    <ListView Name="listView" SourceUpdated="listView_SourceUpdated"  ItemsSource="{Binding Manifestations}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
+                    <ListView Name="listView" ItemsSource="{Binding Manifestations}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>

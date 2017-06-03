@@ -31,7 +31,7 @@
         <!--Search-->
         <Label x:Name="labelId" Content="Id:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top"/>
         <TextBox Name="textBoxId" MaxLength="50" KeyDown="textBoxId_KeyDown" ToolTip="Unos jedinstvene oznake etikete za pretragu" Grid.Column="0" Grid.Row="0" Margin="38,2,108,48" Grid.RowSpan="2"/>
-        <Button Name="buttonSearch" ToolTip="Pretraga etiketa" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,2,2,48"  Height="30" Grid.RowSpan="2">
+        <Button Name="buttonSearch" ToolTip="Pretraga etiketa" Click="buttonSearch_Click" Grid.Column="1" VerticalAlignment="Center" Margin="0,2,5,48"  Height="30" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                 <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -45,7 +45,7 @@
         </Button>
 
         <!--Data-->
-        <DataGrid Name="typesGrid" AutoGenerateColumns="False" ToolTip="Prikaz svih tipova manifestacija ili rezultata pretrage tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged">
+        <DataGrid Name="typesGrid" MouseDoubleClick="typesGrid_MouseDoubleClick" AutoGenerateColumns="False" ToolTip="Prikaz svih tipova manifestacija ili rezultata pretrage tipova manifestacija" SelectedItem="{Binding Path=SelectedType, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Types}" Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectionChanged="typesGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka tipa" MinWidth="100" Width="*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Ime tipa"  MinWidth="100" Width="*" Binding="{Binding Name}"/>

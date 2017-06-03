@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace HCI_Manifestations.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for ShowVideoTutorial.xaml
-    /// </summary>
     public partial class ShowVideoTutorial : Window
     {
         public ShowVideoTutorial()
