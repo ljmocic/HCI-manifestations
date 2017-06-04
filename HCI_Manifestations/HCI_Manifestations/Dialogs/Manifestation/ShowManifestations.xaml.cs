@@ -131,8 +131,8 @@ namespace HCI_Manifestations.dialogs
 
             searchInputId.Text = "";
             searchInputName.Text = "";
-            comboBoxAlcohol.SelectedIndex = 3;
-            comboBoxPrice.SelectedIndex = 4;
+            comboBoxAlcohol.SelectedIndex = 0;
+            comboBoxPrice.SelectedIndex = 0;
             comboBoxType.SelectedValue = null;
             checkBoxHandicap.IsChecked = false;
             checkBoxSmokingAllowed.IsChecked = false;
@@ -174,11 +174,11 @@ namespace HCI_Manifestations.dialogs
             {
                 result = filterName(result, true);
             }
-            if (!comboBoxAlcohol.Text.Equals("Sve"))
+            if (!comboBoxAlcohol.Text.Equals("---"))
             {
                 result = filterAlcohol(result);
             }
-            if (!comboBoxPrice.Text.Equals("Sve"))
+            if (!comboBoxPrice.Text.Equals("---"))
             {
                 result = filterPrice(result);
             }

@@ -130,11 +130,7 @@ namespace HCI_Manifestations.dialogs
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-            Types = new ObservableCollection<ManifestationType>();
-            foreach (var type in Database.getInstance().Types)
-            {
-                Types.Add(new ManifestationType(type));
-            }
+            Types = Database.getInstance().Types;
             textBoxId.Text = "";
         }
 

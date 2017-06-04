@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -201,8 +202,8 @@ namespace HCI_Manifestations.Models
             }
         }
         
-        private List<ManifestationTag> tags;
-        public List<ManifestationTag> Tags
+        private ObservableCollection<ManifestationTag> tags;
+        public ObservableCollection<ManifestationTag> Tags
         {
             get { return tags; }
             set
@@ -248,11 +249,11 @@ namespace HCI_Manifestations.Models
         #region Constructors
         public Manifestation()
         {
-            Tags = new List<ManifestationTag>();
+            Tags = new ObservableCollection<ManifestationTag>();
         }
 
         public Manifestation(string id, string name, string description, DateTime date, ManifestationType type, string iconPath,
-            bool smokingAllowed, bool inside, bool outside, string price, string alcohol, string expectedPublic, List<ManifestationTag> tags)
+            bool smokingAllowed, bool inside, bool outside, string price, string alcohol, string expectedPublic, ObservableCollection<ManifestationTag> tags)
         {
             this.id = id;
             this.name = name;
@@ -291,7 +292,7 @@ namespace HCI_Manifestations.Models
             price = manifestation.price;
             alcohol = manifestation.alcohol;
             expectedPublic = manifestation.expectedPublic;
-            tags = new List<ManifestationTag>(manifestation.tags);
+            tags = new ObservableCollection<ManifestationTag>(manifestation.tags);
             x = manifestation.X;
             y = manifestation.Y;
         }

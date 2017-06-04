@@ -19,6 +19,7 @@ namespace HCI_Manifestations.Dialogs
         public ShowVideoTutorial()
         {
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
         private void buttonPlay_Click(object sender, RoutedEventArgs e)

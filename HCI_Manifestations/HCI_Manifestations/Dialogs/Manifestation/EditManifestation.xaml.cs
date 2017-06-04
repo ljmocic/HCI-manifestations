@@ -28,7 +28,28 @@ namespace HCI_Manifestations.Dialogs
         public Manifestation Manifestation
         {
             get { return manifestation; }
-            set { manifestation = value; }
+            set
+            {
+                if (value != manifestation)
+                {
+                    manifestation = value;
+                    OnPropertyChanged("Manifestation");
+                }
+            }
+        }
+
+        private ObservableCollection<ManifestationTag> selectedTags;
+        public ObservableCollection<ManifestationTag> SelectedTags
+        {
+            get { return selectedTags; }
+            set
+            {
+                if (value != selectedTags)
+                {
+                    selectedTags = value;
+                    OnPropertyChanged("Tags");
+                }
+            }
         }
 
         private string oldId;
@@ -51,11 +72,13 @@ namespace HCI_Manifestations.Dialogs
 
             autoCompleteBoxTypes.DataContext = Database.getInstance();
             autoCompleteBoxTags.DataContext = Database.getInstance();
-            comboBoxTags.DataContext = Manifestation;
+            SelectedTags = new ObservableCollection<ManifestationTag>();
+
+            comboBoxTags.DataContext = this;
             
             foreach (var tag in Manifestation.Tags)
             {
-                comboBoxTags.SelectedItems.Add(tag);
+                SelectedTags.Add(tag);
             }
 
             foreach (var typeDatabase in Database.getInstance().Types)
@@ -133,6 +156,7 @@ namespace HCI_Manifestations.Dialogs
                     manifestation.IconPath = manifestation.Type.IconPath;
                 }
 
+                Manifestation.Tags = new ObservableCollection<ManifestationTag>(SelectedTags);
                 Database.UpdateManifestation(oldId, manifestation);
                 Close();
             }
@@ -164,19 +188,24 @@ namespace HCI_Manifestations.Dialogs
                 if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
                 {
                     ManifestationTag tag = new ManifestationTag(Database.getInstance().Tags.Last());
-                    Manifestation.Tags.Add(tag);
-                    comboBoxTags.SelectedItems.Add(tag);
+
+                    // make sure tag is't already added
+                    bool found = false;
+                    foreach (var manifestationTag in Manifestation.Tags)
+                    {
+                        if (manifestationTag.Id.Equals(tag.Id))
+                        {
+                            found = true;
+                            SelectedTags.Add(manifestationTag);
+                        }
+                    }
+                    if (!found)
+                    {
+                        Manifestation.Tags.Add(tag);
+                        SelectedTags.Add(tag);
+                    }
                 }
 
-                // solve xceed library bug
-                if (comboBoxTags.SelectedItems.Count == 1)
-                {
-                    comboBoxTags.Text = Manifestation.Tags[0].Id;
-                }
-                if (comboBoxTags.SelectedItems.Count == 0)
-                {
-                    comboBoxTags.Text = "";
-                }
             }
             // if it has been found in database
             else
@@ -185,51 +214,25 @@ namespace HCI_Manifestations.Dialogs
 
                 // make sure tag is't already added
                 bool found = false;
-                foreach (var item in comboBoxTags.SelectedItems)
+                foreach (var manifestationTag in Manifestation.Tags)
                 {
-                    if (((ManifestationTag)item).Id.Equals(tag.Id))
+                    if (manifestationTag.Id.Equals(tag.Id))
+                    {
                         found = true;
+                        SelectedTags.Add(manifestationTag);
+                    }
                 }
                 if (!found)
                 {
                     Manifestation.Tags.Add(tag);
-                    comboBoxTags.SelectedItems.Add(tag);
+                    SelectedTags.Add(tag);
                 }
 
-                // solve xceed library bug
-                if (comboBoxTags.SelectedItems.Count == 1)
-                {
-                    comboBoxTags.Text = Manifestation.Tags[0].Id;
-                }
-                if (comboBoxTags.SelectedItems.Count == 0)
-                {
-                    comboBoxTags.Text = "";
-                }
             }
 
             // reset field
             autoCompleteBoxTags.SelectedItem = null;
             autoCompleteBoxTags.Text = string.Empty;
-        }
-
-        private void comboBoxTags_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
-        {
-            var selectedTags = comboBoxTags.SelectedItems;
-            Manifestation.Tags.Clear();
-
-            foreach (var selectedTag in selectedTags)
-            {
-                Manifestation.Tags.Add(new ManifestationTag((ManifestationTag)selectedTag));
-            }
-
-            if (comboBoxTags.SelectedItems.Count == 1)
-            {
-                comboBoxTags.Text = Manifestation.Tags[0].Id;
-            }
-            if (comboBoxTags.SelectedItems.Count == 0)
-            {
-                comboBoxTags.Text = "";
-            }
         }
 
         private void comboBoxTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)

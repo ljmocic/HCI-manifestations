@@ -47,19 +47,19 @@
 
         <CheckBox x:Name="checkBoxHandicap" ToolTip="Uključuje filter pretrage manifestacija sa podrškom za hendikepiranje osobe" Content="Hendikep" HorizontalAlignment="Left" Margin="298,15,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxSmokingAllowed" ToolTip="Uključuje filter pretrage manifestacija sa mogućnošću pušenja unutra" Content="Pušenje" HorizontalAlignment="Left" Margin="298,48,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        
-        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="3" HorizontalAlignment="Left" Margin="428,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="152">
+
+        <ComboBox x:Name="comboBoxAlcohol" ToolTip="Uključuje filter pretrage manifestacija sa određenim stanjem alkohola" SelectedIndex="0" HorizontalAlignment="Left" Margin="428,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="152">
+            <ComboBoxItem>---</ComboBoxItem>
             <ComboBoxItem>Nema</ComboBoxItem>
             <ComboBoxItem>Može se doneti</ComboBoxItem>
             <ComboBoxItem>Može se kupiti na licu mesta</ComboBoxItem>
-            <ComboBoxItem>Sve</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="comboBoxPrice" ToolTip="Uključuje filter pretrage manifestacija sa određenim cenovnim rangom" SelectedIndex="4" HorizontalAlignment="Left" Margin="430,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Grid.RowSpan="2">
+        <ComboBox x:Name="comboBoxPrice" ToolTip="Uključuje filter pretrage manifestacija sa određenim cenovnim rangom" SelectedIndex="0" HorizontalAlignment="Left" Margin="428,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="152" Grid.RowSpan="2">
+            <ComboBoxItem>---</ComboBoxItem>
             <ComboBoxItem>Besplatno</ComboBoxItem>
             <ComboBoxItem>Niske cene</ComboBoxItem>
             <ComboBoxItem>Srednje cene</ComboBoxItem>
             <ComboBoxItem>Visoke cene</ComboBoxItem>
-            <ComboBoxItem>Sve</ComboBoxItem>
         </ComboBox>
         <Label x:Name="labelAlcohol" Content="Alkohol:" HorizontalAlignment="Left" Margin="370,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="labelPrice" Content="Cena:" HorizontalAlignment="Left" Margin="384,43,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
@@ -79,7 +79,7 @@
         </Button>
 
         <!--Data-->
-        <DataGrid Name="manifestationsGrid" MouseDoubleClick="manifestationsGrid_MouseDoubleClick" AutoGenerateColumns="False" ToolTip="Prikaz svih manifestacija ili rezultata pretrage manifestacija" SelectedItem="{Binding Path=SelectedManifestation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Manifestations}" Margin="5,24,5,5" IsReadOnly="True" Grid.Column="0" Grid.Row="2" Grid.RowSpan="5" SelectionChanged="manifestationsGrid_SelectionChanged">
+        <DataGrid Name="manifestationsGrid" MouseDoubleClick="manifestationsGrid_MouseDoubleClick" AutoGenerateColumns="False" SelectedItem="{Binding Path=SelectedManifestation, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Manifestations}" Margin="5,24,5,5" IsReadOnly="True" Grid.Column="0" Grid.Row="2" Grid.RowSpan="5" SelectionChanged="manifestationsGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Oznaka manifestacije" MinWidth="100" Width="*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Naziv manifestacije"  MinWidth="100" Width="*" Binding="{Binding Name}"/>

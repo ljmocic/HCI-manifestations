@@ -93,11 +93,11 @@
 
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="2" Content="Ikonica:"/>
-            <TextBox Name="textBoxIconPath" Validation.Error="textBoxIconPath_Error"  IsEnabled="False" Grid.Column="1" Grid.Row="2" ToolTip="Lokacija vaše ikonice" Margin="3,3,37,3" >
+            <TextBox Name="textBoxIconPath" ToolTip="Prikaz lokacije ikonice na vašem računaru" Validation.Error="textBoxIconPath_Error" IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Width="255" >
                 <TextBox.Text>
-                    <Binding Path="IconPath" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="IconPath" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <!--<validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="150" />-->
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="150" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -118,7 +118,7 @@
                     </ControlTemplate>
                 </Validation.ErrorTemplate>
             </TextBox>
-                <Button Name="buttonBrowse" Click="buttonBrowse_Click" Grid.Column="1" Grid.Row ="2" ToolTip="Odaberite karakterističnu ikonicu tipa manifestacije sa vašeg racunara" Margin="262,3,3,3" Grid.ColumnSpan="2">
+            <Button Name="buttonBrowse" Click="buttonBrowse_Click" Grid.Column="1" Grid.Row ="2" ToolTip="Odabir karakteristične ikonice tipa manifestacije sa vašeg racunara" Margin="263,3,3,3" Grid.ColumnSpan="2">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="..\..\Resources\Icons\search.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                     <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="3"/>
@@ -157,7 +157,7 @@
 
         <!--Save/Cancel-->
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Background="LightGray">
-            <Button Name="buttonSave" IsEnabled="False" ToolTip="Čuvanje unetih podataka" Click="buttonSave_Click" Content="Sačuvaj" Margin="330,10,10,10" Padding="20,5"/>
+            <Button Name="buttonSave" ToolTip="Čuvanje unetih podataka" Click="buttonSave_Click" Content="Sačuvaj" Margin="330,10,10,10" Padding="20,5"/>
             <Button Name="buttonCancel" ToolTip="Odustajanje od unosa podataka" Click="buttonCancel_Click" Content="Odustani" Margin="10,10,10,10" Padding="20,5"/>
         </StackPanel>
 

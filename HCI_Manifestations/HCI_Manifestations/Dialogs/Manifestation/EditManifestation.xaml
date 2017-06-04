@@ -256,11 +256,12 @@
                     </StackPanel>
                 </Button>
                 <wpfTool:CheckComboBox ToolTip="Lista etiketa manifestacije" Name="comboBoxTags"
-                                   ItemsSource="{Binding Tags}"
+                                   ItemsSource="{Binding Manifestation.Tags}"
                                    DisplayMemberPath="Id"
                                    ValueMemberPath="{Binding Path=Id}"
+                                   SelectedItemsOverride="{Binding SelectedTags}"
                                    MaxDropDownHeight="100"
-                                   ItemSelectionChanged="comboBoxTags_ItemSelectionChanged" Margin="3,37,3,-31" Grid.ColumnSpan="2" />
+                                   Margin="3,37,3,-31" Grid.ColumnSpan="2" />
             </Grid>
             <Label Content="Održava se:" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top"/>
 

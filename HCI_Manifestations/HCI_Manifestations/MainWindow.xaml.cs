@@ -160,8 +160,8 @@ namespace HCI_Manifestations
 
                 if (manifestationOnThatPosition != null && !manifestationPin.Id.Equals(manifestationOnThatPosition.Id))
                 {
-                    manifestationPin.X = (int)dropPosition.X - 50;
-                    manifestationPin.Y = (int)dropPosition.Y - 50;
+                    manifestationPin.X = (int)dropPosition.X + 16;
+                    manifestationPin.Y = (int)dropPosition.Y + 16;
                 }
                 // if it is close to the edge, move it a little bit
                 else if ((int)dropPosition.Y > -30 && (int)dropPosition.Y < 10)
@@ -252,7 +252,7 @@ namespace HCI_Manifestations
                     ManifestationIcon.Width = 32;
                     ManifestationIcon.Height = 32;
                     ManifestationIcon.ToolTip = manifestation.Id + " " + manifestation.Name;
-
+                   
                     if (File.Exists(manifestation.IconPath))
                     {
                         ManifestationIcon.Source = new BitmapImage(new Uri(manifestation.IconPath, UriKind.Absolute));
