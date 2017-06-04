@@ -284,6 +284,10 @@ namespace HCI_Manifestations.dialogs
             {
                 textBoxTypeError.Visibility = System.Windows.Visibility.Visible;
             }
+            else
+            {
+                textBoxTypeError.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)

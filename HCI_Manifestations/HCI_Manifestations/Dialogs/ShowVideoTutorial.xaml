@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Manifestations.Dialogs"
         mc:Ignorable="d"
-        Icon="..\Resources\Icons\favicon.ico" 
+        Icon="..\Resources\Icons\favicon.ico"
+        Loaded="Window_Loaded"
         Title="Video tutorijal" Height="600" Width="1050">
     <Grid>
-        <MediaElement Source="http://hubblesource.stsci.edu/sources/video/clips/details/images/hst_1.mpg" LoadedBehavior="Manual" Name="player" />
+        <MediaElement Source="Resources/Video/tutorial.mp4" LoadedBehavior="Manual" Name="player" />
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
             <WrapPanel HorizontalAlignment="Center"/>
             <Button x:Name="buttonPlay" Click="buttonPlay_Click" Height="30" Width="100">

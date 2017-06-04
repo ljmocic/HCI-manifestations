@@ -349,6 +349,9 @@
     <Content Include="Resources\Documentation\Type.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Video\tutorial.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Icons\pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

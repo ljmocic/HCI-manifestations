@@ -163,7 +163,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            
+
             <!--IconPath-->
             <Label Grid.Column="0" Grid.Row="6" Content="Ikonica:" />
             <Grid Grid.Column="1" Grid.Row="6">
@@ -263,7 +263,7 @@
                                    ValueMemberPath="{Binding Path=Id}"
                                    SelectedItemsOverride="{Binding SelectedTags}"
                                    MaxDropDownHeight="100"
-                                   Margin="3,37,3,-31" Grid.ColumnSpan="2" />
+                                   Margin="3,37,3,-31" Grid.ColumnSpan="3" />
             </Grid>
             <Label Content="Održava se:" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top"/>
 

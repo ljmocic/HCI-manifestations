@@ -36,5 +36,10 @@ namespace HCI_Manifestations.Dialogs
         {
             player.Stop();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            player.Play();
+        }
     }
 }
