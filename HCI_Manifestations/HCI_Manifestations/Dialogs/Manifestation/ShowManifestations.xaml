@@ -38,9 +38,9 @@
 
         <!--Search prefs-->
         <Label Content="Od:" HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <DatePicker SelectedDate="{Binding Path=ToDate, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="44,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149" Grid.RowSpan="2"/>
-        <Label Content="Do:" HorizontalAlignment="Left" Margin="11,43,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <DatePicker SelectedDate="{Binding Path=FromDate, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="44,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149"/>
+        <Label Content="Do:" HorizontalAlignment="Left" Margin="11,43,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <DatePicker SelectedDate="{Binding Path=ToDate, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="44,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149" Grid.RowSpan="2"/>
 
         <RadioButton Name="radioButtonInside" Content="Unutra" HorizontalAlignment="Left" Margin="223,15,0,0" Grid.Row="1" VerticalAlignment="Top" />
         <RadioButton Name="radioButtonOutside" Content="Napolju" HorizontalAlignment="Left" Margin="223,49,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2"/>

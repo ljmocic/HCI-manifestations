@@ -110,7 +110,7 @@
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="1000" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="1000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -258,7 +258,6 @@
                 <wpfTool:CheckComboBox ToolTip="Lista etiketa manifestacije" Name="comboBoxTags"
                                    ItemsSource="{Binding Manifestation.Tags}"
                                    DisplayMemberPath="Id"
-                                   ValueMemberPath="{Binding Path=Id}"
                                    SelectedItemsOverride="{Binding SelectedTags}"
                                    MaxDropDownHeight="100"
                                    Margin="3,37,3,-31" Grid.ColumnSpan="2" />

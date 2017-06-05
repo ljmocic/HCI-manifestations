@@ -67,7 +67,7 @@
             <Label Grid.Column="0" Grid.Row="1" Content="Ime:"/>
             <TextBox Name="textBoxName" MaxLength="55" ToolTip="Unos proizvoljnog imena tipa manifestacije" Validation.Error="textBoxName_Error"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Margin="3">
                 <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="LostFocus">
+                    <Binding Path="Name" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="50" />
                         </Binding.ValidationRules>
@@ -131,7 +131,7 @@
                 <TextBox.Text>
                     <Binding Path="Description" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="3" Max="1000" />
+                            <validation:LengthValidation ValidationStep="RawProposedValue" Min="0" Max="1000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

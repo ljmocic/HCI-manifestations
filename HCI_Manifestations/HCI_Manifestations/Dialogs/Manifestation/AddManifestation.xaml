@@ -260,7 +260,6 @@
                 <wpfTool:CheckComboBox ToolTip="Lista etiketa manifestacije" Name="comboBoxTags"
                                    ItemsSource="{Binding Manifestation.Tags}"
                                    DisplayMemberPath="Id"
-                                   ValueMemberPath="{Binding Path=Id}"
                                    SelectedItemsOverride="{Binding SelectedTags}"
                                    MaxDropDownHeight="100"
                                    Margin="3,37,3,-31" Grid.ColumnSpan="3" />

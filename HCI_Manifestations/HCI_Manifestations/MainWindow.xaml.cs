@@ -67,7 +67,7 @@ namespace HCI_Manifestations
         private void ShowManifestations_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             ShowManifestations showManifestations = new ShowManifestations();
-            showManifestations.ShowDialog();
+            showManifestations.Show();
         }
 
         private void AddType_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -79,7 +79,7 @@ namespace HCI_Manifestations
         private void ShowTypes_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             ShowTypes showTypes = new ShowTypes();
-            showTypes.ShowDialog();
+            showTypes.Show();
         }
 
         private void AddTag_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -91,7 +91,7 @@ namespace HCI_Manifestations
         private void ShowTags_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             ShowTags showTags = new ShowTags();
-            showTags.ShowDialog();
+            showTags.Show();
         }
         #endregion
 
